@@ -1,0 +1,120 @@
+/**app.wxss**/
+@import 'font/icon.wxss';
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.float_left{
+  float: left;
+}
+.float_right{
+  float: right;
+}
+.text_center{
+  text-align: center;
+}
+.clear::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.font16{
+  font-size: 16rpx;
+}
+.font18{
+  font-size: 18rpx;
+}
+.font20{
+  font-size: 20rpx;
+}
+.font22{
+  font-size: 22rpx;
+}
+.font24{
+  font-size: 24rpx;
+}
+.font26{
+  font-size: 26rpx;
+}
+.font28{
+  font-size: 28rpx;
+}
+.font30{
+  font-size: 30rpx;
+}
+.font33{
+  font-size: 33rpx;
+}
+.font36{
+  font-size: 36rpx;
+}
+.font40{
+  font-size: 40rpx;
+}
+.font54{
+  font-size: 54rpx;
+}
+.font_color333{
+  color: #333;
+}
+.font_color_main{
+  color: #7ec6c3;
+}
+.font_color666{
+  color:#666;
+}
+.font_color999{
+  color:#999;
+}
+.top10{
+  margin-top: 10rpx;
+}
+.top20{
+  margin-top: 20rpx;
+}
+.top30{
+  margin-top: 30rpx;
+}
+.top85{
+  margin-top: 85rpx;
+}
+.left20{
+  margin-left: 20rpx;
+}
+.left40{
+  margin-left: 40rpx;
+}
+.left50{
+  margin-left: 50rpx;
+}
+.left95{
+  margin-left: 95rpx;
+}
+.left100{
+  margin-left: 100rpx;
+}
+.right10{
+  margin-right: 10rpx;
+}
+.right20{
+  margin-right: 20rpx;
+}
+.count{
+  border: 1rpx solid #ccc;
+  width: 100rpx;
+  height: 45rpx;
+  display: inline-block;
+  margin-left: 20rpx;
+}
+.flex{
+  display: flex;
+  justify-content: space-between
+}
+.inline{
+  display: inline-block;
+}

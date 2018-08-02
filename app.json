@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/teacher/teacher",
+    "pages/teacher_detail/teacher_detail",
+    "pages/student/student",
+    "pages/student_detail/student_detail",
+    "pages/myCount/myCount",
+    "pages/count_detail0/count_detail0",
+    "pages/count_detail1/count_detail1",
+    "pages/count_detail2/count_detail2",
+    "pages/count_detail3/count_detail3",
+    "pages/my_collect/my_collect",
+    "pages/my_publish/my_publish",
+    "pages/my_wallect/my_wallect",
+    "pages/my_apply/my_apply",
+    "pages/my_authen/my_authen",
+    "pages/to_edit_teac/to_edit_teac",
+    "pages/to_edit_child/to_edit_child",
+    "pages/pub_look_child/pub_look_child",
+    "pages/apply_list/apply_list",
+    "pages/apply_detail_teac/apply_detail_teac"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "飞镖家教",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "selectedIconPath": "img/index2.png",
+        "iconPath": "img/index1.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "img/sicon-06.png",
+        "iconPath": "img/sicon-02.png",
+        "pagePath": "pages/student/student",
+        "text": "找学生"
+      },
+      {
+        "selectedIconPath": "img/sicon-07.png",
+        "iconPath": "img/sicon-03.png",
+        "pagePath": "pages/teacher/teacher",
+        "text": "找老师"
+      },
+      {
+        "selectedIconPath": "img/sicon-08.png",
+        "iconPath": "img/sicon-04.png",
+        "pagePath": "pages/myCount/myCount",
+        "text": "我的课程"
+      }
+    ]
+  }
+}

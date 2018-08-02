@@ -1,0 +1,25 @@
+<!--pages/my_publish/my_publish.wxml-->
+<view class='teacher_list clear' wx:for="{{teacher_list}}" wx:for-item="item" catchtap='look_detail' data-state='{{item.state}}'>
+  <view class='list_top font22 flex font_color999'>
+    <view>信息编号：{{item.id}}</view>
+    <view class='inline' catchtap='show_list'><switch checked='{{item.isCheck}}' bindchange='show_list'></switch></view>
+  </view>
+  <view class='float_left img_box'>
+    <image src='{{item.path}}'></image>
+  </view>
+  <view class='float_left left20 couse_info'>
+    <view class='font36'>课时费：{{item.unit}}</view>
+    <view class='font26 font_color999 top20 couse_box'>{{item.couse}}</view>
+    <view class='font26 font_color999 top10'>
+      <text>{{item.addr}}</text>
+    </view>
+  </view>
+  <view class='float_right text_center top30 right20'>
+    <view class='font30 application' catchtap='applys'>7人申请</view>
+  </view>
+</view>
+
+
+<view class='bottom' bindtap='to_edit'>
+  发布信息
+</view>

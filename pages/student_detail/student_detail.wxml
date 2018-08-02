@@ -1,0 +1,50 @@
+<!--pages/teacher_detail/teacher_detail.wxml-->
+<view class='head'>
+  <view class='clear'>
+    <view class='float_left img_box'>
+      <image src='../../img/timg1.jpg'></image>
+    </view>
+    <view class='title'>
+      <view class='row1 clear'>
+        <view class='float_left font40 '>周先生</view>
+        <view class='float_right font20'> <text class='font_color_main font36'>100</text>/h</view>
+      </view>
+      <view>
+      <view class='row2_center'>
+        <view class='authen_student'>学生认证</view>
+        <view class='authen_teacher'>教师认证</view>
+      </view>
+    </view>
+    </view>
+  </view>
+  <view class='head_bottom'>
+    <view><text class='iconfont icon-shijian font24'></text> 2018-08-28</view>
+    <view><text class='iconfont icon-msnui-collection font24'></text>1人收藏</view>
+    <view><text class='iconfont icon-jiaren font24'></text>1人申请</view>
+  </view>
+</view>
+<view class='every'>
+  <view class='every_title'>
+    学生情况
+  </view>
+  <view>年纪情况： 初二</view>
+  <view>知识掌握： 一般</view>
+  <view>弱势学科： 物理、数学</view>
+  <view>所在学校： 天津大学附属中学</view>
+</view>
+<view class='every'>
+  <view class='every_title'>
+    辅导需求
+  </view>
+  <view>课程需求： 数学</view>
+  <view>课程安排： 一周两次，周四晚上，周六晚上</view>
+  <view>学历要求： 本科以上</view>
+  <view>授课地点： 天津市和平区 <text class='iconfont icon-genggaishouhuodizhi font_color_main font24'></text></view>
+  <view>其他： 老师要有耐心，全面指示系统</view>
+</view>
+
+<view class='bottom'>
+  <view class='share'><text class='iconfont icon-fenxiang'></text>分享</view>
+  <button open-type='share'><text class='iconfont icon-msnui-collection'></text>收藏</button>
+  <view class='buy' >发起申请</view>
+</view>

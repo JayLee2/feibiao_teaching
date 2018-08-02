@@ -1,0 +1,77 @@
+<!--pages/teacher_detail/teacher_detail.wxml-->
+<view class='head'>
+  <view class='clear'>
+    <view class='float_left img_box'>
+      <image src='{{detail.img}}'></image>
+    </view>
+    <view class='title'>
+      <view class='row1 clear'>
+        <view class='float_left font40 '>{{detail.user_name}}</view>
+        <view class='float_right font20'>名师值 <text class='font_color_main font36'>{{detail.grade}}</text><text class='iconfont icon-wenhao font22'></text></view>
+      </view>
+      <view>
+      <view class='row2_center'>
+        <view class='authen_student'>学生认证</view>
+        <view class='authen_teacher'>教师认证</view>
+      </view>
+    </view>
+    </view>
+  </view>
+  <view class='head_bottom'>
+    <view>教师编号：{{detail.objectId}}</view>
+    <view><text class='iconfont icon-msnui-collection font20'></text>{{detail.by_collect}}人收藏</view>
+    <view>￥{{detail.unit_price}}/h</view>
+  </view>
+</view>
+<view class='every'>
+  <view class='every_title'>
+    教师情况
+  </view>
+  <view>学籍情况： {{detail.diploma}}</view>
+  <view>就读学校： {{detail.school}}</view>
+  <view>擅长学科： {{detail.be_good_like}}</view>
+  <view>自我介绍： {{detail.self_introduction}}</view>
+</view>
+<view class='every'>
+  <view class='every_title'>
+    教学能力
+  </view>
+  <view>可教年纪： {{detail.grades}}</view>
+  <view> {{school}}</view>
+  <view>授课地点： 天津市和平区 <text class='iconfont icon-genggaishouhuodizhi font_color_main font24'></text></view>
+</view>
+<view class='every last'>
+  <view class='every_title'>
+    教学经历
+  </view>
+  <view>
+    {{detail.experience}}
+  </view>
+</view>
+<view class='bottom'>
+  <view class='share'><text class='iconfont icon-fenxiang'></text>分享</view>
+  <view><text class='iconfont icon-msnui-collection'></text>收藏</view>
+  <view class='buy' bindtap='buy'>购买课程</view>
+</view>
+<!--弹窗-->
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}">
+  <view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">课程套餐</view>
+  <view class="modal-content">
+      <view class='font20 unit'><text class='font_color333'>课程单价：￥{{unit}}/h </text><text class='font_color999'> (一节课两小时)</text></view>
+      <view wx:for="{{packages}}" wx:for-item="item" wx:key='{{index}}' class='package {{item.isSelect}}' bindtap='couse_select' data-id='{{index}}' data-count='{{item.count}}'>{{item.text}}</view>
+  </view>
+  <view class='modal-price clear'>
+    <view class='float_left font_color333 font20' wx:if="{{hasCount}}">
+      课程数量：<input class='count' type='number' value='0' bindinput='changeCount' focus='{{focus}}'></input>
+    </view>
+    <view class='float_right font20'>
+      总金额： <text class='font_color_main font36 top20'>{{price}}.00</text>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确认支付</view>
+  </view>
+</view>
+</view>

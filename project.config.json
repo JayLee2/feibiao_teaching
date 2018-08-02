@@ -1,0 +1,119 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.91",
+	"appid": "wxd56bbc4faeef7e2c",
+	"projectname": "teaching",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "教师",
+					"pathName": "pages/teacher/teacher",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "教师详情",
+					"pathName": "pages/teacher_detail/teacher_detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "招学生",
+					"pathName": "pages/student/student",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的课程",
+					"pathName": "pages/myCount/myCount",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "课程详情",
+					"pathName": "pages/count_detail0/count_detail0",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "课程详情（上课中）",
+					"pathName": "pages/count_detail1/count_detail1",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "课程详情（退款完成）",
+					"pathName": "pages/count_detail2/count_detail2",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "课程详情（已完成）",
+					"pathName": "pages/count_detail3/count_detail3",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的发布",
+					"pathName": "pages/my_publish/my_publish",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "发布信息（老师）",
+					"pathName": "pages/to_edit_teac/to_edit_teac",
+					"query": ""
+				},
+				{
+					"id": 10,
+					"name": "发布信息（学生）",
+					"pathName": "pages/to_edit_child/to_edit_child",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "发布信息-查看-学生",
+					"pathName": "pages/pub_look_child/pub_look_child",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "申请列表",
+					"pathName": "pages/apply_list/apply_list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "申请详情——老师",
+					"pathName": "pages/apply_detail_teac/apply_detail_teac",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的申请",
+					"pathName": "pages/my_apply/my_apply",
+					"query": ""
+				}
+			]
+		}
+	}
+}

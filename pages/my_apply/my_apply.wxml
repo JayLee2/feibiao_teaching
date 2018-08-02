@@ -1,0 +1,19 @@
+<!--pages/my_apply/my_apply.wxml-->
+<!--pages/apply_list/apply_list.wxml-->
+<view  wx:for="{{teacher_list}}" wx:for-item="item" bindtap='toNext' class='teacher_list clear {{item.is_appr?"":"transpant"}}' bindtap='{{item.is_appr?"to_apply_detail":""}}'>
+  <view class='float_left img_box'>
+    <image src='{{item.path}}'></image>
+  </view>
+  <view class='float_left left20'>
+    <view><text class='font36'>{{item.name}}</text><text class='authen'  wx:if='{{item.is_appr&&item.is_read?true:false}}'>未读</text></view>
+    <view class='font26 font_color999 top20'>{{item.couse}}</view>
+    <view class='font26 font_color666 top10 font16'>
+      <text><text class='iconfont icon-shijian right10'></text>{{item.time}}</text>
+    </view>
+  </view>
+    <view class='float_right text_center top30 right20'>
+      <view class='font30 font_color_main'>{{item.grade}}</view>
+    </view>
+  <view class='black_box' hidden='{{item.is_appr?true:false}}'>不合适</view>
+</view>
+

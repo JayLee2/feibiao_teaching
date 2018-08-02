@@ -1,0 +1,160 @@
+<!--pages/count_detail1/count_detail1.wxml-->
+<view class='head'>
+  <view class='flex head_top'>
+    <view>课程编号：188992887</view>
+    <view>上课中</view>
+  </view>
+  <view class='clear'>
+    <view class='float_left img_box'>
+      <image src='../../img/timg1.jpg'></image>
+    </view>
+    <view class='title'>
+      <view class='row1 clear'>
+        <view class='float_left font40 '>周先生</view>
+        <view class='float_right font20'> <text class='font_color_main font36'>￥1000.00</text></view>
+      </view>
+      <view>
+      <view class='row2_center'>
+        <view class='couse'>英语</view>
+        <view class='count'>12节课(0/12)</view>
+      </view>
+    </view>
+    </view>
+  </view>
+</view>
+<view class='ctitle'>
+  课程明细
+</view>
+<view class='flex font22 row'>
+    <view class='left40'>计划开始时间</view>
+    <view class='time'>2018-09-09 18：00</view>
+</view>
+<view class='flex font22 row'>
+    <view class='left40'>计划结束时间</view>
+    <view class='time'>2018-09-09 18：00</view>
+</view>
+<view class='flex font22 row'>
+    <view class='left40'>实际开始时间</view>
+    <view class='start_time'  bindtap='startTap'> {{startDate}}</view>
+</view>
+<view class='flex font22 row'>
+    <view class='left40'>实际结束时间</view>
+    <view class='end_time' bindtap='endTap'>{{endDate}}</view>
+</view>
+<view class='bottom flex'>
+  <view bindtap='ret'>申请退款</view>
+  <view bindtap='buy'>课时续费</view>
+  <view class='finish' bindtap='cer'>完成课程</view>
+</view>
+<!--弹窗-购买-->
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}">
+  <view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">课时续费</view>
+  <view class="modal-content">
+      <view class='detail_list'>
+        <view class='flex'>
+          <view class='font24'>
+            剩余总课次
+          </view>
+          <view class='font_color_main font24 count_box' >
+            10
+          </view>
+        </view>
+        <view class='flex'>
+          <view class='font24'>购买课次</view>
+          <view>
+            <text bindtap='minus'>-</text><input type='number' class='couse_count' value="{{count}}"></input><text bindtap='add'>+</text>
+          </view>
+        </view>
+        <view class='flex'>
+          <view class='font24'>
+            课程单价
+          </view>
+          <view class='font_color_main font24 count_box' >
+            {{unit}}
+          </view>
+        </view>
+        <view class='flex'>
+          <view class='font24'>
+            总金额
+          </view>
+          <view class='font_color_main font24 count_box'>
+            {{price}}
+          </view>
+        </view>
+      </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确认支付</view>
+  </view>
+</view>
+</view>
+
+<!--弹窗-退款-->
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showReturn}}">
+  <view class="modal-dialog" wx:if="{{showReturn}}">
+  <view class="modal-title">退款申请</view>
+  <view class="modal-content">
+      <view class='detail_list'>
+        <view class='flex'>
+          <view class='font24'>
+            剩余总课次
+          </view>
+          <view class='font_color_main font24 count_box' >
+            10
+          </view>
+        </view>
+        <view class='flex'>
+          <view class='font24'>退款课次</view>
+          <view>
+            <text bindtap='ret_minus'>-</text><input type='number' class='couse_count' value="{{ret_count}}"></input><text bindtap='ret_add'>+</text><view class='ret_all' bindtap='ret_all'>全部</view>
+          </view>
+        </view>
+        <view class='flex'>
+          <view class='font24'>
+            课程单价
+          </view>
+          <view class='font_color_main font24 count_box' >
+            {{unit}}
+          </view>
+        </view>
+        <view class='flex'>
+          <view class='font24'>
+            退款金额
+          </view>
+          <view class='font_color_main font24 count_box'>
+            {{ret_price}}
+          </view>
+        </view>
+        <view class='flex'>
+          <view class='font24'>
+            退款原因
+          </view>
+          <textarea  class='font_color_main font24' value='{{ret_reason}}'></textarea>
+        </view>
+      </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="ret_onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="ret_onConfirm" data-status="confirm">确认退款</view>
+  </view>
+</view>
+</view>
+
+<!--弹窗-确认-->
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showCertain}}">
+  <view class="modal-dialog" wx:if="{{showCertain}}">
+  <view class="modal-title">请输入密码，确认老师已完成相应课程</view>
+  <view class="modal-content">
+      <input class='pass' type='password'></input>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="cer_onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="cer_onConfirm" data-status="confirm">确认退款</view>
+  </view>
+</view>
+</view>
+
+<include src='../../utils/picker_datetime.wxml'/>
+

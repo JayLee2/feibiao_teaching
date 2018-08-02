@@ -1,0 +1,32 @@
+<!--index.wxml 7ec6c3-->
+<swiper>
+  <view class="main">
+     <swiper-item>
+      <image src='../../img/timg1.jpg'></image>
+    </swiper-item>
+    <swiper-item>
+      <image src='../../img/ss.jpg'></image>
+    </swiper-item>
+  </view>
+</swiper>
+<view class='main'>
+  <view class='user_info clear'>
+    <view class='float_left clear'>
+      <view class='img_box float_left'>
+        <image src='../../img/timg1.jpg'></image>
+      </view>
+      <view class='float_left font26 font_color333 top85'>
+        欢迎您，{{user}}
+      </view>
+    </view>
+    <view class='float_right font26 top85'>
+      {{address}}<text class='iconfont icon-msnui-pos font_color_main font36'></text>
+    </view>
+  </view>
+</view>
+<view class='main clear'>
+  <view class='list' wx:for="{{directory}}" wx:for-item="item" wx:key="{{item.index}}" bindtap='{{item.taped}}'>
+     <image src='{{item.path}}'></image> 
+    <view class='font26'>{{item.name}}</view>
+  </view>
+</view>

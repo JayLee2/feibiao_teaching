@@ -1,0 +1,67 @@
+<!--pages/to_edit/to_edit.wxml-->
+<view class='every'>
+  <view class='every_title'>
+    教师情况
+  </view>
+  <view> <text>学籍情况： </text><input value='{{diploma}}' bindinput='bind_diploma' ></input> </view>
+  <view> 
+    <text>就读学校： </text>
+    <!-- <picker mode='selector' range='{{schools}}' class='inline'> -->
+     <input value='{{school}}' bindblur='bind_school'></input>
+    <!-- </picker> -->
+  </view>
+  <checkbox-group bindchange="change_check">
+  <view class='special_row'> 
+    <text class='inline'>擅长学科： </text>
+    <view class='inline'>
+        <label><checkbox value='英语'/>英语</label>
+        <label><checkbox value='物理'/>物理</label>
+        <label><checkbox value='数学'/>数学</label>
+        <label><checkbox value='化学'/>化学</label>
+    </view>
+    <view class='left100'>
+        <label><checkbox />英语</label>
+        <label><checkbox />物理</label>
+        <label><checkbox />物理</label>
+        <label><checkbox />物理</label>
+    </view>
+  </view>
+  </checkbox-group>
+  <view> <text>自我介绍： </text><textarea value='{{self_introduction}}' bindinput='bind_intrpduction'></textarea> </view>
+</view>
+<view class='every'>
+  <view class='every_title'>
+    教学能力
+  </view>
+  <view> <text>可教年纪：</text><input value='{{grades}}' bindinput='bind_grades'></input> </view>
+  <checkbox-group bindchange="change_check_can">
+  <view class='special_row'> 
+    <text class='inline'>可教学科： </text>
+    <view class='inline'>
+        <label><checkbox value='英语'/>英语</label>
+        <label><checkbox value='物理'/>物理</label>
+        <label><checkbox value='数学'/>数学</label>
+        <label><checkbox value='化学'/>化学</label>
+    </view>
+    <view class='left100'>
+        <label><checkbox />英语</label>
+        <label><checkbox />物理</label>
+        <label><checkbox />物理</label>
+        <label><checkbox />物理</label>
+    </view>
+  </view>
+  </checkbox-group>
+  <view><text>课时费用：</text><input type='number' value='{{unit_price}}' bindinput='bind_unit' ></input></view>
+  <view>授课地点：<input class='right20' value='{{teach_addr}}' bindinput='bind_addr'></input> <text class='iconfont icon-genggaishouhuodizhi font_color_main font28'></text></view>
+   <view><text>其他：</text><textarea class='left40' value='{{other}}' bindinput='bind_other'></textarea></view>
+</view>
+<view class='every last'>
+  <view class='every_title'>
+    教学经历
+  </view>
+  <textarea class='left95 top20'></textarea>
+</view>
+<view class='bottom' bindtap='send'>
+  确认发布
+</view>
+

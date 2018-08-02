@@ -1,0 +1,29 @@
+<!--pages/to_edit/to_edit.wxml-->
+<view class='every'>
+  <view class='every_title'>
+    学生情况
+  </view>
+  <view> <text>年纪情况： </text><input></input> </view>
+  <view> <text>知识掌握： </text><label><checkbox />较差</label><label><checkbox />一般</label></view>
+  
+  <view> <text>弱势学科： </text><label><checkbox />英语</label><label><checkbox />物理</label></view>
+  <view> <text>所在学校：</text><input></input> </view>
+</view>
+<view class='every'>
+  <view class='every_title'>
+    辅导需求
+  </view>
+  <view> <text>课程需求：</text><input></input> </view>
+  <view> <text>课程安排：</text><input></input></view>
+  <view><text>性别要求：</text><radio-group> <radio color='#9fd4d2'>不限</radio>  <radio color='#9fd4d2'>男</radio>  <radio color='#9fd4d2'>女</radio></radio-group> </view>
+  <view><text>学历要求：</text><input></input></view>
+  <view>授课地点：<input class='right20'></input> <text class='iconfont icon-genggaishouhuodizhi font_color_main font28'></text></view>
+   <view><text>其他：</text><textarea class='left40'></textarea></view>
+</view>
+
+<view class='bottom' bindtap='publish'>
+  确认发布
+</view>
+
+
+

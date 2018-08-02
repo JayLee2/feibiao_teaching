@@ -1,0 +1,40 @@
+<!--pages/count_detail2/count_detail2.wxml-->
+<!--pages/count_detail0/count_detail0.wxml-->
+<view class='head'>
+  <view class='flex head_top'>
+    <view>课程编号：188992887</view>
+    <view>退款中</view>
+  </view>
+  <view class='clear'>
+    <view class='float_left img_box'>
+      <image src='../../img/timg1.jpg'></image>
+    </view>
+    <view class='title'>
+      <view class='row1 clear'>
+        <view class='float_left font40 '>周先生</view>
+        <view class='float_right font20'> <text class='font_color_main font36'>￥1000.00</text></view>
+      </view>
+      <view>
+      <view class='row2_center'>
+        <view class='couse'>英语</view>
+        <view class='count'>12节课(0/12)</view>
+      </view>
+    </view>
+    </view>
+  </view>
+</view>
+<view class='ctitle'>
+  课程明细
+</view>
+<view class='clear couse_detail' wx:for="{{couse_data}}" wx:for-item="item" wx:for-index="{{index}}">
+  <view class='float_left'>
+    <view class='detail_name'>{{item.name}}</view>
+    <view class='font16 detail_time'>{{item.time}}</view>
+  </view>
+  <view class='float_right'>
+    <view class='detail_count'>+{{item.count}}</view>
+  </view>
+</view>
+<view class='flex flex_bottom'>
+  <view bindtap='cancel'>取消退款</view>
+</view>
