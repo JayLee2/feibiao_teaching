@@ -16,7 +16,7 @@ App({
       queryFind.find().then(res => {
         console.log(res)
         if (res[0].is_teacher.objectId != '') {
-          that.globalData.is_teacher = '1'
+          that.globalData.is_teacher = '1'   
         } else if (res[0].is_student.objectId != '') {
           that.globalData.is_teacher = '0'
         } else {
@@ -88,13 +88,14 @@ App({
   },
   globalData: {
     user_id:'',
+    user_img:'',
     user:{
         user_name:'李文杰',
         sex:'1',
-        phone:110,
+        phone:'110',
         native_place:'山西晋中',
         major:'英语',
-        is_authen:1,
+        is_authen:"1",
         grade:'25',
         experience:'充足'
     },

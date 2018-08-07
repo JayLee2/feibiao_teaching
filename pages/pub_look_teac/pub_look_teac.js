@@ -1,4 +1,4 @@
-// pages/my_collect/my_collect.js
+// pages/pub_look_child/pub_look_child.js
 var Bmob = require('../../utils/Bmob-1.6.2.min.js');
 Page({
 
@@ -6,34 +6,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    teacher_list: [],
-
+    info:{},
+    be_good_like:'',
+    can_teached:''
   },
-
+  edit:function(e){
+    let id=e.currentTarget.dataset.index
+    wx.navigateTo({
+      url: '../to_edit_teac/to_edit_teac?id='+id,
+    })
+  },
+  look:function(){
+    wx.navigateTo({
+      url: '../apply_list/apply_list'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that=this;
-    let current = Bmob.User.current();
-    const query = Bmob.Query("collect");
-    //下面参数为Pointer字段名称， 可以一次查询多个表
-    query.include('couse_id','user_id' )
-    query.find().then(res => {
-      that.setData({
-        teacher_list:res,
-      })
+    console.log(options)
+    const queryFind = Bmob.Query('user_teacher');
+    queryFind.get(options.id).then(res => {
       console.log(res)
+      that.setData({
+        info:res,
+        be_good_like: res.be_good_like.join(','),
+        can_teached: res.can_teached.join(','),
+      })
     }).catch(err => {
       console.log(err)
     })
   },
-  toNext:function(e){
-    let id=e.currentTarget.dataset.index;
-    wx.navigateTo({
-      url: '../teacher_detail/teacher_detail?id='+id,
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

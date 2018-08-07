@@ -1,25 +1,26 @@
 <!--pages/my_publish/my_publish.wxml-->
-<view class='teacher_list clear' wx:for="{{teacher_list}}" wx:for-item="item" catchtap='look_detail' data-state='{{item.state}}'>
+<view class='teacher_list clear' wx:for="{{teacher_list}}" wx:for-item="item" catchtap='look_detail' data-state='{{item.state}}' wx:key="{{index}}" data-index='{{item.objectId}}'>
   <view class='list_top font22 flex font_color999'>
-    <view>信息编号：{{item.id}}</view>
-    <view class='inline' catchtap='show_list'><switch checked='{{item.isCheck}}' bindchange='show_list'></switch></view>
+    <view>信息编号：{{item.objectId}}</view>
+    <view class='inline' catchtap='show_list'><switch checked='{{item.is_show==1?true:false}}' bindchange='show_list' data-index='{{item.objectId}}'></switch></view>
   </view>
   <view class='float_left img_box'>
-    <image src='{{item.path}}'></image>
+    <image src='{{user_img}}'></image>
   </view>
   <view class='float_left left20 couse_info'>
-    <view class='font36'>课时费：{{item.unit}}</view>
-    <view class='font26 font_color999 top20 couse_box'>{{item.couse}}</view>
+    <view class='font36'>课时费：{{item.unit_price}}/h</view>
+    <view class='font26 font_color999 top20 couse_box float_left left20' wx:for="{{item.can_teached}}" wx:key="index" wx:for-item="couse">{{couse}}</view>
+    <view class='clear'></view>
     <view class='font26 font_color999 top10'>
-      <text>{{item.addr}}</text>
+      <text>{{item.teach_addr}}</text>
     </view>
   </view>
-  <view class='float_right text_center top30 right20'>
-    <view class='font30 application' catchtap='applys'>7人申请</view>
-  </view>
+ <view class='float_right font20'>名师值 <text class='font_color_main font36'>{{item.grade}}</text><text class='iconfont icon-wenhao font22'></text></view>
 </view>
 
-
-<view class='bottom' bindtap='to_edit'>
+<view hidden='{{is_empty}}'>
+  列表为空
+</view>
+<view class='bottom' bindtap='to_edit' hidden='{{is_empty}}'>
   发布信息
 </view>

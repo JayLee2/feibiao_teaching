@@ -13,7 +13,7 @@
   <view class='user_info clear'>
     <view class='float_left clear'>
       <view class='img_box float_left'>
-        <image src='../../img/timg1.jpg'></image>
+        <image src='{{user_img}}'></image>
       </view>
       <view class='float_left font26 font_color333 top85'>
         欢迎您，{{user}}
@@ -30,3 +30,10 @@
     <view class='font26'>{{item.name}}</view>
   </view>
 </view>
+
+
+<view class='hidePage' wx:if="{{authorize==false}}"  ></view>
+
+<button plain="true"  wx:if="{{authorize==false}}"  class='authBut' style="border:0;height:520rpx;"  open-type="getUserInfo" bindgetuserinfo="userInfoHandler">
+  <image class='authorize' src='../../img/authorize.png'></image>
+</button>

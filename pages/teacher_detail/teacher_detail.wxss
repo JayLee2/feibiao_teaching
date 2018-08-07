@@ -90,7 +90,16 @@
   text-align: center;
 }
 .share{
+  border: none;
+  background: #fff;
+  color: #999;
+  outline: none;
   border-right: 1rpx solid #ccc;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  line-height:99rpx; 
+  width: 25%;
 }
 .last {
   border: none;

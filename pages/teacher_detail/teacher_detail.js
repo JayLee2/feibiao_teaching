@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    is_collect:'收藏',
     detail:{},
     packages:[
       {text:"新课试听： 一节课",count:2,isSelect:''},
@@ -36,7 +37,68 @@ Page({
     }).catch(err => {
       console.log(err)
     })
-    this.compute_price()
+    this.compute_price();
+    //检查是否已经收藏
+    let current = Bmob.User.current()
+    const queryHas = Bmob.Query("collect");
+    queryHas.equalTo("user_id", "==", current.objectId);
+    queryHas.equalTo("couse_id", "==", id);    
+    queryHas.find().then(res => {
+      console.log()
+      console.log(res)
+      if(res.length>0){
+        that.setData({
+          is_collect:'已收藏',
+        })
+      }
+    });
+  },
+  //点击收藏的方法
+  collect:function(e){
+    let couse_id= e.currentTarget.dataset.index;
+    let current = Bmob.User.current();
+    if(that.data.is_collect=='收藏'){
+      const queryAdd = Bmob.Query('collect');
+      queryAdd.save().then(res => {
+        console.log(res)
+
+        const pointer = Bmob.Pointer('users')
+        const poiID = pointer.set(current.objectId)
+        const pointer_couse = Bmob.Pointer('user_teacher')
+        const poiID_couse = pointer_couse.set(couse_id)
+        queryAdd.get(res.objectId).then(ress => {
+          ress.set('user_id', poiID)
+          ress.set('couse_id', poiID_couse)
+          ress.save().then(() => {
+            wx.showToast({
+              title: '收藏成功',
+            });
+            that.setData({
+              is_collect: '已收藏',
+            })
+          })
+        })
+      }).catch(err => {
+        console.log(err)
+      })
+    }else{
+      const queryDel = Bmob.Query("collect");
+      queryDel.equalTo("user_id", "==", current.objectId);
+      queryDel.equalTo("couse_id", "==", couse_id);
+      queryDel.find().then(res => {
+        queryDel.destroy(res[0].objectId).then(ress => {
+          wx.showToast({
+            title: '已取消',
+          });
+          that.setData({
+            is_collect:'收藏'
+          })
+        }).catch(err => {
+
+        })
+      })
+    }
+    
   },
   //点击购买弹出框
   buy:function(){

@@ -118,3 +118,7 @@
 .inline{
   display: inline-block;
 }
+.clear{
+  clear:both;
+  content: '',
+}

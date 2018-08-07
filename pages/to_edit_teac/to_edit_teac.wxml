@@ -3,7 +3,7 @@
   <view class='every_title'>
     教师情况
   </view>
-  <view> <text>学籍情况： </text><input value='{{diploma}}' bindinput='bind_diploma' ></input> </view>
+  <view> <text>学籍情况： </text><input value='{{diploma}}' bindblur='bind_diploma' ></input> </view>
   <view> 
     <text>就读学校： </text>
     <!-- <picker mode='selector' range='{{schools}}' class='inline'> -->

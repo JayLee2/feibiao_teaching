@@ -19,6 +19,7 @@
     "pages/to_edit_teac/to_edit_teac",
     "pages/to_edit_child/to_edit_child",
     "pages/pub_look_child/pub_look_child",
+    "pages/pub_look_teac/pub_look_teac",
     "pages/apply_list/apply_list",
     "pages/apply_detail_teac/apply_detail_teac"
   ],

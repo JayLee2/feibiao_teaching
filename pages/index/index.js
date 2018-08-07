@@ -3,10 +3,13 @@
 
 const app = getApp()
 var Bmob = require('../../utils/Bmob-1.6.2.min.js');
+var that;
 Page({
   data: {
    address:'',
    user:'',
+   user_img:'',
+   authorize:true,//是否授权
    directory:[
      { path: '../../img/icon2-01.png',name:'我的收藏' ,taped:'to_collect'},
      { path: '../../img/icon2-02.png', name: '我的发布',taped:'to_publish' },
@@ -35,6 +38,23 @@ Page({
     }
     
   },
+  //授权方法
+  userInfoHandler:function(e){
+    var hasUserInfo=e.detail.userInfo
+    if (!hasUserInfo){
+      wx.showToast({
+        title: '请授权登陆后使用',
+      })
+    }else{
+      that.setData({
+        user: hasUserInfo.nickName,
+        user_img: hasUserInfo.avatarUrl,
+        authorize:true,
+      });
+      getApp().globalData.user_img = hasUserInfo.avatarUrl
+    }
+
+  },
   to_wallect: function () {
     wx.navigateTo({
       url: '../my_wallect/my_wallect',
@@ -51,7 +71,7 @@ Page({
     })
   },
   onLoad: function () {
-    var that=this;
+    that=this;
     app.updata().then(function(data){
       console.log(data)
       that.setData({
@@ -59,7 +79,26 @@ Page({
         address:data.province
       })
     });
-    
+    let current = Bmob.User.current();
+    console.log(current)
+    if (current.authorize == '' || current.authorize==false){
+      that.setData({
+        authorize:false,
+      })
+    }else{
+      wx.getUserInfo({
+        success(e){
+          console.log(e)
+          that.setData({
+            user: e.userInfo.nickName,
+            user_img: e.userInfo.avatarUrl,
+            authorize: true,
+          });
+          getApp().globalData.user_img = e.userInfo.avatarUrl;
+          console.log(getApp().globalData)
+        }
+      })
+    }
   },
   
 })

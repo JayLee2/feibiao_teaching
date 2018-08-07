@@ -8,13 +8,13 @@ Page({
    */
   data: {
     city:[
-      '天津','北京','上海','深圳'
+      '天津'
     ],
     couse:[
-      '语文','数学','物理','化学'
+      '全部课程','语文','数学','物理','化学'
     ],
     school:[
-      '天津第三中学','实验小学','天津大学附属中学'
+      '全部学校','天津第三中学','实验小学','天津大学'
     ],
     teacher_list:[],
     defalt_city:'天津',
@@ -28,35 +28,87 @@ Page({
    */
   onLoad: function (options) {
     that=this;
+    var user_id=getApp().globalData.user_id;
+
     const queryFind = Bmob.Query("user_teacher");
+    queryFind.equalTo("is_show", "==", '1');
     queryFind.find().then(res => {
-      console.log(res);
       that.setData({
         teacher_list:res,
+        use_list:res,
       })
     });
+
+    
   },
   //自定义函数
   //城市选择改变后的操作
   bindPickerChangeCity(e){
+    console.log(e)
     var that=this;
+    let new_list=that.data.teacher_list.filter((value)=>{
+      return value.native_place == that.data.city[e.detail.value] && value.can_teached.indexOf(that.data.defalt_couse) != -1 && value.school == that.data.defalt_school
+    })
     that.setData({
-      defalt_city:that.data.city[e.detail.value]
+      defalt_city:that.data.city[e.detail.value],
+      use_list:new_list
     })
   },
   //课程改编后的操作
   bindPickerChangeCouse(e) {
+    console.log(e)
     var that = this;
-    that.setData({
-      defalt_couse: that.data.couse[e.detail.value]
-    })
+    if(e.detail.value!=0){
+      let new_list = that.data.teacher_list.filter((value) => {
+        console.log(value)
+        return value.can_teached.indexOf(that.data.couse[e.detail.value]) != -1 && value.native_place == that.data.defalt_city && value.school == that.data.defalt_school
+      })
+      that.setData({
+        defalt_couse: that.data.couse[e.detail.value],
+        use_list: new_list
+      })
+    }else{
+      let all_list ;
+      if(that.data.defalt_school=='全部学校'){
+        all_list=that.data.teacher_list
+      }else{
+        all_list = that.data.teacher_list.filter((value) => {
+          console.log(value)
+          return value.native_place == that.data.defalt_city && value.school == that.data.defalt_school
+        })
+      }
+     
+      that.setData({
+        use_list:all_list,
+        defalt_couse: that.data.couse[e.detail.value],
+      })
+    }
   },
   //学校改变后的操作
   bindPickerChangeSchool(e) {
     var that = this;
-    that.setData({
-      defalt_school: that.data.school[e.detail.value]
-    })
+    if (e.detail.value != 0) {
+      let new_list = that.data.teacher_list.filter((value) => {
+        return value.school == that.data.school[e.detail.value] && value.native_place == that.data.defalt_city && value.can_teached.indexOf(that.data.defalt_couse) != -1
+      })
+      that.setData({
+        defalt_school: that.data.school[e.detail.value],
+        use_list: new_list
+      })
+    } else {
+      let all_list;
+      if(that.data.defalt_couse=='全部课程'){
+        all_list=that.data.teacher_list
+      }else{
+        all_list = that.data.teacher_list.filter((value) => {
+          return value.native_place == that.data.defalt_city && value.can_teached.indexOf(that.data.defalt_couse) != -1
+        }); 
+      }
+      that.setData({
+        use_list: all_list,
+        defalt_school: that.data.school[e.detail.value],
+      })
+    }
   },
   toNext(e){
     var index=e.currentTarget.dataset.index;

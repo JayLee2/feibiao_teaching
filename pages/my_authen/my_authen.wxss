@@ -1,1 +1,59 @@
 /* pages/my_authen/my_authen.wxss */
+.head{
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  height: 80rpx;
+  box-sizing: border-box;
+}
+.head view:first-of-type{
+  border-right: 1px solid #ccc;
+
+}
+.height_light{
+  background: #7ec6c3;
+  color: #fff;
+}
+.head view{
+  width: 50%;
+  height: 100%;
+  line-height: 80rpx;
+  text-align: center;
+}
+.con_tea,.con_chi{
+  padding: 20px ;
+}
+.row{
+  display: flex;
+}
+.tab{
+  width: 200rpx
+}
+input{
+  width: 300rpx;
+  border :1px solid #ccc;
+}
+.row{
+  margin-top: 10rpx;
+}
+.row{
+  font-size: 30rpx;
+}
+.get_code{
+  font-size: 22rpx;
+  line-height:50rpx;
+  margin-left: 10rpx;
+  border: 1rpx solid #7ec6c3;
+  border-radius: 25rpx;
+  text-align: center;
+  width: 135rpx;
+  color: #7ec6c3;
+}
+.next{
+  width: 300rpx;
+  color: #fff;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: #7ec6c3;
+  margin-top: 50rpx;
+}

@@ -1,0 +1,24 @@
+<!--pages/pub_look_child/pub_look_child.wxml-->
+<view class='every'>
+  <view class='every_title'>
+    基本信息
+  </view>
+  <view>学籍情况： {{info.diploma}}</view>
+  <view>就读学校： {{info.school}}</view>
+  <view>擅长学科： {{be_good_like}}</view>
+  <view>自我介绍 {{info.other_info[0]}}</view>
+</view>
+<view class='every'>
+  <view class='every_title'>
+    教学能力
+  </view>
+  <view>可教年级： {{info.grades}}</view>
+  <view>课教学科：{{can_teached}}</view>
+  <view>课时费用： {{info.unit_price}}/h</view>
+  <view>授课地点： {{info.teach_addr}} <text class='iconfont icon-genggaishouhuodizhi font_color_main font24'></text></view>
+  <view>其他： {{info.other_info[1]}}</view>
+</view>
+<view class='bottom'>
+  <view bindtap='edit' data-index='{{info.objectId}}'>重新编写</view>
+</view>
+

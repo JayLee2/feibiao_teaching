@@ -18,7 +18,7 @@
     </view>
   </view>
   <view class='head_bottom'>
-    <view>教师编号：{{detail.objectId}}</view>
+    <view>教师编号：{{detail.user_id}}</view>
     <view><text class='iconfont icon-msnui-collection font20'></text>{{detail.by_collect}}人收藏</view>
     <view>￥{{detail.unit_price}}/h</view>
   </view>
@@ -30,7 +30,7 @@
   <view>学籍情况： {{detail.diploma}}</view>
   <view>就读学校： {{detail.school}}</view>
   <view>擅长学科： {{detail.be_good_like}}</view>
-  <view>自我介绍： {{detail.self_introduction}}</view>
+  <view>自我介绍： {{detail.other_info[0]}}</view>
 </view>
 <view class='every'>
   <view class='every_title'>
@@ -49,8 +49,8 @@
   </view>
 </view>
 <view class='bottom'>
-  <view class='share'><text class='iconfont icon-fenxiang'></text>分享</view>
-  <view><text class='iconfont icon-msnui-collection'></text>收藏</view>
+  <button open-type='share' class='share'><text class='iconfont icon-fenxiang'></text>分享</button>
+  <view bindtap='collect' data-index='{{detail.objectId}}'><text class='iconfont icon-msnui-collection'></text>{{is_collect}}</view>
   <view class='buy' bindtap='buy'>购买课程</view>
 </view>
 <!--弹窗-->
