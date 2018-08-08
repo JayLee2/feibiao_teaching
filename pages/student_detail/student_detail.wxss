@@ -24,8 +24,8 @@
 }
 .row2_center{
   width: 260rpx;
-  display: flex;
-  justify-content: space-around;
+  /* display: flex;
+  justify-content: space-around; */
   margin-top:30rpx;
 }
 .authen_student,.authen_teacher{
@@ -38,7 +38,7 @@
   text-align: center;
   line-height: 24rpx;
 }
-.authen_student{
+.authen_teacher{
     border: 1rpx solid #ccc;
     color: #ccc;
 }

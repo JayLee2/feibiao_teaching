@@ -3,22 +3,37 @@
   <view class='every_title'>
     学生情况
   </view>
-  <view> <text>年纪情况： </text><input></input> </view>
-  <view> <text>知识掌握： </text><label><checkbox />较差</label><label><checkbox />一般</label></view>
+  <view> <text>年级情况： </text><input bindblur='bind_grade' value='{{detail.grade}}'></input> </view>
+  <view> <text>知识掌握： </text><radio-group bindchange="bind_knowledge_degree"> <radio color='#9fd4d2' value='一般' checked='true'>一般</radio>  <radio color='#9fd4d2' value='较差'>较差</radio></radio-group> </view>
   
-  <view> <text>弱势学科： </text><label><checkbox />英语</label><label><checkbox />物理</label></view>
-  <view> <text>所在学校：</text><input></input> </view>
+  <view> 
+    <text>弱势学科： </text>
+    <checkbox-group bindchange="change_weak" class="inline">
+      <label><checkbox value='英语'/>英语</label><label><checkbox value='物理'/>物理</label>
+    </checkbox-group>
+  </view>
+  <view> <text>所在学校：</text><input bindblur='bind_school' value='{{detail.school}}'></input> </view>
 </view>
 <view class='every'>
   <view class='every_title'>
     辅导需求
   </view>
-  <view> <text>课程需求：</text><input></input> </view>
-  <view> <text>课程安排：</text><input></input></view>
-  <view><text>性别要求：</text><radio-group> <radio color='#9fd4d2'>不限</radio>  <radio color='#9fd4d2'>男</radio>  <radio color='#9fd4d2'>女</radio></radio-group> </view>
-  <view><text>学历要求：</text><input></input></view>
-  <view>授课地点：<input class='right20'></input> <text class='iconfont icon-genggaishouhuodizhi font_color_main font28'></text></view>
-   <view><text>其他：</text><textarea class='left40'></textarea></view>
+  <view> 
+    <text>课程需求：</text>
+     <checkbox-group bindchange="change_couse" class="inline">
+      <label><checkbox value='英语'/>英语</label><label><checkbox value='物理'/>物理</label>
+    </checkbox-group>
+  </view>
+  <view> <text>课程安排：</text><input bindblur='bind_class_plane' value='{{detail.class_plane}}'></input></view>
+  <view><text>性别要求：</text><radio-group bindchange="bind_sex"> <radio color='#9fd4d2' value='不限' checked='true'>不限</radio>  <radio color='#9fd4d2' value='男'>男</radio>  <radio color='#9fd4d2' value='女'>女</radio></radio-group> </view>
+  <view>
+    <text>学历要求：</text>
+    <picker class='inline' range='{{diploma_list}}' bindchange='bind_diploma'>
+      <input value='{{diploma}}' disabled='true'></input>
+    </picker>
+  </view>
+  <view>授课地点：<input class='right20' bindblur='bind_addr' value='{{detail.addr}}'></input> <text class='iconfont icon-genggaishouhuodizhi font_color_main font28'></text></view>
+   <view><text>其他：</text><textarea class='left40' bindblur='bind_other' value='{{detail.others}}'></textarea></view>
 </view>
 
 <view class='bottom' bindtap='publish'>

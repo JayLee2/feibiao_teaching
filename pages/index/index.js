@@ -24,16 +24,26 @@ Page({
     })
   },
   to_publish: function () {
-    var is_teacher=app.globalData.is_teacher;
-    console.log(is_teacher)    
-    if(is_teacher=='' || is_teacher==null || is_teacher== undefined){
+
+    let current=Bmob.User.current();
+    let auth ;
+    if (current.identity){
+      auth = current.identity;
+    }else{
+      auth=''
+    }
+    if(auth==''){
       wx.showToast({
         title: '您还没有进行认证，认证之后即可发布',
         icon:'none'
       })
-    }else if(is_teacher=='1'){
+    } else if (auth=='teacher'){
       wx.navigateTo({
          url: '../my_publish/my_publish',
+      })
+    }else if(auth=='children'){
+      wx.navigateTo({
+        url: '../my_publish_chi/my_publish_chi',
       })
     }
     
@@ -66,9 +76,28 @@ Page({
     })
   },
   to_authen: function () {
-    wx.navigateTo({
-      url: '../my_authen/my_authen',
-    })
+    let auth;
+    let current = Bmob.User.current();
+    console.log(current)
+    if (current.identity){
+      auth = getApp().globalData.User.identity;
+    }else{
+      auth='';
+    }
+    if (auth ==''){
+      wx.navigateTo({
+        url: '../my_authen/my_authen',
+      })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '您已经进行过身份验证，不可以再次操作',
+        showCancel: false,
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+    }
   },
   onLoad: function () {
     that=this;

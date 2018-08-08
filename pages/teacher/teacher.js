@@ -44,7 +44,7 @@ Page({
   //自定义函数
   //城市选择改变后的操作
   bindPickerChangeCity(e){
-    console.log(e)
+    console.log(this.data)
     var that=this;
     let new_list=that.data.teacher_list.filter((value)=>{
       return value.native_place == that.data.city[e.detail.value] && value.can_teached.indexOf(that.data.defalt_couse) != -1 && value.school == that.data.defalt_school
@@ -56,13 +56,21 @@ Page({
   },
   //课程改编后的操作
   bindPickerChangeCouse(e) {
+    console.log(this.data)
+    
     console.log(e)
     var that = this;
     if(e.detail.value!=0){
       let new_list = that.data.teacher_list.filter((value) => {
         console.log(value)
-        return value.can_teached.indexOf(that.data.couse[e.detail.value]) != -1 && value.native_place == that.data.defalt_city && value.school == that.data.defalt_school
+        if(that.data.defalt_school!='全部学校'){
+          return value.can_teached.indexOf(that.data.couse[e.detail.value]) != -1 && value.native_place == that.data.defalt_city && value.school == that.data.defalt_school
+        }else{         
+          return value.can_teached.indexOf(that.data.couse[e.detail.value]) != -1 && value.native_place == that.data.defalt_city
+        }
+        
       })
+      console.log(new_list)
       that.setData({
         defalt_couse: that.data.couse[e.detail.value],
         use_list: new_list
@@ -86,10 +94,16 @@ Page({
   },
   //学校改变后的操作
   bindPickerChangeSchool(e) {
+    console.log(this.data)
+    
     var that = this;
     if (e.detail.value != 0) {
       let new_list = that.data.teacher_list.filter((value) => {
-        return value.school == that.data.school[e.detail.value] && value.native_place == that.data.defalt_city && value.can_teached.indexOf(that.data.defalt_couse) != -1
+        if (that.data.defalt_couse!='全部课程'){
+          return value.school == that.data.school[e.detail.value] && value.native_place == that.data.defalt_city && value.can_teached.indexOf(that.data.defalt_couse) != -1
+        }else{
+          return value.school == that.data.school[e.detail.value] && value.native_place == that.data.defalt_city
+        }
       })
       that.setData({
         defalt_school: that.data.school[e.detail.value],

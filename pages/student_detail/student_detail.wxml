@@ -2,45 +2,45 @@
 <view class='head'>
   <view class='clear'>
     <view class='float_left img_box'>
-      <image src='../../img/timg1.jpg'></image>
+      <image src='{{detail.img}}'></image>
     </view>
     <view class='title'>
       <view class='row1 clear'>
-        <view class='float_left font40 '>周先生</view>
+        <view class='float_left font40 '>{{detail.user_name}}</view>
         <view class='float_right font20'> <text class='font_color_main font36'>100</text>/h</view>
       </view>
       <view>
       <view class='row2_center'>
         <view class='authen_student'>学生认证</view>
-        <view class='authen_teacher'>教师认证</view>
+        <!-- <view class='authen_teacher'>教师认证</view> -->
       </view>
     </view>
     </view>
   </view>
   <view class='head_bottom'>
-    <view><text class='iconfont icon-shijian font24'></text> 2018-08-28</view>
-    <view><text class='iconfont icon-msnui-collection font24'></text>1人收藏</view>
-    <view><text class='iconfont icon-jiaren font24'></text>1人申请</view>
+    <view><text class='iconfont icon-shijian font24'></text> {{detail.createdAt}}</view>
+    <view><text class='iconfont icon-msnui-collection font24'></text>{{detail.by_collect}}人收藏</view>
+    <view><text class='iconfont icon-jiaren font24'></text>{{detail.by_apply}}人申请</view>
   </view>
 </view>
 <view class='every'>
   <view class='every_title'>
     学生情况
   </view>
-  <view>年纪情况： 初二</view>
-  <view>知识掌握： 一般</view>
-  <view>弱势学科： 物理、数学</view>
-  <view>所在学校： 天津大学附属中学</view>
+  <view>年纪情况： {{detail.grade}}</view>
+  <view>知识掌握： {{detail.knowledge_degree}}</view>
+  <view>弱势学科： {{detail.bad_thing}}</view>
+  <view>所在学校： {{detail.school}}</view>
 </view>
 <view class='every'>
   <view class='every_title'>
     辅导需求
   </view>
-  <view>课程需求： 数学</view>
-  <view>课程安排： 一周两次，周四晚上，周六晚上</view>
-  <view>学历要求： 本科以上</view>
-  <view>授课地点： 天津市和平区 <text class='iconfont icon-genggaishouhuodizhi font_color_main font24'></text></view>
-  <view>其他： 老师要有耐心，全面指示系统</view>
+  <view>课程需求： <text wx:for="{{detail.need}}" wx:for-item="item" wx:key="index">{{item}}</text></view>
+  <view>课程安排： {{detail.class_plane}}</view>
+  <view>学历要求： {{detail.low_education}}</view>
+  <view>授课地点： {{detail.addr}} <text class='iconfont icon-genggaishouhuodizhi font_color_main font24'></text></view>
+  <view>其他： {{detail.others}}</view>
 </view>
 
 <view class='bottom'>

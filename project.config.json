@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 15,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -116,7 +116,20 @@
 				{
 					"id": -1,
 					"name": "个人认证",
-					"pathName": "pages/my_authen/my_authen"
+					"pathName": "pages/my_authen/my_authen",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "认证照片",
+					"pathName": "pages/photo/photo",
+					"query": ""
+				},
+				{
+					"id": 17,
+					"name": "发布学生页",
+					"pathName": "pages/my_publish_chi/my_publish_chi",
+					"query": ""
 				}
 			]
 		}

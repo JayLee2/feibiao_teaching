@@ -1,0 +1,26 @@
+<!--pages/my_publish/my_publish.wxml-->
+<view class='teacher_list clear' wx:for="{{children_list}}" wx:for-item="item" catchtap='look_detail' data-state='{{item.state}}' wx:key="{{index}}" data-index='{{item.objectId}}'>
+  <view class='list_top font22 flex font_color999'>
+    <view>信息编号：{{item.objectId}}</view>
+    <view class='inline' catchtap='show_list'><switch checked='{{item.is_show==1?true:false}}' bindchange='show_list' data-index='{{item.objectId}}'></switch></view>
+  </view>
+  <view class='float_left img_box'>
+    <image src='{{user_img}}'></image>
+  </view>
+  <view class='float_left left20 couse_info'>
+    <view class='font36'>{{item.user_id.name}}</view>
+    <view class='font26 font_color999 top20 couse_box float_left left20' wx:for="{{item.need}}" wx:key="index" wx:for-item="every">{{every}}</view>
+    <view class='clear'></view>
+    <view class='font26 font_color999 top10'>
+      <text>{{item.addr}}</text>
+    </view>
+  </view>
+ <!-- <view class='float_right font20'>名师值 <text class='font_color_main font36'>{{item.grade}}</text><text class='iconfont icon-wenhao font22'></text></view> -->
+</view>
+
+<view hidden='{{is_empty}}'>
+  列表为空
+</view>
+<view class='bottom' bindtap='to_edit'>
+  发布信息
+</view>

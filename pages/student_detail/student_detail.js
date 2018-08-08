@@ -1,10 +1,12 @@
 // pages/teacher_detail/teacher_detail.js
+var Bmob = require('../../utils/Bmob-1.6.2.min.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    detail:{},
     packages:[
       {text:"新课试听： 一节课",count:2,isSelect:''},
       { text: "套餐一： 三节课", count: 6, isSelect: 'package_select' },
@@ -21,7 +23,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    let id=options.id;
+    let that=this;
+    const query = Bmob.Query('user_student');
+    query.get(id).then(res => {
+      console.log(res)
+      that.setData({
+        detail:res
+      })
+    }).catch(err => {
+      console.log(err)
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

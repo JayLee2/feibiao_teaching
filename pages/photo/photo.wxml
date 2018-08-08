@@ -1,0 +1,17 @@
+<!--pages/photo/photo.wxml-->
+<view class='title'>
+  学生证封皮
+</view>
+<view class='photo_box'>
+  <view class='add' bindtap='add_envelop'>+</view>
+  <image src='{{envelop}}'></image>
+</view>
+<view class='bor'></view>
+<view class='title'>
+  学生证内页
+</view>
+<view class='photo_box'>
+  <view class='add' bindtap='add_cont'>+</view>
+  <image src='{{cont}}'></image>
+</view>
+<button class='send' bindtap='send'>确定</button>

@@ -21,7 +21,9 @@
     "pages/pub_look_child/pub_look_child",
     "pages/pub_look_teac/pub_look_teac",
     "pages/apply_list/apply_list",
-    "pages/apply_detail_teac/apply_detail_teac"
+    "pages/apply_detail_teac/apply_detail_teac",
+    "pages/photo/photo",
+    "pages/my_publish_chi/my_publish_chi"
   ],
   "window": {
     "backgroundTextStyle": "light",

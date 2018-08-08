@@ -7,6 +7,7 @@ App({
     var that=this;
     Bmob.User.auth().then(res => {
       console.log(res)
+      that.globalData.User=res;
       that.globalData.user_id = res.objectId;
       var user_id = that.globalData.user_id;
 
@@ -99,6 +100,7 @@ App({
         grade:'25',
         experience:'充足'
     },
+    User:{},//登陆后所有信息放在这里
     userInfo: '',
     province:'',
     is_teacher:''

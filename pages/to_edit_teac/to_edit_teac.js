@@ -181,7 +181,7 @@ Page({
         duration: 2000
       })
     }else{
-      if(that.data.id!=''||that.data.id!=undefined||that.data.id!=null){
+      if(that.data.id!=''){
         const query = Bmob.Query('user_teacher');
         query.set('id', that.data.id) //需要修改的objectId
         query.set("diploma", that.data.diploma)

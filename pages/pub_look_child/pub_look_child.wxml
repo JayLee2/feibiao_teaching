@@ -3,20 +3,20 @@
   <view class='every_title'>
     学生情况
   </view>
-  <view>年纪情况： 初二</view>
-  <view>知识掌握： 一般</view>
-  <view>弱势学科： 物理、数学</view>
-  <view>所在学校： 天津大学附属中学</view>
+  <view>年级情况： {{detail.grade}}</view>
+  <view>知识掌握： {{detail.knowledge_degree}}</view>
+  <view>弱势学科： {{detail.bad_thing}}</view>
+  <view>所在学校： {{detail.school}}</view>
 </view>
 <view class='every'>
   <view class='every_title'>
     辅导需求
   </view>
-  <view>课程需求： 数学</view>
-  <view>课程安排： 一周两次，周四晚上，周六晚上</view>
-  <view>学历要求： 本科以上</view>
-  <view>授课地点： 天津市和平区 <text class='iconfont icon-genggaishouhuodizhi font_color_main font24'></text></view>
-  <view>其他： 老师要有耐心，全面指示系统</view>
+  <view>课程需求： <text wx:for="{{detail.need}}" wx:for-item="every" wx:key="index">{{every}}</text></view>
+  <view>课程安排： {{detail.class_plane}}</view>
+  <view>学历要求： {{detail.low_education}}</view>
+  <view>授课地点： {{detail.addr}} <text class='iconfont icon-genggaishouhuodizhi font_color_main font24'></text></view>
+  <view>其他： {{detail.others}}</view>
 </view>
 <view class='bottom'>
   <view bindtap='edit'>重新编写</view>
