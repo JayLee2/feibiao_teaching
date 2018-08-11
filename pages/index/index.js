@@ -102,7 +102,16 @@ Page({
   onLoad: function () {
     that=this;
     app.updata().then(function(data){
-      console.log(data)
+      wx.getSetting({
+        success(res) {
+          console.log(res.authSetting['scope.userLocation'])
+          if (!res.authSetting['scope.userLocation']) {
+            wx.openSetting({
+
+            })
+          }
+        }
+      })
       that.setData({
         user:data.userInfo,
         address:data.province
@@ -110,14 +119,14 @@ Page({
     });
     let current = Bmob.User.current();
     console.log(current)
-    if (current.authorize == '' || current.authorize==false){
+    if (!current.authorize){
       that.setData({
         authorize:false,
       })
+      
     }else{
       wx.getUserInfo({
         success(e){
-          console.log(e)
           that.setData({
             user: e.userInfo.nickName,
             user_img: e.userInfo.avatarUrl,

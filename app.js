@@ -11,21 +11,7 @@ App({
       that.globalData.user_id = res.objectId;
       var user_id = that.globalData.user_id;
 
-      const queryFind = Bmob.Query('users');
-      //下面参数为Pointer字段名称， 可以一次查询多个表
-      queryFind.include('is_teacher')
-      queryFind.find().then(res => {
-        console.log(res)
-        if (res[0].is_teacher.objectId != '') {
-          that.globalData.is_teacher = '1'   
-        } else if (res[0].is_student.objectId != '') {
-          that.globalData.is_teacher = '0'
-        } else {
-          that.globalData.is_teacher = ''
-        }
-      }).catch(err => {
-        console.log(err)
-      })
+      
 
 
     }).catch(err => {

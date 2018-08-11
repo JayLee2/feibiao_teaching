@@ -7,6 +7,7 @@ Page({
    */
   data: {
     teacher_list: [],
+    student_list: [],
 
   },
 
@@ -27,12 +28,42 @@ Page({
     }).catch(err => {
       console.log(err)
     })
+    const s_query = Bmob.Query("s_collect");
+    //下面参数为Pointer字段名称， 可以一次查询多个表
+    s_query.include('couse_id', 'user_id')
+    s_query.find().then(res => {
+      that.setData({
+        student_list: res,
+      })
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   },
   toNext:function(e){
-    let id=e.currentTarget.dataset.index;
+    let id=e.currentTarget.dataset.index;    
+    var isteacher="";
+    //存放页面回传index,是否具有student_
+    var x;
+    //标志变量
+    isteacher=id;
+    x=isteacher.indexOf('student_');
+    if(x==-1)
+    {
     wx.navigateTo({
       url: '../teacher_detail/teacher_detail?id='+id,
     })
+    }
+    else
+    {
+      isteacher=isteacher.substring(8)
+      wx.showToast({
+        title: isteacher,
+      });
+      wx.navigateTo({
+        url: '../student_detail/student_detail?id=' + isteacher,
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

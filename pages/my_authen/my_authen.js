@@ -262,20 +262,22 @@ Page({
         icon: 'none'
       })
       return;
-    } else if (phone == '' || phone == undefined || phone == null) {
-      wx.showToast({
-        title: '请填写手机号',
-        icon: 'none'
-      })
-      return;
-    }
-    else if (codes == '' || codes == undefined || codes == null) {
-      wx.showToast({
-        title: '请填写验证码',
-        icon: 'none'
-      })
-      return;
-    }else{
+    } 
+    // else if (phone == '' || phone == undefined || phone == null) {
+    //   wx.showToast({
+    //     title: '请填写手机号',
+    //     icon: 'none'
+    //   })
+    //   return;
+    // }
+    // else if (codes == '' || codes == undefined || codes == null) {
+    //   wx.showToast({
+    //     title: '请填写验证码',
+    //     icon: 'none'
+    //   })
+    //   return;
+    // }
+    else{
       let smsCode = that.data.codes;
       let data = {
         mobilePhoneNumber: that.data.phone

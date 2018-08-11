@@ -45,6 +45,6 @@
 
 <view class='bottom'>
   <view class='share'><text class='iconfont icon-fenxiang'></text>分享</view>
-  <button open-type='share'><text class='iconfont icon-msnui-collection'></text>收藏</button>
-  <view class='buy' >发起申请</view>
+  <view bindtap='collect' data-index='{{detail.objectId}}'><text class='iconfont icon-msnui-collection'></text>{{is_collect}}</view>  
+  <view class='buy' bindtap='apply' data-index='{{detail.objectId}}'>{{has_apply}}</view>
 </view>
