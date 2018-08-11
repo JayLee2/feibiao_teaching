@@ -50,10 +50,12 @@ Page({
       console.log(current.objectId)
       query.set('id', current.objectId) //需要修改的objectId
       query.set('envelop', that.data.envelop);
-      query.set('cont', that.data.cont);      
+      query.set('cont', that.data.cont); 
+      query.set('identity', 'teacher')
       query.save().then(res => {
         wx.showToast({
           title: '认证成功',
+          duration:2000,
         });
         wx.switchTab({
           url: '../index/index',

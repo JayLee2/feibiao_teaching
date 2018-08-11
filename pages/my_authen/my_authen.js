@@ -297,7 +297,7 @@ Page({
                 //修改当前用户的身份
                 const querySetIdentity = Bmob.Query('_User');
                 querySetIdentity.set('id', current.objectId) //需要修改的objectId
-                querySetIdentity.set('identity', 'teacher');
+                // querySetIdentity.set('identity', 'teacher');
                 querySetIdentity.set('sex', sex);
                 querySetIdentity.set('name', name);
                 querySetIdentity.set('grade', diploma);
@@ -307,7 +307,7 @@ Page({
 
                 querySetIdentity.save().then(ress => {
                   console.log(ress);
-                  wx.switchTab({
+                  wx.navigateTo({
                     url: '../photo/photo',
                   })
                 }).catch(err => {
@@ -321,7 +321,7 @@ Page({
         }
       })
         .catch(function (error) {
-          console.log(error);
+          console.log('验证码错误请重新获取');
           wx.showToast({
             title: error.error,
           });
@@ -400,6 +400,7 @@ Page({
                   console.log(ress);
                   wx.showToast({
                     title: '身份验证成功',
+                    duration:2000,
                     success:function(){
                       wx.switchTab({
                         url: '../index/index',
