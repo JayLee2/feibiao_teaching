@@ -304,6 +304,8 @@ Page({
                 querySetIdentity.set('addr', native_place);
                 querySetIdentity.set('phone', phone);
                 querySetIdentity.set('school', school);
+                querySetIdentity.set('grades', 30);
+                querySetIdentity.set('img', getApp().globalData.user_img);
 
                 querySetIdentity.save().then(ress => {
                   console.log(ress);

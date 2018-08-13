@@ -71,7 +71,7 @@
   </view>
   <view class="modal-footer">
     <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确认支付</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm" bindtap='wxpay'>确认支付</view>
   </view>
 </view>
 </view>

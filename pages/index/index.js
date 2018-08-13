@@ -14,7 +14,7 @@ Page({
      { path: '../../img/icon2-01.png',name:'我的收藏' ,taped:'to_collect'},
      { path: '../../img/icon2-02.png', name: '我的发布',taped:'to_publish' },
      { path: '../../img/icon2-03.png', name: '我的钱包',taped:'to_wallect'},
-     { path: '../../img/icon2-05.png', name: '我的申请' ,taped:'to_apply'},
+     { path: '../../img/icon2-05.png', name: '申请列表' ,taped:'to_apply'},
      { path: '../../img/icon2-06.png', name: '身份认证' ,taped:'to_authen'},
    ]
   },
@@ -61,6 +61,15 @@ Page({
         user_img: hasUserInfo.avatarUrl,
         authorize:true,
       });
+      let current = Bmob.User.current();
+      const query = Bmob.Query('_User');
+      query.set('id', current.objectId) //需要修改的objectId
+      query.set('img', hasUserInfo.avatarUrl )
+      query.save().then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
       getApp().globalData.user_img = hasUserInfo.avatarUrl
     }
 
@@ -71,8 +80,14 @@ Page({
     })
   },
   to_apply: function () {
+    let url;
+    if (getApp().globalData.User.identity=='children'){
+      url='../apply_list/apply_list'
+    }else{
+      url = '../my_apply/my_apply';      
+    }
     wx.navigateTo({
-      url: '../my_apply/my_apply',
+      url: url,
     })
   },
   to_authen: function () {

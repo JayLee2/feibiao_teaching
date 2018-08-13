@@ -1,10 +1,14 @@
 // pages/apply_detail_teac/apply_detail_teac.js
+var Bmob = require('../../utils/Bmob-1.6.2.min.js');
+var that;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    detail:'',
+    objectId:'',
     packages: [
       { text: "新课试听： 一节课", count: 2, isSelect: '' },
       { text: "套餐一： 三节课", count: 6, isSelect: 'package_select' },
@@ -101,10 +105,19 @@ Page({
   remove:()=>{
     wx.showModal({
       title: '提示',
-      content: '确定将该老师加入不合适列表吗',
+      content: '确定将该老师加入不合适列表吗.更改后将无法继续申请',
       success: function (res) {
         if (res.confirm) {
-          console.log('用户点击确定')
+          const query = Bmob.Query('applys');
+          query.set('id', that.data.objectId) //需要修改的objectId
+          query.set('is_appr', false)
+          query.save().then(res => {
+            console.log(res)
+          }).catch(err => {
+            console.log(err)
+          })
+          console.log('用户点击确定');
+          
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
@@ -115,7 +128,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    // let id=options.id;
+    that=this;
+    let id ='6453792a10';
+    const query = Bmob.Query('user_teacher');
+
+    query.get(id).then(res => {
+      console.log(res);
+      that.setData({
+        detail:res,
+        objectId:options.objectId
+      })
+    }).catch(err => {
+      console.log(err)
+    })
   },
 
   /**

@@ -112,50 +112,70 @@ Page({
   },
   //发起申请
   apply:function(e){
-    if(getApp().globalData.User.identity=='children'){
-      wx.showModal({
-        title: '提示',
-        showCancel:false,
-        content: '申请失败，只有老师身份才可以向家长发起申请',
-      })
-    }else{
-      let id = e.currentTarget.dataset.index;
-      let current = Bmob.User.current();
-      const pointer = Bmob.Pointer('applys')
-      const poiId = pointer.set(id)
-      const poiCurrent = pointer.set(current.objectId)
-      if (that.data.has_apply == '发起申请') {
-        const queryP = Bmob.Query('applys')
-        queryP.set('user_id', poiCurrent)
-        queryP.set('couse_id', poiId);
-        queryP.save().then(res => {
-          console.log(res);
-          wx.showToast({
-            title: '申请成功',
-          });
-          that.setData({
-            has_apply: '已申请'
-          })
-        }).catch(err => {
-          console.log(err)
+    let current=Bmob.User.current().objectId;
+    let result;
+    const queryApply = Bmob.Query("user_teacher");
+    queryApply.equalTo("user_id", "==", current);
+    queryApply.find().then(res => {
+      console.log(res)
+      result=res.length;
+      console.log(result)
+      if (getApp().globalData.User.identity == 'children') {
+        wx.showModal({
+          title: '提示',
+          showCancel: false,
+          content: '申请失败，只有老师身份才可以向家长发起申请',
         })
+        return;
+      } else if (result == 0) {
+        wx.showModal({
+          title: '提示',
+          showCancel: false,
+          content: '你还没有发布您的职位，请在首页中发布职位后再来申请',
+        });
+        return;
       } else {
-        const queryDelApply = Bmob.Query('applys');
-        queryDelApply.equalTo("user_id", "==", current.objectId);
-        queryDelApply.equalTo("couse_id", "==", id);
-        queryDelApply.find().then(res => {
-          queryDelApply.destroy(res[0].objectId).then(ress => {
+        let id = e.currentTarget.dataset.index;
+        let current = Bmob.User.current();
+        const pointer = Bmob.Pointer('applys')
+        const poiId = pointer.set(id)
+        const poiCurrent = pointer.set(current.objectId)
+        if (that.data.has_apply == '发起申请') {
+          const queryP = Bmob.Query('applys')
+          queryP.set('user_id', poiCurrent)
+          queryP.set('couse_id', poiId);
+          queryP.set('is_appr', true);
+          queryP.set('is_read', false);
+          queryP.save().then(resd => {
+            console.log(resd);
             wx.showToast({
-              title: '已取消',
+              title: '申请成功',
             });
             that.setData({
-              has_apply: '发起申请'
+              has_apply: '已申请'
             })
           }).catch(err => {
+            console.log(err)
           })
-        })
+        } else {
+          const queryDelApply = Bmob.Query('applys');
+          queryDelApply.equalTo("user_id", "==", current.objectId);
+          queryDelApply.equalTo("couse_id", "==", id);
+          queryDelApply.find().then(res => {
+            queryDelApply.destroy(res[0].objectId).then(ress => {
+              wx.showToast({
+                title: '已取消',
+              });
+              that.setData({
+                has_apply: '发起申请'
+              })
+            }).catch(err => {
+            })
+          })
+        }
       }
-    }
+    });    
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

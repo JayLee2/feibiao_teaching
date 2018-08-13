@@ -3,48 +3,51 @@
 <view class='head'>
   <view class='clear'>
     <view class='float_left img_box'>
-      <image src='../../img/timg1.jpg'></image>
+      <image src='{{detail.img}}'></image>
     </view>
     <view class='title'>
       <view class='row1 clear'>
-        <view class='float_left font40 '>周老师</view>
-        <view class='float_right font20'>名师值 <text class='font_color_main font36'>67</text><text class='iconfont icon-wenhao font22'></text></view>
+        <view class='float_left font40 '>{{detail.user_name}}</view>
+        <view class='float_right font20'>名师值 <text class='font_color_main font36'>{{detail.grade}}</text><text class='iconfont icon-wenhao font22'></text></view>
       </view>
       <view>
       <view class='row2_center'>
         <view class='authen_student'>学生认证</view>
-        <view class='authen_teacher'>教师认证</view>
+        <!-- <view class='authen_teacher'>教师认证</view> -->
       </view>
     </view>
     </view>
   </view>
   <view class='head_bottom'>
-    <view>教师编号：JY10010</view>
-    <view><text class='iconfont icon-msnui-collection font24'></text>1人收藏</view>
-    <view><text class='iconfont icon-pan_icon font24'></text>2018-03-23 15:23</view>
+    <view>教师编号：{{detail.objectId}}</view>
+    <view><text class='iconfont icon-msnui-collection font24'></text>{{detail.by_collect}}人收藏</view>
+    <view><text class='iconfont icon-pan_icon font24'></text>{{detail.createdAt}}</view>
   </view>
 </view>
 <view class='every'>
   <view class='every_title'>
     教师情况
   </view>
-  <view>学籍情况： 本科在读</view>
-  <view>就读学校： 山西大学</view>
-  <view>擅长学科： 物理、数学</view>
-  <view>自我介绍： 为人和善，亲和力强，有较强的基础</view>
+  <view>学籍情况： {{detail.diploma}}</view>
+  <view>就读学校： {{detail.school}}</view>
+  <view>擅长学科： <text wx:for="{{detail.be_good_like}}" wx:for-item="ss" wx:key="index">{{ss}}</text></view>
+  <view>自我介绍： {{detail.other[0]}}</view>
 </view>
 <view class='every'>
   <view class='every_title'>
     教学能力
   </view>
-  <view>可教年纪： 高中、初中</view>
-  <view>就读学校： 山西大学</view>
+  <view>可教年纪： {{detail.grades}}</view>
+  <view>就读学校： {{detail.school}}</view>
   <view>￥100h/h</view>
-  <view>授课地点： 天津市和平区 <text class='iconfont icon-genggaishouhuodizhi font_color_main font24'></text></view>
+  <view>授课地点： {{detail.teach_addr}} <text class='iconfont icon-genggaishouhuodizhi font_color_main font24'></text></view>
 </view>
 <view class='every last'>
   <view class='every_title'>
     教学经历
+  </view>
+  <view>
+  {{detail.other[0]}}
   </view>
 </view>
 <view class='bottom'>

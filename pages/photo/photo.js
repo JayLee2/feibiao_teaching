@@ -56,10 +56,13 @@ Page({
         wx.showToast({
           title: '认证成功',
           duration:2000,
+          success:function(){
+            wx.switchTab({
+              url: '../index/index',
+            })
+          },
         });
-        wx.switchTab({
-          url: '../index/index',
-        })
+        
       }).catch(err => {
         console.log(err)
         wx.showToast({

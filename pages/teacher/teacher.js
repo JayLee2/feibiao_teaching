@@ -64,9 +64,10 @@ Page({
       let new_list = that.data.teacher_list.filter((value) => {
         console.log(value)
         if(that.data.defalt_school!='全部学校'){
-          return value.can_teached.indexOf(that.data.couse[e.detail.value]) != -1 && value.native_place == that.data.defalt_city && value.school == that.data.defalt_school
-        }else{         
-          return value.can_teached.indexOf(that.data.couse[e.detail.value]) != -1 && value.native_place == that.data.defalt_city
+          return value.can_teached.indexOf(that.data.couse[e.detail.value]) != -1  && value.school == that.data.defalt_school
+        }else{   
+          console.log('sssssssss')      
+          return value.can_teached.indexOf(that.data.couse[e.detail.value]) != -1
         }
         
       })
@@ -78,11 +79,13 @@ Page({
     }else{
       let all_list ;
       if(that.data.defalt_school=='全部学校'){
+        console.log('全部学校')
         all_list=that.data.teacher_list
       }else{
+        console.log('不是学校')        
         all_list = that.data.teacher_list.filter((value) => {
           console.log(value)
-          return value.native_place == that.data.defalt_city && value.school == that.data.defalt_school
+          return  value.school == that.data.defalt_school
         })
       }
      
@@ -100,9 +103,9 @@ Page({
     if (e.detail.value != 0) {
       let new_list = that.data.teacher_list.filter((value) => {
         if (that.data.defalt_couse!='全部课程'){
-          return value.school == that.data.school[e.detail.value] && value.native_place == that.data.defalt_city && value.can_teached.indexOf(that.data.defalt_couse) != -1
+          return value.school == that.data.school[e.detail.value]  && value.can_teached.indexOf(that.data.defalt_couse) != -1
         }else{
-          return value.school == that.data.school[e.detail.value] && value.native_place == that.data.defalt_city
+          return value.school == that.data.school[e.detail.value] 
         }
       })
       that.setData({
@@ -115,7 +118,7 @@ Page({
         all_list=that.data.teacher_list
       }else{
         all_list = that.data.teacher_list.filter((value) => {
-          return value.native_place == that.data.defalt_city && value.can_teached.indexOf(that.data.defalt_couse) != -1
+          return  value.can_teached.indexOf(that.data.defalt_couse) != -1
         }); 
       }
       that.setData({
@@ -141,7 +144,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var user_id = getApp().globalData.user_id;
+
+    const queryFind = Bmob.Query("user_teacher");
+    queryFind.equalTo("is_show", "==", '1');
+    queryFind.find().then(res => {
+      that.setData({
+        teacher_list: res,
+        use_list: res,
+      })
+    });
   },
 
   /**

@@ -1,20 +1,18 @@
 // pages/my_apply/my_apply.js
+var that;
+var Bmob = require('../../utils/Bmob-1.6.2.min.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    teacher_list: [
-      { id: 'JY0934212', path: '../../img/timg1.jpg', name: '李先生', couse: '数学、英语', time: '2018-09-08 17:55', grade: '150/h', is_appr: false, is_read: true },
-      { id: 'JY04213', path: '../../img/timg1.jpg', name: '李老师', couse: '体育、英语', time: '2018-09-08 17:55', grade: '510/h', is_appr: true, is_read: true },
-      { id: 'JY42314', path: '../../img/timg1.jpg', name: '张老师', couse: '物理', time: '2018-09-08 17:55', grade: '220/h', is_appr: true, is_read: false },
-      { id: 'JY032512', path: '../../img/timg1.jpg', name: '麻老师', couse: '数学、计算机', time: '2018-09-08 17:55', grade: '33/h', is_appr: false, is_read: true },
-    ],
+    list: [],
+    has_data:true
   },
-  to_apply_detail: () => {
+  to_apply_detail: (e) => {
     wx.navigateTo({
-      url: '../apply_detail_teac/apply_detail_teac',
+      url: '../student_detail/student_detail?id='+e.currentTarget.dataset.index,
     })
   },
 
@@ -22,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    that=this;
   },
 
   /**
@@ -36,7 +34,27 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    let current=Bmob.User.current();
+
+    const pointerUser = Bmob.Pointer('_User')
+    const poiID = pointerUser.set(current.objectId)
+
+    const query = Bmob.Query('applys')
+    //userId 字段名称关联用户表 ，类型Pointer
+    query.equalTo("user_id", "==", poiID);
+    query.include('couse_id')
+    query.find().then(res => {
+      console.log(res)
+      if (res.length > 0) {
+        that.setData({
+          list: res,
+        })
+      } else {
+        that.setData({
+          has_data: false,
+        })
+      }
+    });
   },
 
   /**

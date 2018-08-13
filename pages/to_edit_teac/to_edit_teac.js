@@ -207,7 +207,7 @@ Page({
         queryAdd.set("unit_price", that.data.unit_price);
         queryAdd.set("teach_addr", that.data.teach_addr);
         queryAdd.set("sex", getApp().globalData.user.sex);
-        queryAdd.set("other_info[0]", that.data.self_introduction);
+        queryAdd.set("other_info", [that.data.self_introduction, that.data.other]);
         queryAdd.set("diploma", that.data.diploma)
         queryAdd.set("school", that.data.school);
         queryAdd.set("phone", getApp().globalData.user.phone);
@@ -219,10 +219,8 @@ Page({
         queryAdd.set("can_teached", that.data.can_teached);
         queryAdd.set("grade", getApp().globalData.user.grade);
         queryAdd.set("experience", getApp().globalData.user.experience);
-        queryAdd.set("can_teached", that.data.can_teached);
         queryAdd.set("user_id", getApp().globalData.user_id);
-        queryAdd.set("img", getApp().globalData.user_img);
-        queryAdd.set("other_info[1]", that.data.other);
+        queryAdd.set("img", getApp().globalData.user_img);       
         queryAdd.save().then(res => {
           console.log(res)
           wx.showToast({
