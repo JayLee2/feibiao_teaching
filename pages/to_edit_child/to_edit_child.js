@@ -65,9 +65,21 @@ Page({
     })
   },
   bind_addr:function(e){
-    this.setData({
-      addr: e.detail.value
+    var binds=this.data.detail;
+    
+    var that=this;
+    wx.chooseLocation({
+      success: function(res) {
+        console.log(res.address)
+        binds.addr = res.address
+        that.setData({
+          addr: e.detail.value,
+          detail:binds
+        })
+        console.log(that.data)
+      },
     })
+    
   },
   bind_other:function(e){
     this.setData({
@@ -153,6 +165,7 @@ Page({
         queryAdd.set("addr", addr);
         queryAdd.set("others", other);
         queryAdd.set("user_id", poiID);
+        queryAdd.set("by_collect", 0);
         queryAdd.set("img", getApp().globalData.user_img);
         queryAdd.set("user_name", getApp().globalData.userInfo); 
         queryAdd.save().then(res => {

@@ -8,6 +8,7 @@ Page({
    */
   data: {
     is_collect:'收藏',
+    by_collect:0,    //用于显示收藏人数
     detail:{},
     packages:[
       {text:"新课试听： 一节课",count:2,isSelect:''},
@@ -32,7 +33,8 @@ Page({
     const query = Bmob.Query('user_teacher');
     query.get(id).then(res => {
       that.setData({
-        detail:res
+        detail:res,
+        by_collect: res.by_collect
       })
     }).catch(err => {
       console.log(err)
@@ -81,6 +83,17 @@ Page({
       }).catch(err => {
         console.log(err)
       })
+      const teac_collectEdit = Bmob.Query('user_teacher');     
+      teac_collectEdit.get(couse_id).then(ress=>{
+         ress.set('by_collect', ress.by_collect+1);
+        ress.save();    
+        let countCollect = that.data.by_collect + 1;
+        that.setData({
+        by_collect: countCollect
+        })          
+      }).catch(err => {
+        console.log(err)
+      })
     }else{
       const queryDel = Bmob.Query("collect");
       queryDel.equalTo("user_id", "==", current.objectId);
@@ -96,6 +109,17 @@ Page({
         }).catch(err => {
 
         })
+      })
+      const teac_collectEdit = Bmob.Query('user_teacher');
+      teac_collectEdit.get(couse_id).then(ress => {
+        ress.set('by_collect', ress.by_collect - 1);
+        ress.save();
+        let countCollect = that.data.by_collect - 1;
+        that.setData({
+          by_collect: countCollect
+        })  
+      }).catch(err => {
+        console.log(err)
       })
     }
     

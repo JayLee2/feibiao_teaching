@@ -128,9 +128,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // let id=options.id;
+    let id=options.id;
     that=this;
-    let id ='6453792a10';
+    // let id ='6453792a10';
     const query = Bmob.Query('user_teacher');
 
     query.get(id).then(res => {

@@ -36,8 +36,8 @@ Page({
    */
   onShow: function () {
     let current = Bmob.User.current();
-    // let id=current.objectId;
-    let id ='72da063444';
+    let id=current.objectId;
+    // let id ='72da063444';
     const query = Bmob.Query("applys");
     query.include('user_id','couse_id')
     query.equalTo("couse_id", "==", id);

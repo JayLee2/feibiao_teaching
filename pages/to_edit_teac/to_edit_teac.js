@@ -214,7 +214,7 @@ Page({
         queryAdd.set("major", getApp().globalData.user.major);
         queryAdd.set("is_show", '0');
         queryAdd.set("is", [that.data.is211, that.data.is985, getApp().globalData.user.is_authen]);
-        queryAdd.set("by_collect", '0');
+        queryAdd.set("by_collect",0);
         queryAdd.set("grades", that.data.grades);
         queryAdd.set("can_teached", that.data.can_teached);
         queryAdd.set("grade", getApp().globalData.user.grade);
