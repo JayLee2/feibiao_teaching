@@ -13,7 +13,7 @@
   </view>
   <view class='float_left left20'>
     <view class='font36'>{{item.user_name}}</view>
-    <view class='font26 font_color999 top20'>{{item.be_good_like}}</view>
+    <view class='font26 font_color999 top20'>{{item.can_teached}}</view>
     <view class='font26 font_color999 top10'>
       <text>{{item.school}}</text>
       <text class='special' hidden='{{item.is[0]==0}}'>211</text>

@@ -132,13 +132,16 @@ Page({
     that=this;
     // let id ='6453792a10';
     const query = Bmob.Query('user_teacher');
-
-    query.get(id).then(res => {
+    query.equalTo("user_id","==",id)
+    query.find().then(res => {
       console.log(res);
-      that.setData({
-        detail:res,
-        objectId:options.objectId
-      })
+      if(res.length>0){
+        that.setData({
+          detail: res[0],
+          objectId: options.objectId
+        })
+      }
+      
     }).catch(err => {
       console.log(err)
     })

@@ -1,31 +1,29 @@
 <!--pages/myCount/myCount.wxml-->
-<view class='head'>
+<!-- <view class='head'>
   <view>全部</view>
   <view>待上课</view>
   <view>上课中</view>
   <view>退款中</view>
   <view>已完成</view>
-</view>
-<view class='teacher_list clear' wx:for="{{teacher_list}}" wx:for-item="item" bindtap='toNext' data-state='{{item.state}}'>
+</view> -->
+<view class='teacher_list clear' wx:for="{{list}}" wx:for-item="item" bindtap='toNext' data-state='{{item.state}}' data-index='{{item.objectId}}'>
   <view class='list_top font22 flex font_color999'>
-    <view>课程编号：{{item.id}}</view>
-    <view wx:if="{{item.state == '0'}}">待上课</view>
-    <view wx:if="{{item.state == '1'}}">上课中</view>
-    <view wx:if="{{item.state == '3'}}">已完成</view>
-     <view wx:if="{{item.state == '2'}}">退款中</view>
+    <view>课程编号：{{item.seller.objectId}}</view>
+    <view wx:if="{{item.state == '0'}}">进行中</view>
+    <view wx:if="{{item.state == '1'}}">已完成</view>
   </view>
   <view class='float_left img_box'>
-    <image src='{{item.path}}'></image>
+    <image src='{{item.seller.img}}'></image>
   </view>
   <view class='float_left left20'>
-    <view class='font36'>{{item.name}}</view>
-    <view class='font26 font_color999 top20'>{{item.couse}}</view>
+    <view class='font36'>{{item.seller.user_name}}</view>
+    <view class='font26 font_color999 top20'><text wx:for="{{item.seller.can_teached}}" wx:for-item="every">{{every}}</text></view>
     <view class='font26 font_color999 top10'>
-      <text>总课程：{{item.addr}}</text>
+      <text>总课程：{{item.num}}</text>
     </view>
   </view>
   <view class='float_right text_center top30 right20'>
-    <view class='font30 font_color_main'>{{item.grade}}</view>
+    <view class='font30 font_color_main'>{{item.seller.grade}}</view>
   </view>
 </view>
 

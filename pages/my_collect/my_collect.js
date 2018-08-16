@@ -18,8 +18,10 @@ Page({
     var that=this;
     let current = Bmob.User.current();
     const query = Bmob.Query("collect");
+
+    query.equalTo("user_id", "==", current.objectId);
     //下面参数为Pointer字段名称， 可以一次查询多个表
-    query.include('couse_id','user_id' )
+    query.include('user_id','couse_id' )
     query.find().then(res => {
       that.setData({
         teacher_list:res,
@@ -30,6 +32,7 @@ Page({
     })
     const s_query = Bmob.Query("s_collect");
     //下面参数为Pointer字段名称， 可以一次查询多个表
+    s_query.equalTo("user_id", "==", current.objectId);
     s_query.include('couse_id', 'user_id')
     s_query.find().then(res => {
       that.setData({

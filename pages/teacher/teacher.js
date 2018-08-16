@@ -44,15 +44,15 @@ Page({
   //自定义函数
   //城市选择改变后的操作
   bindPickerChangeCity(e){
-    console.log(this.data)
-    var that=this;
-    let new_list=that.data.teacher_list.filter((value)=>{
-      return value.native_place == that.data.city[e.detail.value] && value.can_teached.indexOf(that.data.defalt_couse) != -1 && value.school == that.data.defalt_school
-    })
-    that.setData({
-      defalt_city:that.data.city[e.detail.value],
-      use_list:new_list
-    })
+    // console.log(this.data)
+    // var that=this;
+    // let new_list=that.data.teacher_list.filter((value)=>{
+    //   return value.native_place == that.data.city[e.detail.value] && value.can_teached.indexOf(that.data.defalt_couse) != -1 && value.school == that.data.defalt_school
+    // })
+    // that.setData({
+    //   defalt_city:that.data.city[e.detail.value],
+    //   use_list:new_list
+    // })
   },
   //课程改编后的操作
   bindPickerChangeCouse(e) {

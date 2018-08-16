@@ -2,7 +2,7 @@
 <view class='head'>
   <view class='flex head_top'>
     <view>课程编号：188992887</view>
-    <view>待上课</view>
+    <view>进行中</view>
   </view>
   <view class='clear'>
     <view class='float_left img_box'>

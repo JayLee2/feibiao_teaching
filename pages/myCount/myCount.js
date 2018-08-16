@@ -1,29 +1,58 @@
 // pages/myCount/myCount.js
+var that;
+var Bmob = require('../../utils/Bmob-1.6.2.min.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    teacher_list: [
-      { id: 'JY0934212', path: 'img/timg1.jpg', name: '李先生', couse: '数学', addr: '12节课（10/12）', grade: '￥1400.00' ,state:'0'},
-      { id: 'JY04213', path: 'img/timg1.jpg', name: '李老师', couse: '体育', addr: '12节课（10/12）', grade: '￥400.00', state: '1' },
-      { id: 'JY42314', path: 'img/timg1.jpg', name: '张老师', couse: '物理', addr: '12节课（10/12）', grade: '￥800.00', state: '2'},
-      { id: 'JY42314', path: 'img/timg1.jpg', name: '张老师', couse: '物理', addr: '12节课（10/12）', grade: '￥800.00', state: '3' },
-    ],
+    list: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    that=this;
+    let current=Bmob.User.current();
+    console.log(current)
+    if(!current.identity){
+      //没认证
+    }else if(current.identity=='teacher'){
+      //是老师
+      const query = Bmob.Query("buy_record");
+      const pointer = Bmob.Pointer('_User')
+      const poiID = pointer.set(current.objectId)
+      query.equalTo("seller", "==", poiID);
+      query.include('seller')      
+      query.find().then(res => {
+        console.log(res)
+        that.setData({
+          list:res
+        })
+      });
+    }else{
+      //是家长
+      const query = Bmob.Query("buy_record");
+      const pointer = Bmob.Pointer('_User')
+      const poiID = pointer.set(current.objectId)
+      query.equalTo("buyer", "==", poiID);
+      query.include('seller')
+      query.find().then(res => {
+        console.log(res)
+        that.setData({
+          list: res
+        })
+      });
+    }
   },
   //前往详情页的方法
   toNext:function(e){
     console.log(e)
     let state = e.currentTarget.dataset.state;
-    let url = `../count_detail${state}/count_detail${state}`;
+    let id = e.currentTarget.dataset.index;    
+    let url = `../count_detail${state}/count_detail${state}?id=${id}`;
     wx.navigateTo({
       url:url
     })

@@ -397,6 +397,8 @@ Page({
                 querySetIdentity.set('grade', chi_grade);
                 querySetIdentity.set('addr', chi_addr);
                 querySetIdentity.set('phone', chi_phone);
+                querySetIdentity.set('money_can', 0);
+                querySetIdentity.set('money_nocan', 0);
                 
                 querySetIdentity.save().then(ress => {
                   console.log(ress);

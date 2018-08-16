@@ -19,7 +19,8 @@ Page({
     other:'',
     diploma:'',
     id:'',
-    detail:{}
+    detail:{},
+    addrs:''//但令存放地址
   },
   bind_grade:function(e){
     this.setData({
@@ -65,18 +66,12 @@ Page({
     })
   },
   bind_addr:function(e){
-    var binds=this.data.detail;
-    
     var that=this;
     wx.chooseLocation({
       success: function(res) {
-        console.log(res.address)
-        binds.addr = res.address
         that.setData({
-          addr: e.detail.value,
-          detail:binds
+          addrs: res.address,
         })
-        console.log(that.data)
       },
     })
     
@@ -96,7 +91,7 @@ Page({
     let class_plane = this.data.class_plane;
     let sex = this.data.sex;
     let diploma = this.data.diploma;
-    let addr = this.data.addr;
+    let addr = this.data.addrs;
     let other = this.data.other;
     if(grade==''){
       wx.showToast({
@@ -218,6 +213,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     that=this;
     if (options.id){
       let id = options.id;
@@ -233,7 +229,8 @@ Page({
           class_plane: res.class_plane,
           diploma: res.low_education,
           addr: res.addr,
-          other: res.others
+          other: res.others,
+          addrs:res.addr
         })
         console.log(res)
       }).catch(err => {

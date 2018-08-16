@@ -19,12 +19,18 @@ Page({
     is211:'',
     is985:'',
     id:'',//看是否传入id，编辑还是添加
+    addrs:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.getSetting({
+      success: function (r) {
+        console.log(r)
+      }
+    })
     that=this;
     if (options.id) {
       that.setData({
@@ -39,7 +45,7 @@ Page({
           self_introduction:res.other_info[0],
           grades: res.grades,
           unit_price: res.unit_price,
-          teach_addr: res.teach_addr,
+          addrs: res.teach_addr,
           other:res.other_info[1]
         })
       }).catch(err => {
@@ -100,10 +106,17 @@ Page({
       unit_price: e.detail.value
     })
   },
-  bind_addr: (e) => {
-    that.setData({
-      teach_addr: e.detail.value
+  bind_addr: function (e) {
+    var that = this;
+    wx.chooseLocation({
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          addrs: res.address,
+        })
+      },
     })
+
   },
   bind_other: (e) => {
     that.setData({
@@ -174,7 +187,7 @@ Page({
         duration: 2000
       })
     }else
-    if (this.data.teach_addr == '') {
+    if (this.data.addrs == '') {
       wx.showToast({
         title: '请输入授课地点',
         icon: 'none',
@@ -191,7 +204,7 @@ Page({
         query.set("other_info", [that.data.self_introduction, that.data.other]);
         query.set("grades", that.data.grades);
         query.set("unit_price", that.data.unit_price);
-        query.set("teach_addr", that.data.teach_addr);
+        query.set("teach_addr", that.data.addrs);
         query.save().then(res => {
           wx.navigateTo({
             url: '../my_publish/my_publish',
@@ -201,11 +214,14 @@ Page({
           console.log(err)
         })
       }else{
+        let current=Bmob.User.current();
+        const pointer = Bmob.Pointer('_User')
+        const poiID = pointer.set(current.objectId)
         const queryAdd = Bmob.Query('user_teacher');
         queryAdd.set("user_name", getApp().globalData.user.user_name)
         queryAdd.set("be_good_like", that.data.be_good_like);
-        queryAdd.set("unit_price", that.data.unit_price);
-        queryAdd.set("teach_addr", that.data.teach_addr);
+        queryAdd.set("unit_price", parseInt(that.data.unit_price));
+        queryAdd.set("teach_addr", that.data.addrs);
         queryAdd.set("sex", getApp().globalData.user.sex);
         queryAdd.set("other_info", [that.data.self_introduction, that.data.other]);
         queryAdd.set("diploma", that.data.diploma)
@@ -219,7 +235,7 @@ Page({
         queryAdd.set("can_teached", that.data.can_teached);
         queryAdd.set("grade", getApp().globalData.user.grade);
         queryAdd.set("experience", getApp().globalData.user.experience);
-        queryAdd.set("user_id", getApp().globalData.user_id);
+        queryAdd.set("user_id", poiID);
         queryAdd.set("img", getApp().globalData.user_img);       
         queryAdd.save().then(res => {
           console.log(res)

@@ -19,7 +19,7 @@
   </view>
   <view class='head_bottom'>
     <view><text class='iconfont icon-shijian font24'></text> {{detail.createdAt}}</view>
-    <view><text class='iconfont icon-msnui-collection font24'></text>{{detail.by_collect}}人收藏</view>
+    <view><text class='iconfont icon-msnui-collection font24'></text>{{by_collect}}人收藏</view>
     <view><text class='iconfont icon-jiaren font24'></text>{{detail.by_apply}}人申请</view>
   </view>
 </view>

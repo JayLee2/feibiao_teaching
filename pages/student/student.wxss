@@ -31,3 +31,12 @@
   margin-left: 20rpx;
   color: #7ec6c3;
 }
+.width220{
+  width: 220px;
+}
+.need text{
+  margin-left: 20px;
+}
+.need text:first-of-type{
+  margin: 0;
+}

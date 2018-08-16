@@ -51,6 +51,9 @@ Page({
       query.set('id', current.objectId) //需要修改的objectId
       query.set('envelop', that.data.envelop);
       query.set('cont', that.data.cont); 
+      query.set('money_can', 0); 
+
+      query.set('money_nocan', 0);       
       query.set('identity', 'teacher')
       query.save().then(res => {
         wx.showToast({

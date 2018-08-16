@@ -1,4 +1,5 @@
 // pages/count_detail0/count_detail0.js
+var Bmob = require('../../utils/Bmob-1.6.2.min.js');
 Page({
 
   /**
@@ -12,7 +13,7 @@ Page({
         { name: '自定义(二十节课)', count: 20, time: '2018-08-08 20:09' },
       ],
       showModal: false,  //控制弹出框-续费
-      showReturn:true,   //控制弹出框退款
+      showReturn:false,   //控制弹出框退款
       unit: 100,     //课程单价
       hasCount: false, //是否显示课程数量
       price: 0,    //总价
@@ -149,6 +150,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this;
+    let id=options.id;
+    const query = Bmob.Query('buy_record');
+    query.include('')
+    query.get(id).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
     this.compute_price();  
   },
 

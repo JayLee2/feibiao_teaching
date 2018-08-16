@@ -39,12 +39,21 @@ Page({
     let id=current.objectId;
     // let id ='72da063444';
     const query = Bmob.Query("applys");
+ 
+
+
     query.include('user_id','couse_id')
-    query.equalTo("couse_id", "==", id);
     query.find().then(res => {
       console.log(res)
+      let newList=[]
+      for (let item of res){
+        console.log(item.couse_id.user_id.objectId,id)
+        if(item.couse_id.user_id.objectId==id){
+          newList.push(item)
+        }
+      }
       that.setData({
-        list:res
+        list:newList
       })
     });
   },
