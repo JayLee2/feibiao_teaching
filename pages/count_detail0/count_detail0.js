@@ -153,8 +153,11 @@ Page({
     var that=this;
     let id=options.id;
     const query = Bmob.Query('buy_record');
-    query.include('')
+    query.include('seller')
     query.get(id).then(res => {
+      that.setData({
+        detail:res
+      })
       console.log(res)
     }).catch(err => {
       console.log(err)

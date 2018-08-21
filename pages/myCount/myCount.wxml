@@ -6,7 +6,8 @@
   <view>退款中</view>
   <view>已完成</view>
 </view> -->
-<view class='teacher_list clear' wx:for="{{list}}" wx:for-item="item" bindtap='toNext' data-state='{{item.state}}' data-index='{{item.objectId}}'>
+<view wx:if="{{show_teacher}}">
+  <view class='teacher_list clear' wx:for="{{list}}" wx:for-item="item" bindtap='toNext' data-state='{{item.state}}' data-index='{{item.objectId}}'>
   <view class='list_top font22 flex font_color999'>
     <view>课程编号：{{item.seller.objectId}}</view>
     <view wx:if="{{item.state == '0'}}">进行中</view>
@@ -22,8 +23,31 @@
       <text>总课程：{{item.num}}</text>
     </view>
   </view>
-  <view class='float_right text_center top30 right20'>
-    <view class='font30 font_color_main'>{{item.seller.grade}}</view>
-  </view>
+  <view class='float_right font20'>名师值 <text class='font_color_main font36'>{{item.seller.grade}}</text><text class='iconfont icon-wenhao font22'></text></view>
 </view>
+</view>
+
+<view wx:if="{{show_student}}">
+   <view class='teacher_list clear' wx:for="{{list_student}}" wx:for-item="item" bindtap='toNext' data-state='{{item.state}}' data-index='{{item.objectId}}'>
+  <view class='list_top font22 flex font_color999'>
+    <view>课程编号：{{item.seller.objectId}}</view>
+    <view wx:if="{{item.state == '0'}}">进行中</view>
+    <view wx:if="{{item.state == '1'}}">已完成</view>
+  </view>
+  <view class='float_left img_box'>
+    <image src='{{item.buyer.img}}'></image>
+  </view>
+  <view class='float_left left20'>
+    <view class='font36'>{{item.buyer.name}}</view>
+    <view class='font26 font_color999 top20'>手机号：{{item.buyer.phone}}</view>
+    <view class='font26 font_color999 top10'>
+      <text>总课程：{{item.num}}</text>
+    </view>
+  </view>
+  <!-- <view class='float_right text_center top30 right20'>
+    <view class='font30 font_color_main'>{{item.seller.grade}}</view>
+  </view> -->
+</view>
+</view>
+
 

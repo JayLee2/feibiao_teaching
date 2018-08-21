@@ -83,16 +83,12 @@
   font-size: 29rpx;
 }
 .flex_bottom view{
-  width: 50%;
+  width: 100%;
   line-height: 100rpx;
   text-align: center;
   height:100rpx;
   background: #9fd4d2;
   color: #fff;
-}
-.flex_bottom view:first-of-type{
-  background: #fff;
-  color: #333;
 }
 /*弹出框*/
 .show-btn {

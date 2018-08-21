@@ -1,1 +1,27 @@
 /* pages/my_wallect/my_wallect.wxss */
+.flex_bottom{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-top: 1rpx solid #ccc;
+  font-size: 29rpx;
+}
+.flex_bottom view{
+  width: 50%;
+  line-height: 100rpx;
+  text-align: center;
+  height:100rpx;
+  background: #9fd4d2;
+  color: #fff;
+}
+.flex_bottom view:first-of-type{
+  background: #fff;
+  color: #333;
+}
+.row{
+  border-bottom: 4rpx solid #9fd4d2;
+  padding-bottom: 10rpx;
+  width: 90%;
+  margin:10rpx auto
+}

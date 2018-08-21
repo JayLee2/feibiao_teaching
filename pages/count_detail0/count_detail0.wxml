@@ -1,7 +1,7 @@
 <!--pages/count_detail0/count_detail0.wxml-->
 <view class='head'>
   <view class='flex head_top'>
-    <view>课程编号：188992887</view>
+    <view>课程编号：{{detail.seller.objectId}}</view>
     <view>进行中</view>
   </view>
   <view class='clear'>
@@ -10,19 +10,19 @@
     </view>
     <view class='title'>
       <view class='row1 clear'>
-        <view class='float_left font40 '>周先生</view>
-        <view class='float_right font20'> <text class='font_color_main font36'>￥1000.00</text></view>
+        <view class='float_left font40 '>{{detail.seller.user_name}}</view>
+        <view class='float_right font20'> <text class='font_color_main font36'>￥{{detail.seller.unit_price}}</text></view>
       </view>
       <view>
       <view class='row2_center'>
-        <view class='couse'>英语</view>
-        <view class='count'>12节课(0/12)</view>
+        <view class='couse' wx:for="{{detail.seller.can_teached}}" wx:for-item='every'>{{every}}</view>
+        <view class='count'>{{detail.num}}节课</view>
       </view>
     </view>
     </view>
   </view>
 </view>
-<view class='ctitle'>
+<!-- <view class='ctitle'>
   课程明细
 </view>
 <view class='clear couse_detail' wx:for="{{couse_data}}" wx:for-item="item" wx:for-index="{{index}}">
@@ -33,10 +33,9 @@
   <view class='float_right'>
     <view class='detail_count'>+{{item.count}}</view>
   </view>
-</view>
+</view> -->
 <view class='flex flex_bottom'>
-  <view bindtap='ret'>申请退款</view>
-  <view bindtap='buy'>课时续费</view>
+  <view bindtap='buy'>完成课程</view>
 </view>
 <!--弹窗-购买-->
 <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}">

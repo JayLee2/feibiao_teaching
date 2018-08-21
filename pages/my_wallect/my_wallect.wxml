@@ -1,2 +1,11 @@
 <!--pages/my_wallect/my_wallect.wxml-->
-<text>pages/my_wallect/my_wallect.wxml</text>
+<view class='row'>
+  账户余额 <text class='font_color_main'>{{money_can}}</text>
+</view>
+<view class='row'>
+  冻结金额 <text class='font_color_main'>{{money_nocan}}</text>
+</view>
+<view class='flex flex_bottom'>
+  <view bindtap='ret'>提现</view>
+  <view bindtap='buy'>充值</view>
+</view>

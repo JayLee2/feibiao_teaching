@@ -7,7 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [],
+    list: [],//存放老师
+    list_student:[],//存放学生
+    show_teacher:true,
+    show_student:false,
   },
 
   /**
@@ -29,7 +32,9 @@ Page({
       query.find().then(res => {
         console.log(res)
         that.setData({
-          list:res
+          list_student:res,
+          show_student:true,
+          show_teacher:false,
         })
       });
     }else{
@@ -42,7 +47,9 @@ Page({
       query.find().then(res => {
         console.log(res)
         that.setData({
-          list: res
+          list: res,
+          show_student: false,
+          show_teacher: true,
         })
       });
     }

@@ -1,18 +1,29 @@
 // pages/my_wallect/my_wallect.js
+var Bmob = require('../../utils/Bmob-1.6.2.min.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    money_can:0,
+    money_nocan:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this;
+    let current=Bmob.User.current();
+    const query=Bmob.Query('_User');
+    query.get(current.objectId).then(res=>{
+      that.setData({
+        money_can:res.money_can,
+        money_nocan: res.money_nocan        
+      })
+    })
   },
 
   /**
