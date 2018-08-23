@@ -10,10 +10,7 @@ App({
       that.globalData.User=res;
       that.globalData.user_id = res.objectId;
       var user_id = that.globalData.user_id;
-
-      
-
-
+      that.globalData.openId = res.authData.weapp.openid;
     }).catch(err => {
       console.log(err)
     });

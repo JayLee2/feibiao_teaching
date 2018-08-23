@@ -65,7 +65,6 @@ Page({
       const queryAdd = Bmob.Query('collect');
       queryAdd.save().then(res => {
         console.log(res)
-
         const pointer = Bmob.Pointer('users')
         const poiID = pointer.set(current.objectId)
         const pointer_couse = Bmob.Pointer('user_teacher')
