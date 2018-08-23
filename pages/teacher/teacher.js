@@ -14,7 +14,7 @@ Page({
       '全部课程','语文','数学','物理','化学'
     ],
     school:[
-      '全部学校','天津第三中学','实验小学','天津大学'
+      // '全部学校','天津第三中学','实验小学','天津大学'
     ],
     teacher_list:[],
     defalt_city:'天津',
@@ -38,9 +38,22 @@ Page({
         use_list:res,
       })
     });
-
+    //初始化学校
+    const querySchool = Bmob.Query("school");
+    querySchool.find().then(res => {
+      console.log(res)
+      let schoolArr=['全部学校'];
+      new Set(res).forEach((value)=>{
+        schoolArr.push(value.school);
+      })
+      that.setData({
+        school:schoolArr
+      })
+      
+    });
     
   },
+
   //自定义函数
   //城市选择改变后的操作
   bindPickerChangeCity(e){
