@@ -74,14 +74,7 @@ App({
     user_id:'',
     user_img:'',
     user:{
-        user_name:'李文杰',
-        sex:'1',
-        phone:'110',
-        native_place:'山西晋中',
-        major:'英语',
-        is_authen:"1",
-        grade:'25',
-        experience:'充足'
+
     },
     User:{},//登陆后所有信息放在这里
     userInfo: '',

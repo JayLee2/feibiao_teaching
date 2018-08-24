@@ -19,7 +19,8 @@ Page({
     is211:'',
     is985:'',
     id:'',//看是否传入id，编辑还是添加
-    addrs:''
+    addrs:'',
+    experience:'',
   },
 
   /**
@@ -123,6 +124,11 @@ Page({
       other: e.detail.value
     })
   },
+  bind_experience:(e)=>{
+    that.setData({
+      experience: e.detail.value
+    })
+  },
   //多选框德改变
   change_check:function(e){
       var arr_check=e.detail.value
@@ -205,6 +211,7 @@ Page({
         query.set("grades", that.data.grades);
         query.set("unit_price", that.data.unit_price);
         query.set("teach_addr", that.data.addrs);
+        query.set("experience", that.data.experience);        
         query.save().then(res => {
           wx.navigateTo({
             url: '../my_publish/my_publish',
@@ -218,23 +225,23 @@ Page({
         const pointer = Bmob.Pointer('_User')
         const poiID = pointer.set(current.objectId)
         const queryAdd = Bmob.Query('user_teacher');
-        queryAdd.set("user_name", getApp().globalData.user.user_name)
+        queryAdd.set("user_name", getApp().globalData.User.name)
         queryAdd.set("be_good_like", that.data.be_good_like);
         queryAdd.set("unit_price", parseInt(that.data.unit_price));
         queryAdd.set("teach_addr", that.data.addrs);
-        queryAdd.set("sex", getApp().globalData.user.sex);
+        queryAdd.set("sex", getApp().globalData.User.sex);
         queryAdd.set("other_info", [that.data.self_introduction, that.data.other]);
         queryAdd.set("diploma", that.data.diploma)
         queryAdd.set("school", that.data.school);
-        queryAdd.set("phone", getApp().globalData.user.phone);
-        queryAdd.set("major", getApp().globalData.user.major);
+        queryAdd.set("phone", getApp().globalData.User.phone);
+        queryAdd.set("major", getApp().globalData.User.major);
         queryAdd.set("is_show", '0');
-        queryAdd.set("is", [that.data.is211, that.data.is985, getApp().globalData.user.is_authen]);
+        queryAdd.set("is", [that.data.is211, that.data.is985, getApp().globalData.User.authorize]);
         queryAdd.set("by_collect",0);
         queryAdd.set("grades", that.data.grades);
         queryAdd.set("can_teached", that.data.can_teached);
-        queryAdd.set("grade", getApp().globalData.user.grade);
-        queryAdd.set("experience", getApp().globalData.user.experience);
+        queryAdd.set("grade", getApp().globalData.User.grade);
+        queryAdd.set("experience", that.data.experience);
         queryAdd.set("user_id", poiID);
         queryAdd.set("img", getApp().globalData.user_img);       
         queryAdd.save().then(res => {

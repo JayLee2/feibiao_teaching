@@ -88,7 +88,7 @@
   <view class='every_title'>
     教学经历
   </view>
-  <textarea class='left95 top20'></textarea>
+  <textarea class='left95 top20' bindinput='bind_experience'></textarea>
 </view>
 <view class='bottom' bindtap='send'>
   确认发布
