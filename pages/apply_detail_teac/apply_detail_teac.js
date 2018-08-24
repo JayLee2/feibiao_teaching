@@ -132,7 +132,8 @@ Page({
     that=this;
     // let id ='6453792a10';
     const query = Bmob.Query('user_teacher');
-    query.equalTo("user_id","==",id)
+    query.equalTo("user_id","==",id);
+    query.include('user_id')
     query.find().then(res => {
       console.log(res);
       if(res.length>0){
@@ -146,7 +147,15 @@ Page({
       console.log(err)
     })
   },
+  call:function(e){
+    let phone_num=e.currentTarget.dataset.phone
+    wx.makePhoneCall({
+      phoneNumber: phone_num, //仅为示例，并非真实的电话号码
+      success:function(){
 
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -11,7 +11,10 @@ Page({
       '天津'
     ],
     couse:[
-      '全部课程','语文','数学','物理','化学'
+      '全部课程', '学前教育','自然','书法',
+'语文','数学','英语','奥数','历史','化学','物理','生物','政治','地理',
+'音乐','钢琴','美术','舞蹈',
+'日语','西班牙语','法语','俄语','意大利语','托福','雅思'
     ],
     school:[
       // '全部学校','天津第三中学','实验小学','天津大学'
@@ -143,7 +146,7 @@ Page({
   toNext(e){
     var index=e.currentTarget.dataset.index;
     wx.navigateTo({
-      url: '../teacher_detail/teacher_detail?id='+index,
+      url: '../teacher_detail/teacher_detail?id='+index+'&type=1',
     })
   },
   /**

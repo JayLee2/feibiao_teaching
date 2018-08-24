@@ -32,6 +32,7 @@
   <view>就读学校： {{detail.school}}</view>
   <view>擅长学科： <text wx:for="{{detail.be_good_like}}" wx:for-item="ss" wx:key="index">{{ss}}</text></view>
   <view>自我介绍： {{detail.other[0]}}</view>
+  <view>手机号： {{detail.user_id.phone}} <text class='font_color_main' bindtap='call' data-phone='{{detail.user_id.phone}}'>点击拨号</text></view>  
 </view>
 <view class='every'>
   <view class='every_title'>
