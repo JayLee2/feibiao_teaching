@@ -9,6 +9,7 @@ Page({
   data: {
     id:'',
     list: [],
+    isnull:false,
   },
   to_apply_detail:(e)=>{
     let id=e.currentTarget.dataset.index;
@@ -44,17 +45,23 @@ Page({
 
     query.include('user_id','couse_id')
     query.find().then(res => {
-      console.log(res)
-      let newList=[]
-      for (let item of res){
-        console.log(item.couse_id.user_id.objectId,id)
-        if(item.couse_id.user_id.objectId==id){
-          newList.push(item)
+      if(res.length==0){
+        that.setData({
+          isnull:true,
+        })
+      }else{
+        let newList = []
+        for (let item of res) {
+          console.log(item)
+          if (item.couse_id.user_id.objectId == id) {
+            newList.push(item)
+          }
         }
+        that.setData({
+          list: newList
+        })
       }
-      that.setData({
-        list:newList
-      })
+      
     });
   },
 

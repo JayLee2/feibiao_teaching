@@ -11,6 +11,7 @@ Page({
     by_collect: 0,   //用于显示收藏人数
     has_apply: '发起申请',
     detail: {},
+    origin:'',
     packages: [
       { text: "新课试听： 一节课", count: 2, isSelect: '' },
       { text: "套餐一： 三节课", count: 6, isSelect: 'package_select' },
@@ -28,8 +29,16 @@ Page({
    */
   onLoad: function (options) {
     let id = options.id;
+    let origin;
+    if(options.origin){
+      origin=options.origin;
+      that.setData({
+        origin:'apply'
+      })
+    }
     that = this;
     const query = Bmob.Query('user_student');
+    query.include('user_id')
     query.get(id).then(res => {
       console.log(res)
       that.setData({
@@ -66,6 +75,15 @@ Page({
         })
       }
     });
+  },
+  call: function (e) {
+    let phone_num = e.currentTarget.dataset.phone
+    wx.makePhoneCall({
+      phoneNumber: phone_num, //仅为示例，并非真实的电话号码
+      success: function () {
+
+      }
+    })
   },
   //点击收藏的方法
   collect: function (e) {

@@ -31,6 +31,8 @@
   <view>知识掌握： {{detail.knowledge_degree}}</view>
   <view>弱势学科： {{detail.bad_thing}}</view>
   <view>所在学校： {{detail.school}}</view>
+  <view wx:if='{{origin=="apply"}}'>手机号： {{detail.user_id.phone}} <text class='font_color_main' bindtap='call' data-phone='{{detail.user_id.phone}}'>点击拨号</text></view> 
+
 </view>
 <view class='every'>
   <view class='every_title'>

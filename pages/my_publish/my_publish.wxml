@@ -18,9 +18,11 @@
  <view class='float_right font20'>名师值 <text class='font_color_main font36'>{{item.grade}}</text><text class='iconfont icon-wenhao font22'></text></view>
 </view>
 
-<view hidden='{{is_empty}}'>
-  列表为空
+
+<view class='kong' hidden='{{is_empty}}'>
+  <image src='../../img/null.png'></image>
 </view>
+
 <view class='bottom' bindtap='to_edit' hidden='{{is_empty}}'>
   发布信息
 </view>

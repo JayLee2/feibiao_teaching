@@ -6,6 +6,8 @@
   <view>退款中</view>
   <view>已完成</view>
 </view> -->
+
+
 <view wx:if="{{show_teacher}}">
   <view class='teacher_list clear' wx:for="{{list}}" wx:for-item="item" bindtap='toNext' data-state='{{item.state}}' data-index='{{item.objectId}}'>
   <view class='list_top font22 flex font_color999'>
@@ -50,4 +52,6 @@
 </view>
 </view>
 
-
+<view class='kong' wx:if='{{t_isnull&&s_isnull}}'>
+  <image src='../../img/null.png'></image>
+</view>

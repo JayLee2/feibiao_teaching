@@ -66,3 +66,21 @@ page{
   background: #7ec6c3;
   font-size:30rpx;
 }
+.kong{
+  width: 100%;
+  height: 100%;
+  background: #eee;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.kong image{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100rpx;
+  height: 100rpx;
+}

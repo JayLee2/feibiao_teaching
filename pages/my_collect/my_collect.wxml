@@ -1,39 +1,49 @@
+<view class='kong' wx:if='{{t_isnull&&s_isnull}}'>
+  <image src='../../img/null.png'></image>
+</view>
+<view wx:if='{{!t_isnull||!s_isnull}}'>
+  <view wx:if='{{!t_isnull}}'>
 <view>
-  收藏的老师
-</view>
-<view class='teacher_list clear' wx:for="{{teacher_list}}" wx:for-item="item" bindtap='toNext' data-index='{{item.couse_id.objectId}}'>
-  <view class='float_left img_box'>
-    <image src='{{item.couse_id.img}}'></image>
+    收藏的老师
   </view>
-  <view class='float_left left20'>
-    <view><text  class='font36'>{{item.couse_id.user_name}}</text> <text class='font_color_main font24 left20'>{{item.couse_id.unit_price}}/h</text></view>
-    <view class='font26 font_color999 top20'><text  wx:for="{{item.couse_id.can_teached}}" wx:for-item="couse" wx:key="index">{{couse}}</text></view>     
-    <view class='font26 font_color999 top10'>
-      <text>{{item.couse_id.school}}</text>
-      <text class='special' hidden='{{item.couse_id.is[0]==0}}'>211</text>
-      <text class='special' hidden='{{item.couse_id.is[1]==0}}'>985</text>
+  <view class='teacher_list clear' wx:for="{{teacher_list}}" wx:for-item="item" bindtap='toNext' data-index='{{item.couse_id.objectId}}'>
+    <view class='float_left img_box'>
+      <image src='{{item.couse_id.img}}'></image>
+    </view>
+    <view class='float_left left20'>
+      <view><text  class='font36'>{{item.couse_id.user_name}}</text> <text class='font_color_main font24 left20'>{{item.couse_id.unit_price}}/h</text></view>
+      <view class='font26 font_color999 top20'><text  wx:for="{{item.couse_id.can_teached}}" wx:for-item="couse" wx:key="index">{{couse}}</text></view>     
+      <view class='font26 font_color999 top10'>
+        <text>{{item.couse_id.school}}</text>
+        <text class='special' hidden='{{item.couse_id.is[0]==0}}'>211</text>
+        <text class='special' hidden='{{item.couse_id.is[1]==0}}'>985</text>
+      </view>
+    </view>
+    <!-- <view class='float_right text_center top10 right20'>
+      <view><text class='iconfont icon-xin'></text> <text class='font24 font_color999'>取消收藏</text></view> 
+    </view> -->
+  </view>
+  </view>
+  <view wx:if='{{!s_isnull}}'>
+  <view>
+    收藏的家长
+  </view>
+  <view class='teacher_list clear' wx:for="{{student_list}}" wx:for-item="item" bindtap='toNext' data-index='student_{{item.couse_id.objectId}}'>
+    <view class='float_left img_box'>
+      <image src='{{item.couse_id.img}}'></image>
+    </view>
+    <view class='float_left left20'>
+      <view><text  class='font36'>{{item.couse_id.user_name}}</text> <text class='font_color_main font24 left20'>{{item.couse_id.unit_price}}/h</text>
+      </view>
+      <view class='font26 font_color999 top20'>
+        <text  wx:for="{{item.couse_id.need}}" wx:for-item="couse" wx:key="index">{{couse}}</text>
+      </view>
+      
+      <view class='font26 font_color999 top10'>
+        <text>{{item.couse_id.school}}</text>
+      </view>
     </view>
   </view>
-   <!-- <view class='float_right text_center top10 right20'>
-    <view><text class='iconfont icon-xin'></text> <text class='font24 font_color999'>取消收藏</text></view> 
-  </view> -->
-</view>
-<view>
-  收藏的家长
-</view>
-<view class='teacher_list clear' wx:for="{{student_list}}" wx:for-item="item" bindtap='toNext' data-index='student_{{item.couse_id.objectId}}'>
-  <view class='float_left img_box'>
-    <image src='{{item.couse_id.img}}'></image>
   </view>
-  <view class='float_left left20'>
-    <view><text  class='font36'>{{item.couse_id.user_name}}</text> <text class='font_color_main font24 left20'>{{item.couse_id.unit_price}}/h</text>
-    </view>
-    <view class='font26 font_color999 top20'>
-      <text  wx:for="{{item.couse_id.need}}" wx:for-item="couse" wx:key="index">{{couse}}</text>
-    </view>
-    
-    <view class='font26 font_color999 top10'>
-      <text>{{item.couse_id.school}}</text>
-    </view>
-  </view>
+  
 </view>

@@ -127,9 +127,23 @@ Page({
   },
   //点击购买弹出框
   buy:function(){
-    this.setData({
-      showModal:true,
-    })
+    let current=Bmob.User.current();
+    if(current.identity=='teacher'){
+      wx.showModal({
+        title: '提示',
+        content: '老师不可以购买课程',
+      })
+    }else if(current.identity=='children'){
+      this.setData({
+        showModal: true,
+      })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '身份认证后可购买此课程',
+      })
+    }
+    
   },
   //课程选择方法
   couse_select:function(e){

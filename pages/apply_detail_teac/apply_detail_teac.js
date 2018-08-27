@@ -150,7 +150,7 @@ Page({
   call:function(e){
     let phone_num=e.currentTarget.dataset.phone
     wx.makePhoneCall({
-      phoneNumber: phone_num, //仅为示例，并非真实的电话号码
+      phoneNumber: phone_num, 
       success:function(){
 
       }

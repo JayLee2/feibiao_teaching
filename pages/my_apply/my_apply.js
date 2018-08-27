@@ -12,7 +12,7 @@ Page({
   },
   to_apply_detail: (e) => {
     wx.navigateTo({
-      url: '../student_detail/student_detail?id='+e.currentTarget.dataset.index,
+      url: '../student_detail/student_detail?id='+e.currentTarget.dataset.index+'&origin=apply',
     })
   },
 

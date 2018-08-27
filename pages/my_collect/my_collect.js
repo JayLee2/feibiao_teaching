@@ -8,7 +8,8 @@ Page({
   data: {
     teacher_list: [],
     student_list: [],
-
+    t_isnull: false,
+    s_isnull:false,
   },
 
   /**
@@ -23,9 +24,16 @@ Page({
     //下面参数为Pointer字段名称， 可以一次查询多个表
     query.include('user_id','couse_id' )
     query.find().then(res => {
-      that.setData({
-        teacher_list:res,
-      })
+      if(res.length==0){
+        that.setData({
+          t_isnull:true,
+        })
+      }else{
+        that.setData({
+          teacher_list: res,
+        })
+      }
+      
       console.log(res)
     }).catch(err => {
       console.log(err)
@@ -35,9 +43,16 @@ Page({
     s_query.equalTo("user_id", "==", current.objectId);
     s_query.include('couse_id', 'user_id')
     s_query.find().then(res => {
-      that.setData({
-        student_list: res,
-      })
+      if(res.length==0){
+        that.setData({
+          s_isnull:true
+        })
+      }else{
+        that.setData({
+          student_list: res,
+        })
+      }
+      
       console.log(res)
     }).catch(err => {
       console.log(err)

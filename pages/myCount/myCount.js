@@ -11,6 +11,8 @@ Page({
     list_student:[],//存放学生
     show_teacher:true,
     show_student:false,
+    s_isnull:true,
+    t_isnull:true,
   },
 
   /**
@@ -22,6 +24,10 @@ Page({
     console.log(current)
     if(!current.identity){
       //没认证
+      that.setData({
+        s_isnull:true,
+        t_isnull:true,
+      })
     }else if(current.identity=='teacher'){
       //是老师
       const query = Bmob.Query("buy_record");
@@ -31,11 +37,19 @@ Page({
       query.include('seller')      
       query.find().then(res => {
         console.log(res)
-        that.setData({
-          list_student:res,
-          show_student:true,
-          show_teacher:false,
-        })
+        if(res.length==0){
+          that.setData({
+            t_isnull:true,
+          })
+        }else{
+          that.setData({
+            list_student: res,
+            show_student: true,
+            show_teacher: false,
+            t_isnull:false,
+          })
+        }
+        
       });
     }else{
       //是家长
@@ -46,11 +60,19 @@ Page({
       query.include('seller')
       query.find().then(res => {
         console.log(res)
-        that.setData({
-          list: res,
-          show_student: false,
-          show_teacher: true,
-        })
+        if(res.length==0){
+          that.setData({
+            s_isnull:true,
+          })
+        }else{
+          that.setData({
+            list: res,
+            show_student: false,
+            show_teacher: true,
+            s_isnull:false,
+          })
+        }
+        
       });
     }
   },

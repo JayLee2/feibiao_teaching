@@ -234,7 +234,7 @@ Page({
         queryAdd.set("diploma", that.data.diploma)
         queryAdd.set("school", that.data.school);
         queryAdd.set("phone", getApp().globalData.User.phone);
-        queryAdd.set("major", getApp().globalData.User.major);
+        // queryAdd.set("major", getApp().globalData.User.major);
         queryAdd.set("is_show", '0');
         queryAdd.set("is", [that.data.is211, that.data.is985, getApp().globalData.User.authorize]);
         queryAdd.set("by_collect",0);
