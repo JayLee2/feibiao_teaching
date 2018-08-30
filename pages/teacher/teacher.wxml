@@ -11,7 +11,7 @@
   </view>
   <view class='nocontenttext'>没有内容</view>
 </view>
-<view wx:else>
+<view wx:else class='alllist'>
  <view class='teacher_list clear' wx:for="{{use_list}}" wx:for-item="item" bindtap='toNext' data-index='{{item.objectId}}' wx:key="{{index}}">
   <view class='list_top font22'>
     教师编号：{{item.objectId}}
