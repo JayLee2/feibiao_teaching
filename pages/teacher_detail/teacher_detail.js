@@ -22,7 +22,8 @@ Page({
     hasCount:false, //是否显示课程数量
     price:0,    //总价
     count:6,    //课程总数
-    focus:false //自动获取焦点
+    focus:false, //自动获取焦点
+    phone:'',
   },
 
   /**
@@ -35,7 +36,8 @@ Page({
     query.get(id).then(res => {
       that.setData({
         detail:res,
-        by_collect: res.by_collect
+        by_collect: res.by_collect,
+        phone: res.phone,
       })
       that.compute_price();
       
@@ -354,11 +356,6 @@ Page({
                 console.log(err)
               })
             });
-
-
-
-
-
           }
         }
       })
@@ -368,6 +365,15 @@ Page({
         title: '认证后再操作',
       })
     }
-    
-  }
+  },
+
+  //联系老师点击功能
+  makephonecall:function()
+  {
+    var that = this;
+    wx.makePhoneCall({
+      phoneNumber: that.data.phone
+    })
+  },
+
 })
