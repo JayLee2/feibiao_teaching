@@ -1,13 +1,17 @@
 <!--pages/my_wallect/my_wallect.wxml-->
-<view class='row'>
-  账户余额 <text class='font_color_main'>{{money_can}}</text>
-</view>
-<view class='row'>
-  冻结金额 <text class='font_color_main'>{{money_nocan}}</text>
+<view class='fristcontent'>
+  <view class='row'>
+     <view style='font-size:15px'>账户余额 </view>
+     <view class='moneycolor'>{{money_can}}</view>
+  </view>
+  <view class='row'>
+    <view style='font-size:15px'>冻结金额 </view>
+    <view class='moneycolor'>{{money_nocan}}</view>
+  </view>
 </view>
 <view class='viewinput'>
-   <input class='input' wx:if="{{xsprice==0}}" placeholder="自定义金额" type='number' bindinput='input_price' focus='{{focus}}'></input>
-   <input class='input' wx:else placeholder="自定义金额" type='number' value="{{xsprice}}" bindinput='input_price' focus='{{focus}}'></input>
+   <input class='input' wx:if="{{xsprice==0}}" placeholder="自定义金额" type='number' bindinput='input_price'></input>
+   <input class='input' wx:else placeholder="自定义金额" type='number' value="{{xsprice}}" bindinput='input_price'></input>
 </view>
 <view class="flex-wrp" style="flex-direction:row;">
 <view wx:for="{{packages}}" wx:for-item="item" wx:key='{{index}}'>

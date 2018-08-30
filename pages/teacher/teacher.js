@@ -85,7 +85,6 @@ Page({
           console.log('sssssssss')      
           return value.can_teached.indexOf(that.data.couse[e.detail.value]) != -1
         }
-        
       })
       console.log(new_list)
       that.setData({

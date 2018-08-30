@@ -15,11 +15,11 @@
       <view class='img_box float_left'>
         <image src='{{user_img}}'></image>
       </view>
-      <view class='float_left font26 font_color333 top85'>
-        欢迎您，{{user}}
+      <view class='float_left font26 font_color333' style='margin:60rpx 0 0 5px;'>
+        <view class='username'>欢迎您，{{user}}</view>
       </view>
     </view>
-    <view class='float_right font26 top85'>
+    <view class='float_right font26' style='margin-top:60rpx;'>
       {{address}}<text class='iconfont icon-msnui-pos font_color_main font36'></text>
     </view>
   </view>

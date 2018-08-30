@@ -2,7 +2,10 @@
 <view class='teacher_list clear' wx:for="{{teacher_list}}" wx:for-item="item" catchtap='look_detail' data-state='{{item.state}}' wx:key="{{index}}" data-index='{{item.objectId}}'>
   <view class='list_top font22 flex font_color999'>
     <view>信息编号：{{item.objectId}}</view>
-    <view class='inline' catchtap='show_list'><switch checked='{{item.is_show==1?true:false}}' bindchange='show_list' data-index='{{item.objectId}}'></switch></view>
+    <view class='inline' catchtap='show_list'>
+      <switch checked='{{item.is_show==1?true:false}}' bindchange='show_list' data-index='{{item.objectId}}'></switch>
+      <text style='font-size:9px;margin:0px 0 0 -5px'>（是否可以被找到）</text>
+    </view>
   </view>
   <view class='float_left img_box'>
     <image src='{{user_img}}'></image>

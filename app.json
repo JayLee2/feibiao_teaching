@@ -32,6 +32,7 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "selectedColor":"#7ec6c4",
     "list": [
       {
         "selectedIconPath": "img/index2.png",

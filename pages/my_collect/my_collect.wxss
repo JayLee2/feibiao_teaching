@@ -1,4 +1,8 @@
 /* pages/my_collect/my_collect.wxss */
+.listfit
+{
+  padding: 10px 10px 0;
+}
 .img_box{
   width: 150rpx;
   height: 150rpx;
@@ -17,7 +21,10 @@
 }
 .teacher_list{
   padding:20rpx;
-  border-bottom: 7rpx solid #ccc;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+  margin: 0 0 10px 0;
 }
 .special{
   border: 1px solid #7ec6c3;
@@ -49,4 +56,12 @@
   margin: auto;
   width: 100rpx;
   height: 100rpx;
+}
+.historyfit
+{
+  line-height: 30px;
+  border-bottom: 1px solid#ccc;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 600;
 }

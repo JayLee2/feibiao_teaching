@@ -117,16 +117,6 @@ Page({
   onLoad: function () {
     that=this;
     app.updata().then(function(data){
-      wx.getSetting({
-        success(res) {
-          console.log(res.authSetting['scope.userLocation'])
-          if (!res.authSetting['scope.userLocation']) {
-            wx.openSetting({
-
-            })
-          }
-        }
-      })
       that.setData({
         user:data.userInfo,
         address:data.province
@@ -134,11 +124,10 @@ Page({
     });
     let current = Bmob.User.current();
     console.log(current)
-    if (!current.authorize){
+    if (current==null){
       that.setData({
         authorize:false,
       })
-      
     }else{
       wx.getUserInfo({
         success(e){

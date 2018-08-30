@@ -11,7 +11,6 @@ Page({
     money_nocan:0,
     price:0,
     xsprice:0,
-    focus:true,    
     packages: [
       { text: "0.01", count: 0.01, isSelect: '' },
       { text: "200", count: 200, isSelect: '' },
@@ -30,10 +29,13 @@ Page({
     let current=Bmob.User.current();
     const query=Bmob.Query('_User');
     query.get(current.objectId).then(res=>{
-      that.setData({
-        money_can:res.money_can,
-        money_nocan: res.money_nocan        
-      })
+      if(res.money_can ==null && res.money_nocan ==null){}
+      else{
+        that.setData({
+          money_can: res.money_can,
+          money_nocan: res.money_nocan
+        })
+      }
     })
   },
   //输入充值金值的方法
@@ -45,7 +47,6 @@ Page({
     that.setData({      
       price: count,
       xsprice:count,
-      focus:true,
     })
     }
     else{
@@ -56,7 +57,6 @@ Page({
       that.setData({
         price: 0,
         xsprice: count,
-        focus: true,
       })
     }
     

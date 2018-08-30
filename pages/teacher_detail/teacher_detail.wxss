@@ -84,7 +84,7 @@
   text-align: center;
 }
 .bottom .buy{
-  width: 50%;
+  width: 25%;
   background: #9fd4d2;
   color: #fff;
   text-align: center;
@@ -216,4 +216,22 @@ input-holder {
 }
 .count{
   text-indent: 10rpx;
+}
+
+.iconsize
+{
+  font-size: 16px
+}
+.makephonecall
+{
+  width: 25% !important;
+  background: #9fd4d2 !important;
+  color: #fff !important;
+  text-align: center !important;
+  border-right: 1px solid#fff;
+}
+.phoneteacher
+{
+  margin-left: 5px;
+  font-size: 12px;
 }
