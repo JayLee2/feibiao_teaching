@@ -22,8 +22,8 @@ swiper image{
   float: right;
 }
 .img_box{
-  width: 120rpx;
-  height: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -84,4 +84,12 @@ swiper image{
   width: 410rpx;
   height: 520rpx;
   z-index: 10;  
+}
+.username
+{
+  display: inline-block;
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
