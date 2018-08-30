@@ -208,8 +208,8 @@ input-holder {
 .couse
 {
   display: inline-block;
-  margin: 5px 0 5px 5px;
-  border: 1px solid#dddd;
+  margin: 5px 5px 5px 0px;
+  border: 1px solid#ddd;
   border-radius: 4px ;
-  padding: 4px 8px;
+  padding: 2px 4px;
 }
