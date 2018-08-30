@@ -16,7 +16,7 @@
         <image src='{{user_img}}'></image>
       </view>
       <view class='float_left font26 font_color333' style='margin:60rpx 0 0 5px;'>
-        欢迎您，<view class='username'>{{user}}</view>
+        <view class='username'>欢迎您，{{user}}</view>
       </view>
     </view>
     <view class='float_right font26' style='margin-top:60rpx;'>
