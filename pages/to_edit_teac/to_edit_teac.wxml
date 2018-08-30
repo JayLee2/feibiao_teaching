@@ -3,12 +3,17 @@
   <view class='every_title'>
     教师情况
   </view>
-  <view> <text>学籍情况： </text><input value='{{diploma}}' bindblur='bind_diploma' ></input> </view>
+  <view> 
+    <text>学籍情况： </text>
+    <picker class='inline' range='{{diplomas}}' bindchange='bind_diploma'>
+      <input value='{{diploma}}' disabled='true'></input>     
+    </picker>
+  </view>
   <view> 
     <text>就读学校： </text>
-    <!-- <picker mode='selector' range='{{schools}}' class='inline'> -->
-     <input value='{{school}}' bindblur='bind_school'></input>
-    <!-- </picker> -->
+     <picker mode='selector' range='{{schools}}' class='inline' bindchange='bind_school'> 
+      <input value='{{school}}' disabled='true'></input>
+     </picker> 
   </view>
   <checkbox-group bindchange="change_check">
   <view class='special_row'> 

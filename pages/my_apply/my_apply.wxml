@@ -17,3 +17,6 @@
   <view class='black_box' hidden='{{item.is_appr?true:false}}'>不合适</view>
 </view>
 
+<view class='kong' wx:if='{{isnull}}'>
+  <image src='../../img/null.png'></image>
+</view>

@@ -28,6 +28,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that=this;
     let id = options.id;
     let origin;
     if(options.origin){
@@ -36,7 +37,6 @@ Page({
         origin:'apply'
       })
     }
-    that = this;
     const query = Bmob.Query('user_student');
     query.include('user_id')
     query.get(id).then(res => {

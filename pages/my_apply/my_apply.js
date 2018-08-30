@@ -8,6 +8,7 @@ Page({
    */
   data: {
     list: [],
+    isnull: false,
     has_data:true
   },
   to_apply_detail: (e) => {
@@ -45,6 +46,11 @@ Page({
     query.include('couse_id')
     query.find().then(res => {
       console.log(res)
+      if(res.length==0){
+        that.setData({
+          isnull:true,
+        })
+      }
       if (res.length > 0) {
         that.setData({
           list: res,

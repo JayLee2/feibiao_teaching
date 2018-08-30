@@ -3,7 +3,12 @@
   <view class='every_title'>
     学生情况
   </view>
-  <view> <text>年级情况： </text><input bindblur='bind_grade' value='{{detail.grade}}'></input> </view>
+  <view> 
+    <text>年级情况： </text>
+    <picker class='inline' range='{{classes}}' bindchange='bind_grade'>
+      <input value='{{detail.grade}}' disabled='true'></input>     
+    </picker>
+  </view>
   <view> <text>知识掌握： </text><radio-group bindchange="bind_knowledge_degree"> <radio color='#9fd4d2' value='一般' checked='true'>一般</radio>  <radio color='#9fd4d2' value='较差'>较差</radio></radio-group> </view>
 
     <checkbox-group bindchange="change_weak">

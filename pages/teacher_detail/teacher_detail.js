@@ -307,45 +307,23 @@ Page({
             queryCurrent2.set('id', publisher) //需要修改的objectId
             queryCurrent2.set('money_nocan', parseInt(publisher_money) + parseInt(that.data.price))
 
-            //添加一条购买记录
-            const pointer1 = Bmob.Pointer('user_teacher')
-            const poiID1 = pointer1.set(couse_id)
-            const pointer2 = Bmob.Pointer('_User')
-            const poiID2 = pointer2.set(current.objectId)
-            const queryBuyRecord = Bmob.Query('buy_record');
-            //如果表中有着一条记录累加
-            const queryHas = Bmob.Query("buy_record");
-            queryHas.equalTo("seller", "==", poiID1);
-            queryHas.equalTo("buyer", "==", poiID2);
+            //数据库中没存
+            queryBuyRecord.set("buyer", poiID2)
+            queryBuyRecord.set("seller", poiID1)
+            queryBuyRecord.set("num", that.data.count)
+            queryBuyRecord.set('state', '0')   //表示状态为进行中  
 
-            queryHas.find().then(res => {
-              console.log(res);
-              if (res.length > 0) {
-                //说明数据库中有存，执行累加方法
-                queryBuyRecord.set('id', res[0].objectId) //需要修改的objectId
-                queryBuyRecord.set('num', res[0].num + that.data.count)
-                queryBuyRecord.set('state', '进行中')
 
-              } else {
-                //数据库中没存
-                queryBuyRecord.set("buyer", poiID2)
-                queryBuyRecord.set("seller", poiID1)
-                queryBuyRecord.set("num", that.data.count)
-                queryBuyRecord.set('state', '0')   //表示状态为进行中          
-              }
-              queryBuyRecord.save().then(res => {
-                console.log(res)
-                //添加记录后在改变金钱
-                queryCurrent.save().then(res => {
-                  queryCurrent2.save().then(res => {
-                    wx.showToast({
-                      title: '购买成功',
-                    });
-                    that.setData({
-                      showModal: false
-                    })
-                  }).catch(err => {
-                    console.log(err)
+            queryBuyRecord.save().then(res => {
+              console.log(res)
+              //添加记录后在改变金钱
+              queryCurrent.save().then(res => {
+                queryCurrent2.save().then(res => {
+                  wx.showToast({
+                    title: '购买成功',
+                  });
+                  that.setData({
+                    showModal: false
                   })
                 }).catch(err => {
                   console.log(err)
@@ -353,12 +331,9 @@ Page({
               }).catch(err => {
                 console.log(err)
               })
-            });
-
-
-
-
-
+            }).catch(err => {
+              console.log(err)
+            })
           }
         }
       })

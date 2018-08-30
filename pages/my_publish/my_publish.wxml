@@ -11,7 +11,7 @@
     <view class='font36'>课时费：{{item.unit_price}}/h</view>
     <view class='font26 font_color999 top20 couse_box float_left left20' wx:for="{{item.can_teached}}" wx:key="index" wx:for-item="couse">{{couse}}</view>
     <view class='clear'></view>
-    <view class='font26 font_color999 top10'>
+    <view class='font26 font_color999 top10 addr'>
       <text>{{item.teach_addr}}</text>
     </view>
   </view>
