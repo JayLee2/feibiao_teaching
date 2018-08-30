@@ -2,10 +2,8 @@
   <image src='../../img/null.png'></image>
 </view>
 <view wx:if='{{!t_isnull||!s_isnull}}'>
-  <view wx:if='{{!t_isnull}}'>
-<view>
-    收藏的老师
-  </view>
+  <view wx:if='{{!t_isnull}}'  class='listfit'>
+<view class='historyfit'>收藏的老师</view>
   <view class='teacher_list clear' wx:for="{{teacher_list}}" wx:for-item="item" bindtap='toNext' data-index='{{item.couse_id.objectId}}' wx:key="{{index}}">
     <view class='float_left img_box'>
       <image src='{{item.couse_id.img}}'></image>
@@ -24,10 +22,8 @@
     </view> -->
   </view>
   </view>
-  <view wx:if='{{!s_isnull}}'>
-  <view>
-    收藏的家长
-  </view>
+  <view wx:if='{{!s_isnull}}' class='listfit'>
+  <view class='historyfit'>收藏的家长</view>
   <view class='teacher_list clear' wx:for="{{student_list}}" wx:for-item="item" bindtap='toNext' data-index='student_{{item.couse_id.objectId}}' wx:key="{{index}}">
     <view class='float_left img_box'>
       <image src='{{item.couse_id.img}}'></image>
