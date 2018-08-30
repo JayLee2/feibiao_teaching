@@ -134,7 +134,7 @@ Page({
     });
     let current = Bmob.User.current();
     console.log(current)
-    if (!current.authorize){
+    if (current==null){
       that.setData({
         authorize:false,
       })
