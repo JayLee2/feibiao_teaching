@@ -10,8 +10,8 @@
   </view>
 </view>
 <view class='viewinput'>
-   <input class='input' wx:if="{{xsprice==0}}" placeholder="自定义金额" type='number' bindinput='input_price' focus='{{focus}}'></input>
-   <input class='input' wx:else placeholder="自定义金额" type='number' value="{{xsprice}}" bindinput='input_price' focus='{{focus}}'></input>
+   <input class='input' wx:if="{{xsprice==0}}" placeholder="自定义金额" type='number' bindinput='input_price'></input>
+   <input class='input' wx:else placeholder="自定义金额" type='number' value="{{xsprice}}" bindinput='input_price'></input>
 </view>
 <view class="flex-wrp" style="flex-direction:row;">
 <view wx:for="{{packages}}" wx:for-item="item" wx:key='{{index}}'>

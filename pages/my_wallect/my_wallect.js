@@ -11,7 +11,6 @@ Page({
     money_nocan:0,
     price:0,
     xsprice:0,
-    focus:true,    
     packages: [
       { text: "0.01", count: 0.01, isSelect: '' },
       { text: "200", count: 200, isSelect: '' },
@@ -48,7 +47,6 @@ Page({
     that.setData({      
       price: count,
       xsprice:count,
-      focus:true,
     })
     }
     else{
@@ -59,7 +57,6 @@ Page({
       that.setData({
         price: 0,
         xsprice: count,
-        focus: true,
       })
     }
     
