@@ -36,6 +36,7 @@ Page({
     const queryFind = Bmob.Query("user_teacher");
     queryFind.equalTo("is_show", "==", '1');
     queryFind.find().then(res => {
+      console.log(res)
       that.setData({
         teacher_list:res,
         use_list:res,
