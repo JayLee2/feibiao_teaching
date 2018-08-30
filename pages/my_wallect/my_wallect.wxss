@@ -20,10 +20,9 @@
   color: #333;
 }
 .row{
-  border-bottom: 4rpx solid #9fd4d2;
-  padding-bottom: 10rpx;
   width: 90%;
-  margin:10rpx auto
+  margin:10rpx auto;
+  line-height: 30px;
 }
 .package{
   padding: 10rpx;
@@ -69,5 +68,17 @@
   height: 82rpx;
   margin-left: 20rpx;
   margin-right: 20rpx;
-  
+}
+.fristcontent
+{
+  background: #202a36;
+  margin: 10px;
+  border-radius: 4px;
+  color:#fff;
+  padding: 10px;
+}
+.moneycolor
+{
+  color:#f30;
+  text-align: right;
 }
