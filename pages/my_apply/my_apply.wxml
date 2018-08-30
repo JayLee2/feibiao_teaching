@@ -1,6 +1,6 @@
 <!--pages/my_apply/my_apply.wxml-->
 <!--pages/apply_list/apply_list.wxml-->
-<view  wx:for="{{list}}" wx:for-item="item" bindtap='toNext' class='teacher_list clear {{item.is_appr?"":"transpant"}}' bindtap='{{item.is_appr?"to_apply_detail":""}}' data-index='{{item.couse_id.objectId}}' wx:if="{{has_data}}">
+<view  wx:for="{{list}}" wx:for-item="item" bindtap='toNext' class='teacher_list clear {{item.is_appr?"":"transpant"}}' bindtap='{{item.is_appr?"to_apply_detail":""}}' data-index='{{item.couse_id.objectId}}' wx:if="{{has_data}}" wx:key="{{index}}">
   <view class='float_left img_box'>
     <image src='{{item.couse_id.img}}'></image>
   </view>
