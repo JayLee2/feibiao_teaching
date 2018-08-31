@@ -82,3 +82,60 @@
   color:#f30;
   text-align: right;
 }
+.moneycantcolor
+{
+  color:#999;
+  text-align: right;
+}
+.button
+{
+  display: inline-block;
+  width: 25%;
+  margin: 0 12.5%;
+  background: #2ca879;
+  font-size: 15px;
+  line-height: 30px;
+  color: #fff;
+}
+.negative
+{
+  background: #ddd !important;
+}
+.mask
+{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 100;
+}
+.withdraw
+{
+  text-align: center;
+  position: fixed;
+  top:20%;
+  left: 10%;
+  width: 80%;
+  z-index: 101;
+  border:1px solid#fff;
+  border-radius: 4px;
+  background: #fff;
+  padding: 10px;
+}
+.withdrawtext
+{
+  text-align:left;
+  font-size:15px;
+  border-bottom: 1px solid#ddd;
+  line-height: 25px;
+}
+.input_withdraw
+{
+  padding: 10px 0 ;
+  line-height: 30px;
+  border: 1px solid#2ca879;
+  border-radius: 4px;
+  margin: 20px 0 ;
+}

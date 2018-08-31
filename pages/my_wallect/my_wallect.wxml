@@ -6,7 +6,7 @@
   </view>
   <view class='row'>
     <view style='font-size:15px'>冻结金额 </view>
-    <view class='moneycolor'>{{money_nocan}}</view>
+    <view class='moneycantcolor'>{{money_nocan}}</view>
   </view>
 </view>
 <view class='viewinput'>
@@ -28,4 +28,14 @@
 <view class='flex flex_bottom'>
   <view bindtap='ret'>提现</view>
   <view bindtap='buy'>充值</view>
+</view>
+
+<view class='mask' style='display:{{withdraw}}' bindtap='hidden'></view>
+<view class='withdraw' style='display:{{withdraw}}'>
+ <view class='withdrawtext'>提现</view>
+ <view class='input_withdraw'><input placeholder='请输入提现金额' type='number' class='inputmoney' placeholder-style='font-size:15px' bindinput="bindmoneyInput" value='{{inputValue}}'></input></view>
+ <view>
+    <button class='button negative' bindtap='hidden'>取消</button>
+    <button class='button'bindtap="submit">确定</button>
+ </view>
 </view>
