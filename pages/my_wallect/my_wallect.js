@@ -11,6 +11,9 @@ Page({
     money_nocan:0,
     price:0,
     xsprice:0,
+
+    withdraw:"none",
+    inputValue:"",
     packages: [
       { text: "0.01", count: 0.01, isSelect: '' },
       { text: "200", count: 200, isSelect: '' },
@@ -172,38 +175,81 @@ Page({
   
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  ret:function()
+  {
+    var that = this;
+
+    if (that.data.money_can == 0)
+    {
+      wx.showToast({
+        title: '当前余额为0',
+        icon:"none",
+      })
+    }else{
+      that.setData({
+        withdraw:"block",
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  hidden:function()
+  {
+    var that = this;
+    that.setData({
+      withdraw: "none",
+    })
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+  bindmoneyInput:function(e)
+  {
+    var that = this;
+    this.setData({
+      inputValue: e.detail.value
+    });
+
+    if (that.data.inputValue>that.data.money_can){
+      that.setData({
+        inputValue: that.data.money_can
+      });
+      wx.showToast({
+        title: '已超过最大金额',
+        icon:'none'
+      })
+    }
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
+  submit:function()
+  {
+    var that = this;
+    let current = Bmob.User.current();
+    var id = current.objectId;
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    if (that.data.inputValue <=50)
+    {
+      wx.showToast({
+        title: '最低50元取现',
+        icon:'none',
+      })
+    }else{
+      const query = Bmob.Query('_User');
+      query.get(id).then(res => {
+        res.set('money_can', that.data.money_can - that.data.inputValue)
+        res.save()
+      }).then(res => {
+        that.hidden();
+        that.onLoad();
+        wx.showToast({
+          title: '提现成功',
+          icon: "none"
+        });
+        var money = parseInt(that.data.inputValue, 10)
+        const query = Bmob.Query('withdraw');
+        const pointer = Bmob.Pointer('_User')
+        const poiID = pointer.set(id);
+        query.set("money", money);
+        query.set("parent", poiID);
+        query.save();
+      })
+    }
   }
 })
