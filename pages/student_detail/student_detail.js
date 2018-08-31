@@ -28,6 +28,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that=this;
     let id = options.id;
     let origin;
     if(options.origin){
@@ -36,7 +37,6 @@ Page({
         origin:'apply'
       })
     }
-    that = this;
     const query = Bmob.Query('user_student');
     query.include('user_id')
     query.get(id).then(res => {
@@ -158,6 +158,14 @@ Page({
   },
   //发起申请
   apply: function (e) {
+    if (getApp().globalData.User.identity == 'children') {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '申请失败，只有老师身份才可以向家长发起申请',
+      })
+      return;
+    } 
     let current = Bmob.User.current().objectId;
     let result;
     const queryApply = Bmob.Query("user_teacher");
@@ -165,15 +173,8 @@ Page({
     queryApply.find().then(res => {
       console.log(res)
       result = res.length;
-      console.log(result)
-      if (getApp().globalData.User.identity == 'children') {
-        wx.showModal({
-          title: '提示',
-          showCancel: false,
-          content: '申请失败，只有老师身份才可以向家长发起申请',
-        })
-        return;
-      } else if (result == 0) {
+      console.log(getApp().globalData.User.identity)
+     if (result == 0) {
         wx.showModal({
           title: '提示',
           showCancel: false,

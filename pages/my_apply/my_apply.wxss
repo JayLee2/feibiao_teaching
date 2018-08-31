@@ -21,7 +21,10 @@
 .teacher_list{
   position: relative;
   padding:20rpx;
-  border-bottom: 7rpx solid #ccc;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 0 10px 0;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
 }
 .special{
   border: 1px solid #7ec6c3;
@@ -176,6 +179,27 @@ input-holder {
   text-indent: 10rpx;
 }
 
+
+
+
+.kong{
+  width: 100%;
+  height: 100%;
+  background: #eee;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.kong image{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100rpx;
+  height: 100rpx;
+}
 .nocontenticon
 {
   color:#f6d725;
@@ -196,4 +220,17 @@ input-holder {
 .alllist
 {
   padding: 10px;
+}
+
+.allcontent
+{
+  padding: 10px;
+}
+.couse
+{
+  display: inline-block;
+  margin: 5px 5px 5px 0px;
+  border: 1px solid#ddd;
+  border-radius: 4px ;
+  padding: 2px 4px;
 }

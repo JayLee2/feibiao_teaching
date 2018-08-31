@@ -4,7 +4,7 @@
     <view>信息编号：{{item.objectId}}</view>
     <view class='inline' catchtap='show_list'>
       <switch checked='{{item.is_show==1?true:false}}' bindchange='show_list' data-index='{{item.objectId}}'></switch>
-      <text style='font-size:9px;margin:0px 0 0 5px'>（是否可以被找到）</text>
+      <text style='font-size:9px;margin:0px 0 0 -5px'>（是否可以被找到）</text>
     </view>
   </view>
   <view class='float_left img_box'>
@@ -14,7 +14,7 @@
     <view class='font36'>课时费：{{item.unit_price}}/h</view>
     <view class='font26 font_color999 top20 couse_box float_left left20' wx:for="{{item.can_teached}}" wx:key="index" wx:for-item="couse">{{couse}}</view>
     <view class='clear'></view>
-    <view class='font26 font_color999 top10'>
+    <view class='font26 font_color999 top10 addr'>
       <text>{{item.teach_addr}}</text>
     </view>
   </view>

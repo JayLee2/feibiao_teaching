@@ -88,3 +88,8 @@ page{
   width: 100rpx;
   height: 100rpx;
 }
+.addr{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

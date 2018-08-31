@@ -139,14 +139,127 @@ Page({
       if(res.length>0){
         that.setData({
           detail: res[0],
-          objectId: options.objectId
-        })
+          objectId: options.objectId,
+          unit: res[0].unit_price,
+        });
+        this.compute_price();
+        
       }
       
     }).catch(err => {
       console.log(err)
     })
   },
+  wxpay: function (e) {
+    let current = Bmob.User.current();//当前用户
+    let publisher = e.currentTarget.dataset.index;//发布者
+    let couse_id = e.currentTarget.dataset.id;//课程编号
+    //判断是否实名认证
+    if (current.identity) {
+      //让用户确认是否为误触
+
+
+      let publisher_money;
+      const query = Bmob.Query('_User');
+      query.get(publisher).then(res => {
+        console.log(res)
+        publisher_money = res.money_nocan
+      }).catch(err => {
+        console.log(err)
+      })
+      wx.showModal({
+        title: '提示',
+        content: '你确定要购买此课程吗？',
+        success: function (ed) {
+          if (ed.confirm) {
+            //检查是否有余额
+            console.log(current.money_can, publisher_money)
+            if (current.money_can < that.data.price) {
+              wx.showToast({
+                title: '余额不足',
+                icon: 'none'
+              })
+            } else {
+              //如果有余额
+              console.log(parseInt(publisher_money) + parseInt(that.data.price))
+              const queryCurrent = Bmob.Query('_User');
+              queryCurrent.set('id', current.objectId) //需要修改的objectId
+              queryCurrent.set('money_can', parseInt(current.money_can) - parseInt(that.data.price))
+
+              const queryCurrent2 = Bmob.Query('_User');
+              queryCurrent2.set('id', publisher) //需要修改的objectId
+              queryCurrent2.set('money_nocan', parseInt(publisher_money) + parseInt(that.data.price))
+
+              //添加一条购买记录
+              const pointer1 = Bmob.Pointer('user_teacher')
+              const poiID1 = pointer1.set(couse_id)
+              const pointer2 = Bmob.Pointer('_User')
+              const poiID2 = pointer2.set(current.objectId)
+              const queryBuyRecord = Bmob.Query('buy_record');
+              //如果表中有着一条记录累加
+              const queryHas = Bmob.Query("buy_record");
+              queryHas.equalTo("seller", "==", poiID1);
+              queryHas.equalTo("buyer", "==", poiID2);
+              queryHas.equalTo("state", "==", '0');
+
+              queryHas.find().then(res => {
+                console.log(res);
+                if (res.length > 0) {
+                  //说明数据库中有存，执行累加方法
+                  queryBuyRecord.set('id', res[0].objectId) //需要修改的objectId
+                  queryBuyRecord.set('num', res[0].num + that.data.count)
+                  queryBuyRecord.set('state', '0')
+
+                } else {
+                  //数据库中没存
+                  queryBuyRecord.set("buyer", poiID2)
+                  queryBuyRecord.set("seller", poiID1)
+                  queryBuyRecord.set("num", that.data.count)
+                  queryBuyRecord.set('state', '0')   //表示状态为进行中          
+                }
+                //记录表里添加纪录
+                const queryRecord = Bmob.Query('record');
+                queryRecord.set("buyer", poiID2)
+                queryRecord.set("seller", poiID1)
+                queryRecord.set("num", that.data.count)
+                queryRecord.set('state', '0') //表示状态为进行中 
+                queryRecord.save().then()
+
+                queryBuyRecord.save().then(res => {
+                  console.log(res)
+                  //添加记录后在改变金钱
+                  queryCurrent.save().then(res => {
+                    queryCurrent2.save().then(res => {
+                      wx.showToast({
+                        title: '购买成功',
+                      });
+                      that.setData({
+                        showModal: false
+                      })
+                    }).catch(err => {
+                      console.log(err)
+                    })
+                  }).catch(err => {
+                    console.log(err)
+                  })
+                }).catch(err => {
+                  console.log(err)
+                })
+              });
+            }
+          } else if (ed.cancel) {
+
+          }
+        }
+      })
+    } else {
+      //没有认证
+      wx.showToast({
+        title: '认证后再操作',
+      })
+    }
+  },
+
   call:function(e){
     let phone_num=e.currentTarget.dataset.phone
     wx.makePhoneCall({

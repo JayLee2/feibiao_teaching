@@ -15,6 +15,7 @@ Page({
     class_plane:'',//课程安排
     sex:'',
     diploma_list:["专科","本科","硕士","博士"],
+    classes: ['一年级', '二年级', '三年级', '四年级', '五年级', '六年级', '初一', '初二', '初三','高一','高二','高三'],
     addr:'',
     other:'',
     diploma:'',
@@ -23,8 +24,10 @@ Page({
     addrs:''//但令存放地址
   },
   bind_grade:function(e){
+    var newObj=that.data.detail;
+    newObj.grade = that.data.classes[e.detail.value]
     this.setData({
-      grade: e.detail.value
+      detail: newObj
     })
   },
   bind_knowledge_degree:function(e){
@@ -83,7 +86,7 @@ Page({
   },
   publish:function(){
     let current = Bmob.User.current();//当前用户
-    let grade=this.data.grade;
+    let grade=this.data.detail.grade;
     let knowledge_degree = this.data.knowledge_degree;
     let weak = this.data.weak;
     let school = this.data.school;
@@ -95,7 +98,7 @@ Page({
     let other = this.data.other;
     if(grade==''){
       wx.showToast({
-        title: '请填写年纪情况',
+        title: '请填写年级情况',
         icon:'none',
       });
       return;

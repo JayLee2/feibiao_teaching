@@ -6,12 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      couse_data:[
-        {name:'新课试听(一节课)' ,count:1,time:'2018-08-08 20:09'},
-        { name: '套餐一(三节课)', count: 3, time: '2018-08-08 20:09' },
-        { name: '套餐二(六节课)', count: 6, time: '2018-08-08 20:09' },
-        { name: '自定义(二十节课)', count: 20, time: '2018-08-08 20:09' },
-      ],
+      couse_data:[],
       showModal: false,  //控制弹出框-续费
       showReturn:false,   //控制弹出框退款
       unit: 100,     //课程单价
@@ -30,29 +25,8 @@ Page({
       showModal: true,
     })
   },
-  //加减法
-  add:function(){
-    let count=this.data.count;
-    this.setData({
-      count:++count,
-    })
-    this.compute_price();
-  },
-  minus:function(){
-    let count = this.data.count;
-    if(count>0){
-      this.setData({
-        count: --count,
-      })
-    }
-    this.compute_price();
-  },
-  //计算价格的方法
-  compute_price: function () {
-    this.setData({
-      price: this.data.unit * this.data.count
-    })
-  },
+
+
   
   //输入课程数量的方法
   changeCount: function (e) {
@@ -60,7 +34,6 @@ Page({
     this.setData({
       count: count * 2,
     })
-    this.compute_price()
   },
   /**
        * 弹出框蒙层截断touchmove事件
@@ -105,53 +78,18 @@ Page({
   ret_onConfirm: function () {
     this.ret_hideModal();
   },
-  /**
-  * 隐藏模态对话框
-  */
-  ret_hideModal: function () {
-    this.setData({
-      showReturn: false
-    });
-  },
-  //加减法
-  ret_add: function () {
-    let count = this.data.ret_count;
-    let max=this.data.all_count;
-    if(count<max){
-      this.setData({
-        ret_count: ++count,
-      })
-    }
-    this.ret_compute_price();
-  },
-  ret_minus: function () {
-    let count = this.data.ret_count;
-    if (count > 0) {
-      this.setData({
-        ret_count: --count,
-      })
-    }
-    this.ret_compute_price();
-  },
-  //计算价格的方法
-  ret_compute_price: function () {
-    this.setData({
-      ret_price: this.data.unit * this.data.ret_count
-    })
-  },
-  ret_all:function(){
-    let all_count=this.data.all_count;
-    this.setData({
-      ret_count:all_count
-    })
-    this.ret_compute_price()
-  },
+
+
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that=this;
-    let id=options.id;
+    let id = options.id;
+    let seller = options.seller;
+    let buyer=Bmob.User.current().objectId;
+    console.log(options)
     const query = Bmob.Query('buy_record');
     query.include('seller')
     query.get(id).then(res => {
@@ -162,9 +100,42 @@ Page({
     }).catch(err => {
       console.log(err)
     })
-    this.compute_price();  
+    const record=Bmob.Query('record');
+    record.equalTo('seller','==',seller);
+    record.equalTo('buyer','==',buyer);
+    record.find().then(res=>{
+      console.log(res);
+      that.setData({
+        couse_data:res,
+      })
+    })
   },
+  finish(e){
+    let id=e.currentTarget.dataset.index;
+  
+    wx.showModal({
+      title: '提示',
+      content: '确认要完成该课程吗,',
+      success(ed){
+        if(ed.cancel){
 
+        }else if(ed.confirm){
+          const query = Bmob.Query('buy_record');
+          query.set('id', id) //需要修改的objectId
+          query.set('state', '1')
+          query.save().then(res => {
+            console.log(res);
+            wx.navigateTo({
+              url: '../myCount/myCount',
+            })
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+      }
+    })
+   
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

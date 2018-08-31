@@ -8,6 +8,7 @@ Page({
    */
   data: {
     diploma:'',//学历
+    diplomas:['本科','硕士','博士','双学位'],
     school:'',
     be_good_like:'',//擅长科目
     self_introduction:'',
@@ -53,22 +54,22 @@ Page({
         console.log(err)
       })
     }
-    // //获取学校数据
-    // const queryFindAll = Bmob.Query("school");
-    // queryFindAll.find().then(res => {
-    //   var schoolArr=[];
-    //   res.forEach((value)=>{
-    //     schoolArr.push(value.school);
-    //   })
-    //   that.setData({
-    //     schools: schoolArr
-    //   })
-    // });
+    //获取学校数据
+    const queryFindAll = Bmob.Query("school");
+    queryFindAll.find().then(res => {
+      var schoolArr=[];
+      res.forEach((value)=>{
+        schoolArr.push(value.school);
+      })
+      that.setData({
+        schools: schoolArr
+      })
+    });
   },
   //输入框事件
   bind_diploma:(e)=>{
     that.setData({
-      diploma: e.detail.value
+      diploma: that.data.diplomas[e.detail.value]
     })
   },
   Trim:function (str){ 
@@ -76,6 +77,9 @@ Page({
   },
 
   bind_school: (e) => {
+    that.setData({
+      school: that.data.schools[e.detail.value]
+    })
     let value = that.Trim(e.detail.value);
     const queryFindSchool = Bmob.Query('school');
     queryFindSchool.equalTo("school", "==", value);
@@ -88,9 +92,6 @@ Page({
       }
      
     });
-    that.setData({
-      school: e.detail.value
-    })
   },
   bind_intrpduction: (e) => {
     that.setData({

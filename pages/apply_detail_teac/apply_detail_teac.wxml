@@ -40,7 +40,7 @@
   </view>
   <view>可教年纪： {{detail.grades}}</view>
   <view>就读学校： {{detail.school}}</view>
-  <view>￥100h/h</view>
+  <view>￥{{detail.unit_price}}h/h</view>
   <view>授课地点： {{detail.teach_addr}} <text class='iconfont icon-genggaishouhuodizhi font_color_main font24'></text></view>
 </view>
 <view class='every last'>
@@ -60,7 +60,7 @@
   <view class="modal-dialog" wx:if="{{showModal}}">
   <view class="modal-title">课程套餐</view>
   <view class="modal-content">
-      <view class='font20 unit'><text class='font_color333'>课程单价：￥{{unit}}/h </text><text class='font_color999'> (一节课两小时)</text></view>
+      <view class='font20 unit'><text class='font_color333'>课程单价：￥{{detail.unit_price}}/h </text><text class='font_color999'> (一节课两小时)</text></view>
       <view wx:for="{{packages}}" wx:for-item="item" wx:key='{{index}}' class='package {{item.isSelect}}' bindtap='couse_select' data-id='{{index}}' data-count='{{item.count}}'>{{item.text}}</view>
   </view>
   <view class='modal-price clear'>
@@ -73,7 +73,7 @@
   </view>
   <view class="modal-footer">
     <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确认支付</view>
+     <view class="btn-confirm" bindtap='wxpay' data-index='{{detail.user_id.objectId}}' data-id='{{detail.objectId}}'>确认支付</view>
   </view>
 </view>
 </view>

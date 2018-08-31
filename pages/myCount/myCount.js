@@ -20,68 +20,15 @@ Page({
    */
   onLoad: function (options) {
     that=this;
-    let current=Bmob.User.current();
-    console.log(current)
-    if(!current.identity){
-      //没认证
-      that.setData({
-        s_isnull:true,
-        t_isnull:true,
-      })
-    }else if(current.identity=='teacher'){
-      //是老师
-      const query = Bmob.Query("buy_record");
-      const pointer = Bmob.Pointer('_User')
-      const poiID = pointer.set(current.objectId)
-      query.equalTo("seller", "==", poiID);
-      query.include('seller')      
-      query.find().then(res => {
-        console.log(res)
-        if(res.length==0){
-          that.setData({
-            t_isnull:true,
-          })
-        }else{
-          that.setData({
-            list_student: res,
-            show_student: true,
-            show_teacher: false,
-            t_isnull:false,
-          })
-        }
-        
-      });
-    }else{
-      //是家长
-      const query = Bmob.Query("buy_record");
-      const pointer = Bmob.Pointer('_User')
-      const poiID = pointer.set(current.objectId)
-      query.equalTo("buyer", "==", poiID);
-      query.include('seller')
-      query.find().then(res => {
-        console.log(res)
-        if(res.length==0){
-          that.setData({
-            s_isnull:true,
-          })
-        }else{
-          that.setData({
-            list: res,
-            show_student: false,
-            show_teacher: true,
-            s_isnull:false,
-          })
-        }
-        
-      });
-    }
+    
   },
   //前往详情页的方法
   toNext:function(e){
     console.log(e)
     let state = e.currentTarget.dataset.state;
     let id = e.currentTarget.dataset.index;    
-    let url = `../count_detail${state}/count_detail${state}?id=${id}`;
+    let seller = e.currentTarget.dataset.seller;    
+    let url = `../count_detail${state}/count_detail${state}?id=${id}&seller=${seller}`;
     wx.navigateTo({
       url:url
     })
@@ -97,7 +44,61 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    let current = Bmob.User.current();
+    console.log(current)
+    if (!current.identity) {
+      //没认证
+      that.setData({
+        s_isnull: true,
+        t_isnull: true,
+      })
+    } else if (current.identity == 'teacher') {
+      //是老师
+      const query = Bmob.Query("buy_record");
+      const pointer = Bmob.Pointer('_User')
+      const poiID = pointer.set(current.objectId)
+      query.equalTo("seller", "==", poiID);
+      query.include('seller')
+      query.find().then(res => {
+        console.log(res)
+        if (res.length == 0) {
+          that.setData({
+            t_isnull: true,
+          })
+        } else {
+          that.setData({
+            list_student: res,
+            show_student: true,
+            show_teacher: false,
+            t_isnull: false,
+          })
+        }
+
+      });
+    } else {
+      //是家长
+      const query = Bmob.Query("buy_record");
+      const pointer = Bmob.Pointer('_User')
+      const poiID = pointer.set(current.objectId)
+      query.equalTo("buyer", "==", poiID);
+      query.include('seller')
+      query.find().then(res => {
+        console.log(res)
+        if (res.length == 0) {
+          that.setData({
+            s_isnull: true,
+          })
+        } else {
+          that.setData({
+            list: res,
+            show_student: false,
+            show_teacher: true,
+            s_isnull: false,
+          })
+        }
+
+      });
+    }
   },
 
   /**

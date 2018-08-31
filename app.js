@@ -8,6 +8,7 @@ App({
     Bmob.User.auth().then(res => {
       console.log(res)
       that.globalData.User=res;
+      console.log(that.globalData)
       that.globalData.user_id = res.objectId;
       var user_id = that.globalData.user_id;
       that.globalData.openId = res.authData.weapp.openid;

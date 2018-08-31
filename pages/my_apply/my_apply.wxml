@@ -1,12 +1,13 @@
 <!--pages/my_apply/my_apply.wxml-->
 <!--pages/apply_list/apply_list.wxml-->
-<view  wx:for="{{list}}" wx:for-item="item" bindtap='toNext' class='teacher_list clear {{item.is_appr?"":"transpant"}}' bindtap='{{item.is_appr?"to_apply_detail":""}}' data-index='{{item.couse_id.objectId}}' wx:if="{{has_data}}" wx:key="{{index}}">
+<view class='allcontent'>
+ <view  wx:for="{{list}}" wx:for-item="item" bindtap='toNext' class='teacher_list clear {{item.is_appr?"":"transpant"}}' bindtap='{{item.is_appr?"to_apply_detail":""}}' data-index='{{item.couse_id.objectId}}' wx:if="{{has_data}}" wx:key="{{index}}">
   <view class='float_left img_box'>
     <image src='{{item.couse_id.img}}'></image>
   </view>
   <view class='float_left left20'>
     <view><text class='font36'>{{item.couse_id.user_name}}</text><text class='authen'  wx:if='{{item.is_appr&&!item.is_read}}'>未被读</text></view>
-    <view class='font26 font_color999 top20' wx:for="{{item.couse_id.need}}" wx:for-item="couse">{{couse}}</view>
+    <view class='font26 font_color999 top20 couse' wx:for="{{item.couse_id.need}}" wx:for-item="couse" wx:key="{{index}}">{{couse}}</view>
     <view class='font26 font_color666 top10 font16'>
       <text><text class='iconfont icon-shijian right10'></text>{{item.createdAt}}</text>
     </view>
@@ -15,6 +16,7 @@
       <view class='font30 font_color_main'>{{item.couse_id.user_grade}}</view>
     </view> -->
   <view class='black_box' hidden='{{item.is_appr?true:false}}'>不合适</view>
+ </view>
 </view>
 
 <view wx:if="{{has_data == false}}" class='nocontent'>
@@ -24,3 +26,6 @@
   <view class='nocontenttext'>暂时没有申请</view>
 </view>
 
+<view class='kong' wx:if='{{isnull}}'>
+  <image src='../../img/null.png'></image>
+</view>

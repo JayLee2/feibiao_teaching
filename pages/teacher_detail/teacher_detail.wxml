@@ -74,8 +74,8 @@
     </view>
   </view>
   <view class="modal-footer">
-    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm" bindtap='wxpay' data-index='{{detail.user_id.objectId}}' data-id='{{detail.objectId}}'>确认支付</view>
+    <view class="btn-cancel" >取消</view>
+    <view class="btn-confirm" bindtap='wxpay' data-index='{{detail.user_id.objectId}}' data-id='{{detail.objectId}}'>确认支付</view>
   </view>
 </view>
 </view>
