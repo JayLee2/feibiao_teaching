@@ -97,20 +97,25 @@ Page({
         detail:res
       })
       console.log(res)
+      
     }).catch(err => {
       console.log(err)
     })
-    const record=Bmob.Query('record');
-    record.equalTo('seller','==',seller);
-    record.equalTo('buyer','==',buyer);
-    record.find().then(res=>{
-      console.log(res);
+    const record = Bmob.Query('record');
+    record.equalTo('seller', '==', seller);
+    record.equalTo('buyer', '==', buyer);
+    record.equalTo('recordPoint', '==', id);
+    record.equalTo('state', '==', '0');
+    record.include('recordPoint')
+    record.find().then(ress => {
+      console.log(ress);
       that.setData({
-        couse_data:res,
+        couse_data: ress,
       })
     })
   },
   finish(e){
+    let that=this;
     let id=e.currentTarget.dataset.index;
   
     wx.showModal({
@@ -125,13 +130,73 @@ Page({
           query.set('state', '1')
           query.save().then(res => {
             console.log(res);
-            wx.navigateTo({
-              url: '../myCount/myCount',
+            
+          }).catch(err => {
+            console.log(err)
+          });
+
+          const queryR = Bmob.Query('buy_record');
+          queryR.include('seller')
+          queryR.get(id).then(res => {
+
+            let moneySet=res.seller.user_id.objectId;
+            let money_can;
+            let money_nocan;
+            //获取售课者现在的余额
+            const queryG = Bmob.Query('_User');
+            queryG.get(moneySet).then(ress => {
+              console.log(res)
+              money_can = parseFloat(ress.money_can)
+              money_nocan = parseFloat(ress.money_nocan);
+              //获得信息后的操作
+              const queryM = Bmob.Query('_User');
+              console.log(money_can, res.num, res.seller.unit_price)
+              queryM.set('id', moneySet) //需要修改的objectId
+              queryM.set('money_can', parseFloat(money_can) + parseFloat(res.num) * parseFloat(res.seller.unit_price))
+              queryM.set('money_nocan', parseFloat(money_nocan) - parseFloat(res.num) * parseFloat(res.seller.unit_price))
+              queryM.save().then(res => {
+                const queryF = Bmob.Query('buy_record');
+                queryF.set('id', id) //需要修改的objectId
+                queryF.set('state', '1')
+                queryF.save().then(res => {
+
+
+                  const queryA = Bmob.Query('record');
+                  console.log(that.data.detail.objectId)
+                  queryA.equalTo('recordPoint', '==', that.data.detail.objectId)
+                  queryA.find().then(todos => {
+                    todos.set('state', "1");
+                    todos.saveAll().then(resd => {
+                      // 成功批量修改
+                      wx.navigateBack({
+                        delta:1
+                      })
+                      console.log(resd, 'ok')
+                    }).catch(err => {
+                      console.log(err)
+                    });
+                  })
+
+
+                  
+
+                }).catch(err => {
+                  console.log(err)
+                });
+                
+              }).catch(err => {
+                console.log(err)
+              })
+            }).catch(err => {
+              console.log(err)
             })
+            
+
           }).catch(err => {
             console.log(err)
           })
         }
+        
       }
     })
    

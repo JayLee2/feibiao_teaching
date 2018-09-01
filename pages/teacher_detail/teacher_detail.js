@@ -337,16 +337,29 @@ Page({
                   queryBuyRecord.set("num", that.data.count)
                   queryBuyRecord.set('state', '0')   //表示状态为进行中          
                 }
-                //记录表里添加纪录
-                const queryRecord = Bmob.Query('record');
-                queryRecord.set("buyer", poiID2)
-                queryRecord.set("seller", poiID1)
-                queryRecord.set("num", that.data.count)
-                queryRecord.set('state', '0') //表示状态为进行中 
-                queryRecord.save().then()
+               
 
-                queryBuyRecord.save().then(res => {
+                queryBuyRecord.save().then(ress => {
+                  console.log(ress)
+                  let recordPoint;
+                  if(ress.objectId){
+                    recordPoint=ress.objectId
+                  }else{
+                    recordPoint = res[0].objectId
+                  }
                   console.log(res)
+                  console.log(recordPoint)
+                  const pointer = Bmob.Pointer('buy_record')
+                  const poiID = pointer.set(recordPoint)
+                  //详细记录表里添加纪录
+                  const queryRecord = Bmob.Query('record');
+                  queryRecord.set("buyer", poiID2)
+                  queryRecord.set("seller", poiID1)
+                  queryRecord.set("num", that.data.count)
+                  queryRecord.set("recordPoint", poiID)
+                  queryRecord.set('state', '0') //表示状态为进行中 
+                  queryRecord.save().then()
+
                   //添加记录后在改变金钱
                   queryCurrent.save().then(res => {
                     queryCurrent2.save().then(res => {

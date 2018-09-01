@@ -1,17 +1,14 @@
 // pages/count_detail1/count_detail1.js
 var pickerFile=require('../../utils/picker_datetime.js');
+var Bmob = require('../../utils/Bmob-1.6.2.min.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    couse_data: [
-      { name: '新课试听(一节课)', count: 1, time: '2018-08-08 20:09' },
-      { name: '套餐一(三节课)', count: 3, time: '2018-08-08 20:09' },
-      { name: '套餐二(六节课)', count: 6, time: '2018-08-08 20:09' },
-      { name: '自定义(二十节课)', count: 20, time: '2018-08-08 20:09' },
-    ],
+    couse_data: [],
+    detail:{},
     showModal: false,  //控制弹出框-续费
     showReturn: false,   //控制弹出框退款
     showCertain:false,   //控制确认输入框
@@ -178,6 +175,34 @@ Page({
       animation: 'slide',
       duration: 500
     });
+    var that = this;
+    let id = options.id;
+    let seller = options.seller;
+    let buyer = Bmob.User.current().objectId;
+    console.log(options)
+    const query = Bmob.Query('buy_record');
+    query.include('seller')
+    query.get(id).then(res => {
+      that.setData({
+        detail: res
+      })
+      console.log(res)
+
+    }).catch(err => {
+      console.log(err)
+    })
+    const record = Bmob.Query('record');
+    record.equalTo('seller', '==', seller);
+    record.equalTo('buyer', '==', buyer);
+    record.equalTo('recordPoint', '==', id);
+    record.equalTo('state', '==', '1');
+    record.include('recordPoint')
+    record.find().then(ress => {
+      console.log(ress);
+      that.setData({
+        couse_data: ress,
+      })
+    })
   },
   startTap: function () {
     this.datetimePicker.setPicker('startDate');
