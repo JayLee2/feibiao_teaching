@@ -54,27 +54,32 @@ Page({
       })
     } else if (current.identity == 'teacher') {
       //是老师
-      const query = Bmob.Query("buy_record");
-      const pointer = Bmob.Pointer('_User')
-      const poiID = pointer.set(current.objectId)
-      query.equalTo("seller", "==", poiID);
-      query.include('seller')
-      query.find().then(res => {
-        console.log(res)
-        if (res.length == 0) {
-          that.setData({
-            t_isnull: true,
-          })
-        } else {
-          that.setData({
-            list_student: res,
-            show_student: true,
-            show_teacher: false,
-            t_isnull: false,
-          })
-        }
+      //先查找该老师发布的课程id
+      const queryE = Bmob.Query("user_teacher");
+      queryE.equalTo("user_id", "==", current.objectId);
+      queryE.find().then(ress => {
+        console.log(ress)
+        const query = Bmob.Query("buy_record");
+        query.equalTo("seller", "==", ress[0].objectId);
+        query.include('seller','buyer')
+        query.find().then(res => {
+          console.log(res)
+          if (res.length == 0) {
+            that.setData({
+              t_isnull: true,
+            })
+          } else {
+            that.setData({
+              list_student: res,
+              show_student: true,
+              show_teacher: false,
+              t_isnull: false,
+            })
+          }
 
+        });
       });
+      
     } else {
       //是家长
       const query = Bmob.Query("buy_record");

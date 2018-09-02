@@ -55,7 +55,7 @@ Page({
     })
     that=this;
     var objectId = getApp().globalData.user_id;
-
+    console.log(objectId)
     //获取当前登陆id的发布
     const queryFind = Bmob.Query("user_teacher");
     queryFind.equalTo("user_id", "==", objectId);

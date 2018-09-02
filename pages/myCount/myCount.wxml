@@ -30,7 +30,7 @@
 </view>
 
 <view wx:if="{{show_student}}">
-   <view class='teacher_list clear' wx:for="{{list_student}}" wx:for-item="item" bindtap='toNext' data-state='{{item.state}}' data-index='{{item.objectId}}'>
+   <view class='teacher_list clear' wx:for="{{list_student}}" wx:for-item="item" data-state='{{item.state}}' data-index='{{item.objectId}}'>
   <view class='list_top font22 flex font_color999'>
     <view>课程编号：{{item.seller.objectId}}</view>
     <view wx:if="{{item.state == '0'}}">进行中</view>

@@ -2,10 +2,10 @@
 <swiper autoplay="true" interval="2000">
   <view class="main">
      <swiper-item>
-      <image src='../../img/contanct_us2.jpg'></image>
+      <image src='../../img/banner1.jpg'></image>
     </swiper-item>
     <swiper-item>
-      <image src='../../img/contact_us.jpg'></image>
+      <image src='../../img/banner1.png'></image>
     </swiper-item>
   </view>
 </swiper>

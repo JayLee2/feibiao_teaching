@@ -53,10 +53,10 @@
     <text class='iconfont icon-fenxiang'></text>
     <text class='phoneteacher'>分享</text></button>
   <view bindtap='collect' data-index='{{detail.objectId}}'><text class='iconfont icon-msnui-collection'></text><text class='phoneteacher'>{{is_collect}}</text></view>
-  <view class='makephonecall' bindtap='makephonecall'>
+  <!-- <view class='makephonecall' bindtap='makephonecall'>
      <text class='iconfont icon-dianhua iconsize'></text>
      <text class='phoneteacher'>联系老师</text>
-  </view>
+  </view> -->
   <view class='buy' bindtap='buy'>购买课程</view>
 </view>
 <!--弹窗-->

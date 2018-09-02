@@ -85,7 +85,7 @@
   text-align: center;
 }
 .bottom .buy{
-  width: 25%;
+  width: 50%;
   background: #9fd4d2;
   color: #fff;
   text-align: center;
