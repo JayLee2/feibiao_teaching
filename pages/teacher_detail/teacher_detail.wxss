@@ -2,6 +2,7 @@
 .head{
   border-bottom: 7rpx solid #e0e0e0;
   padding: 20rpx 30rpx;
+  font-size:28rpx;
 }
 .img_box{
   width: 150rpx;
@@ -54,8 +55,8 @@
   box-sizing: border-box;
   width: 700rpx;
   margin: auto;
-  font-size: 20rpx;
   border-bottom: 1rpx solid #ccc;
+  font-size: 28rpx;
 }
 .every .every_title{
   font-size: 33rpx;
@@ -100,6 +101,7 @@
   padding: 0;
   line-height:99rpx; 
   width: 25%;
+  font-size:28rpx !important;
 }
 .last {
   border: none;
@@ -229,9 +231,9 @@ input-holder {
   color: #fff !important;
   text-align: center !important;
   border-right: 1px solid#fff;
+  font-size:28rpx;
 }
 .phoneteacher
 {
   margin-left: 5px;
-  font-size: 12px;
 }
