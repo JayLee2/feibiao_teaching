@@ -99,7 +99,8 @@ Page({
         }, 1000)
         //todo
         let params = {
-          mobilePhoneNumber: that.data.phone //string
+          mobilePhoneNumber: that.data.phone, //string
+          template: '飞镖家教'
         }
         Bmob.requestSmsCode(params).then(function (response) {
           console.log(response);
@@ -144,7 +145,8 @@ Page({
         }, 1000)
         //todo
         let params = {
-          mobilePhoneNumber: that.data.chi_phone //string
+          mobilePhoneNumber: that.data.chi_phone, //string
+          template: '飞镖家教' 
         }
         Bmob.requestSmsCode(params).then(function (response) {
           console.log(response);
