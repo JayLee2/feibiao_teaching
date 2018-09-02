@@ -1,11 +1,11 @@
 <!--index.wxml 7ec6c3-->
-<swiper>
+<swiper autoplay="true" interval="2000">
   <view class="main">
      <swiper-item>
-      <image src='../../img/timg1.jpg'></image>
+      <image src='../../img/contanct_us2.jpg'></image>
     </swiper-item>
     <swiper-item>
-      <image src='../../img/ss.jpg'></image>
+      <image src='../../img/contact_us.jpg'></image>
     </swiper-item>
   </view>
 </swiper>
