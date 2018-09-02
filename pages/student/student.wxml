@@ -4,7 +4,13 @@
   <picker range='{{couse}}' bindchange='bindPickerChangeCouse'>{{defalt_couse}}<text class='iconfont icon-xiangxia'></text></picker>
   <picker range='{{school}}' bindchange='bindPickerChangeSchool'>{{defalt_school}}<text class='iconfont icon-xiangxia'></text></picker>
 </view> -->
-<view class='alllist'>
+<view wx:if="{{student_list.length==0}}" class='nocontent'>
+  <view>
+     <text class='iconfont icon-kulian1 nocontenticon'></text>
+  </view>
+  <view class='nocontenttext'>没有内容</view>
+</view>
+<view wx:else>
 <view class='teacher_list clear' wx:for="{{student_list}}" wx:for-item="item" bindtap='toNext' data-index='{{item.objectId}}' wx:key="{{index}}">
   <view class='list_top font22'>
     学生编号：{{item.objectId}}

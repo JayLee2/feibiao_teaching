@@ -48,3 +48,25 @@
 {
   padding: 10px 10px;
 }
+
+.nocontenticon
+{
+  color:#f6d725;
+  font-size: 50px;
+}
+.nocontent
+{
+  text-align: center;
+  padding: 25% 0 0;
+}
+.nocontenttext
+{
+  font-size: 20px;
+  font-weight: 600;
+  margin: 5% 0 0 0;
+  color: #202a36;
+}
+.alllist
+{
+  padding: 10px;
+}
