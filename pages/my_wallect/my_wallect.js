@@ -11,9 +11,9 @@ Page({
     money_nocan:0,
     price:0,
     xsprice:0,
-
     withdraw:"none",
     inputValue:"",
+    bindcard:"",
     packages: [
       { text: "0.01", count: 0.01, isSelect: '' },
       { text: "200", count: 200, isSelect: '' },
@@ -36,7 +36,8 @@ Page({
       else{
         that.setData({
           money_can: res.money_can,
-          money_nocan: res.money_nocan
+          money_nocan: res.money_nocan,
+          bindcard:res.bindcard
         })
       }
     })
@@ -186,9 +187,16 @@ Page({
         icon:"none",
       })
     }else{
-      that.setData({
-        withdraw:"block",
-      })
+      if(that.bindcard ==true)
+      {
+        that.setData({
+          withdraw: "block",
+        })
+      }else{
+        wx.navigateTo({
+          url: 'bindcard/bindcard',
+        })
+      }
     }
   },
 
