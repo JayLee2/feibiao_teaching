@@ -1,0 +1,5 @@
+<!--pages/my_wallect/bindcard/bindcard.wxml-->
+<view class="maincontent" bindtap='bindcard'>
+   <i class='iconfont icon-jia'></i>
+   <text class='bindtext'>添加银行卡</text>
+</view>

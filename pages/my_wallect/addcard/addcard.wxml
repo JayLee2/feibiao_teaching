@@ -1,0 +1,31 @@
+<!--pages/my_wallect/addcard/addcard.wxml-->
+<view class='headertext'>请绑定持卡人本人的银行卡</view>
+<view class='alllist'>
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='list'>
+    <view class='display textdepict'>持卡人</view>
+    <view class='display border'><input maxlength='6' name="input1"></input></view>
+  </view>
+  <view class='list'>
+    <view class='display textdepict'>银行卡号</view>
+    <view class='display border'><input maxlength='25' bindinput='getUserIdCardNumber'  name="input2"></input></view>
+  </view>
+  <view class='list'>
+    <view class='display textdepict'>开户银行</view>
+    <view class='display border'>
+    <input maxlength='35' value="{{bankname}}" disabled='true'  name="input3"></input></view>
+  </view>
+  <view class='list'>
+    <view class='display textdepict'>卡类型</view>
+    <view class='display border'>
+    <input maxlength='35' value="{{banktype}}" disabled='true'  name="input4"></input></view>
+  </view>
+  <view class='list1'>
+    <view class='display textdepict'>预留手机</view>
+    <view class='display border'><input maxlength='11'  name="input5"></input></view>
+  </view>
+  <view class='confirm'>
+  <button formType="submit" style='background:#9fd4d2;'>提交</button>
+</view>
+  </form>
+</view>
