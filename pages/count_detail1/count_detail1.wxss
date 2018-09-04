@@ -23,20 +23,20 @@
   margin-top: 15rpx;
 }
 .row2_center{
-  width: 260rpx;
-  display: flex;
   justify-content: space-around;
   margin-top:30rpx;
 }
 .couse,.count{
   border-radius: 6rpx;
-  width: 108rpx;
-  height: 24rpx;
-  font-size: 16rpx;
+  height: 38rpx;
+  font-size: 28rpx;
   border: 1rpx solid #9fd4d2;
   color: #9fd4d2;
   text-align: center;
-  line-height: 24rpx;
+  line-height: 38rpx;
+  margin: 0 5px 0 0;
+  display: inline-block;
+  padding: 2px 4px;
 }
 .count{
     border: 1rpx solid #ccc;
@@ -48,7 +48,7 @@
   color: #333;
   font-size: 22rpx;
   margin-bottom: 20rpx;
-  padding: 10rpx 30rpx;
+  padding: 10rpx 0rpx;
 }
 .ctitle{
   padding: 15rpx 40rpx;
@@ -60,14 +60,18 @@
 }
 .couse_detail{
   height: 77rpx;
-  padding: 0 40rpx;
+  padding: 10px 20rpx;
+  font-size: 28rpx;
+  margin: 0 10px;
 }
 .detail_time{
   color: #7c7c7c;
-  line-height: 20rpx
+  line-height: 35rpx;
+  font-size: 24rpx !important;
+  border-radius: 4px;
 }
 .detail_name{
-  font-size: 24rpx;
+  font-size: 28rpx;
   line-height: 48rpx;
 }
 .detail_count{

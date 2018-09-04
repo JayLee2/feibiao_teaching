@@ -15,7 +15,7 @@
       </view>
       <view>
       <view class='row2_center'>
-        <view class='couse' wx:for="{{detail.seller.can_teached}}" wx:for-item='every'>{{every}}</view>
+        <view class='couse' wx:for="{{detail.seller.can_teached}}" wx:for-item='every' wx:key="{{index}}">{{every}}</view>
         <view class='count'>{{detail.num}}节课</view>
       </view>
     </view>
@@ -25,7 +25,7 @@
  <view class='ctitle'>
   课程明细
 </view>
-<view class='clear couse_detail' wx:for="{{couse_data}}" wx:for-item="item" wx:for-index="{{index}}">
+<view class='clear couse_detail' wx:for="{{couse_data}}" wx:for-item="item" wx:for-index="{{index}}" wx:key="{{index}}">
   <view class='float_left'>
     <view class='detail_name' wx:if='{{item.num==2}}'>新课试听(一节课)</view>
     <view class='detail_name' wx:if='{{item.num==6}}'>套餐一(三节课)</view>

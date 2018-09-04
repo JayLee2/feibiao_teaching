@@ -8,7 +8,7 @@
 </view> -->
 
 
-<view wx:if="{{show_teacher}}">
+<view wx:if="{{show_teacher}}" class='alllist'>
   <view class='teacher_list clear' wx:for="{{list}}" wx:for-item="item" bindtap='toNext' data-state='{{item.state}}' data-index='{{item.objectId}}' data-seller='{{item.seller.objectId}}' wx:key="{{index}}">
   <view class='list_top font22 flex font_color999'>
     <view>课程编号：{{item.seller.objectId}}</view>
@@ -20,9 +20,9 @@
   </view>
   <view class='float_left left20'>
     <view class='font36'>{{item.seller.user_name}}</view>
-    <view class='font26 font_color999 top20'><text wx:for="{{item.seller.can_teached}}" wx:for-item="every">{{every}}</text></view>
+    <view class='font26 font_color999 top20'><text wx:for="{{item.seller.can_teached}}" wx:for-item="every" wx:key="{{index}}" style='margin-right:10px'>{{every}}</text></view>
     <view class='font26 font_color999 top10'>
-      <text>总课程：{{item.num/2}}</text>
+      <text>总课程：<text style='color:#f30'>{{item.num/2}}</text></text>
     </view>
   </view>
   <view class='float_right font20'>名师值 <text class='font_color_main font36'>{{item.seller.grade}}</text><text class='iconfont icon-wenhao font22'></text></view>
