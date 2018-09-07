@@ -18,9 +18,9 @@
     </view>
   </view>
   <view class='head_bottom'>
-    <view><text class='iconfont icon-shijian font24'></text> {{detail.createdAt}}</view>
-    <view><text class='iconfont icon-msnui-collection font24'></text>{{by_collect}}人收藏</view>
-    <view><text class='iconfont icon-jiaren font24'></text>{{detail.by_apply}}人申请</view>
+    <view><text class='iconfont icon-shijian' style='font-size:12px'></text> {{detail.createdAt}}</view>
+    <view><text class='iconfont icon-msnui-collection' style='font-size:12px'></text>{{by_collect}}人收藏</view>
+    <view><text class='iconfont icon-jiaren' style='font-size:12px'></text>{{detail.by_apply}}人申请</view>
   </view>
 </view>
 <view class='every'>

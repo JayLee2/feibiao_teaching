@@ -19,7 +19,7 @@
   </view>
   <view class='head_bottom'>
     <view>教师编号：{{detail.user_id.objectId}}</view>
-    <view><text class='iconfont icon-msnui-collection font20'></text>{{by_collect}}人收藏</view>
+    <view><text class='iconfont icon-msnui-collection' style='font--size:12px'></text>{{by_collect}}人收藏</view>
     <view>￥{{detail.unit_price}}/h</view>
   </view>
 </view>

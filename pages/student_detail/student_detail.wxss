@@ -30,13 +30,12 @@
 }
 .authen_student,.authen_teacher{
   border-radius: 6rpx;
-  width: 108rpx;
-  height: 24rpx;
-  font-size: 24rpx;
+  font-size: 12px;
   border: 1rpx solid #9fd4d2;
   color: #9fd4d2;
   text-align: center;
-  line-height: 24rpx;
+  padding: 2px 4px;
+  display: inline-block;
 }
 .authen_teacher{
     border: 1rpx solid #ccc;
@@ -46,7 +45,7 @@
   display: flex;
   justify-content: space-between;
   color: #999;
-  font-size: 20rpx;
+  font-size: 12px;
   margin-top: 15rpx;
 }
 .every{

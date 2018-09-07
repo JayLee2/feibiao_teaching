@@ -52,7 +52,7 @@
   <view class='every_title'>
     教学能力
   </view>
-  <view> <text>可教年纪：</text><input value='{{grades}}' bindinput='bind_grades'></input> </view>
+  <view> <text>可教年纪：</text><input value='{{grades}}' bindinput='bind_grades' type='number'></input> </view>
   <checkbox-group bindchange="change_check_can">
   <view class='special_row'> 
     <text class='inline'>可教学科： </text>

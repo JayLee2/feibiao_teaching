@@ -29,6 +29,7 @@ page{
   text-align: center;
   color: #fff;
   background: #9fd4d2;
+  z-index: 1000;
 }
 
 input{

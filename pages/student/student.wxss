@@ -5,7 +5,6 @@
   justify-content: space-around;
   border-bottom: 1rpx solid #ccc;
   padding-bottom: 15rpx;
-  line-height: 30px;
 }
 .img_box{
   width: 150rpx;
@@ -69,7 +68,7 @@
 }
 .alllist
 {
-  padding: 0 10px 10px 10px;
+  padding: 10px;
 }
 .overflow
 {
