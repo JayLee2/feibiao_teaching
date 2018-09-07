@@ -30,6 +30,7 @@
   <view>学籍情况： {{detail.diploma}}</view>
   <view>就读学校： {{detail.school}}</view>
   <view>擅长学科： {{detail.be_good_like}}</view>
+  <view>授课时间： {{detail.have_time}}</view>
   <view>自我介绍： {{detail.other_info[0]}}</view>
 </view>
 <view class='every'>

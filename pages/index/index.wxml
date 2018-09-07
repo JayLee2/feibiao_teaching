@@ -5,7 +5,7 @@
       <image src='../../img/banner1.jpg'></image>
     </swiper-item>
     <swiper-item>
-      <image src='../../img/banner1.png'></image>
+      <image src='../../img/banner2.png'></image>
     </swiper-item>
   </view>
 </swiper>
@@ -37,3 +37,12 @@
 <button plain="true"  wx:if="{{authorize==false}}"  class='authBut' style="border:0;height:520rpx;"  open-type="getUserInfo" bindgetuserinfo="userInfoHandler">
   <image class='authorize' src='../../img/authorize.png'></image>
 </button>
+
+<view class='mask' style='display:{{mask}}' bindtap='hidden'></view>
+<form bindsubmit="formSubmit" class='contact_usfrom' style='display:{{mask}}'>
+  <view class='form'>
+   <textarea placeholder='请输入您宝贵的意见' class='textarea' placeholder-style='font-size:15px;' class='textarea' name="input"></textarea>
+   <button class='submitbutton' formType="submit">提交</button>
+    <view class='noticetext'>（点击空白区域关闭）</view>
+  </view>
+</form>

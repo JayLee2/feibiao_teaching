@@ -24,7 +24,6 @@
     "pages/apply_detail_teac/apply_detail_teac",
     "pages/photo/photo",
     "pages/my_publish_chi/my_publish_chi",
-    "pages/my_wallect/bindcard/bindcard",
     "pages/my_wallect/addcard/addcard"
   ],
   "window": {

@@ -8,7 +8,8 @@ Page({
   data: {
     info:{},
     be_good_like:'',
-    can_teached:''
+    can_teached:'',
+    have_time:"",
   },
   edit:function(e){
     let id=e.currentTarget.dataset.index
@@ -34,6 +35,7 @@ Page({
         info:res,
         be_good_like: res.be_good_like.join(','),
         can_teached: res.can_teached.join(','),
+        have_time: res.have_time.join(','),
       })
     }).catch(err => {
       console.log(err)

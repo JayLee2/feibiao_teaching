@@ -10,12 +10,14 @@ Page({
    user:'',
    user_img:'',
    authorize:true,//是否授权
+   mask:'none',
    directory:[
      { path: '../../img/icon2-01.png',name:'我的收藏' ,taped:'to_collect'},
      { path: '../../img/icon2-02.png', name: '我的发布',taped:'to_publish' },
      { path: '../../img/icon2-03.png', name: '我的钱包',taped:'to_wallect'},
      { path: '../../img/icon2-05.png', name: '申请列表' ,taped:'to_apply'},
      { path: '../../img/icon2-06.png', name: '身份认证' ,taped:'to_authen'},
+     { path: '../../img/contact_us.png', name: '意见反馈', taped: 'contact_us' },
    ]
   },
   to_collect:function(){
@@ -141,6 +143,51 @@ Page({
         }
       })
     }
+  },
+
+  formSubmit:function(e)
+  {
+    var value = e.detail.value.input;
+    var that = this;
+    if(value.length == 0 ||value.length <10)
+    {
+      wx.showToast({
+        title: '不能少于10个字',
+        icon:'none',
+      })
+    }else{
+      let current = Bmob.User.current();
+      var userid = current.objectId;
+      const pointer = Bmob.Pointer('_User');
+      const poiID = pointer.set(userid);
+
+      const query = Bmob.Query('suggestions');
+      query.set("content", value);
+      query.set("parent", poiID);
+      query.save().then(res => {
+        that.hidden();
+        wx.showToast({
+          title: '提交成功',
+          icon:"none"
+        })
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+  },
+
+  hidden:function(){
+    var that = this;
+    that.setData({
+      mask:"none"
+    })
+  },
+
+  contact_us:function(){
+    var that = this;
+    that.setData({
+      mask: "block"
+    })
   },
   
 })

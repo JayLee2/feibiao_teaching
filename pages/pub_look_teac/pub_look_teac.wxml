@@ -14,6 +14,7 @@
   </view>
   <view>可教年级： {{info.grades}}</view>
   <view>课教学科：{{can_teached}}</view>
+  <view>授课时间：{{have_time}}</view>
   <view>课时费用： {{info.unit_price}}/h</view>
   <view>授课地点： {{info.teach_addr}} <text class='iconfont icon-genggaishouhuodizhi font_color_main font24'></text></view>
   <view>其他： {{info.other_info[1]}}</view>

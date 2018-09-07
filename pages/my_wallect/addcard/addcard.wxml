@@ -13,7 +13,7 @@
   <view class='list'>
     <view class='display textdepict'>开户银行</view>
     <view class='display border'>
-    <input maxlength='35' value="{{bankname}}" disabled='true'  name="input3"></input></view>
+    <picker bindchange="bindPickerChange" range="{{array}}" name="input3" style='height:25px;line-height:25px'>{{bankname}}</picker></view>
   </view>
   <view class='list'>
     <view class='display textdepict'>卡类型</view>

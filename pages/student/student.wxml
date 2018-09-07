@@ -1,9 +1,5 @@
 <!--pages/teacher/teacher.wxml-->
-<!-- <view class='head font30'>
-  <picker range='{{city}}' bindchange='bindPickerChangeCity'>{{defalt_city}}<text class='iconfont icon-xiangxia'></text></picker>
-  <picker range='{{couse}}' bindchange='bindPickerChangeCouse'>{{defalt_couse}}<text class='iconfont icon-xiangxia'></text></picker>
-  <picker range='{{school}}' bindchange='bindPickerChangeSchool'>{{defalt_school}}<text class='iconfont icon-xiangxia'></text></picker>
-</view> -->
+
 <view wx:if="{{student_list.length==0}}" class='nocontent'>
   <view>
      <text class='iconfont icon-kulian1 nocontenticon'></text>
@@ -11,6 +7,11 @@
   <view class='nocontenttext'>没有内容</view>
 </view>
 <view wx:else class='alllist'>
+<view class='head font30'>
+  <picker range='{{city}}' bindchange='bindPickerChangeCity'>{{defalt_city}}<text class='iconfont icon-xiangxia'></text></picker>
+  <picker range='{{couse}}' bindchange='bindPickerChangeCouse'>{{defalt_couse}}<text class='iconfont icon-xiangxia'></text></picker>
+  <picker range='{{school}}' bindchange='bindPickerChangeSchool'>{{defalt_school}}<text class='iconfont icon-xiangxia'></text></picker>
+</view>
 <view class='teacher_list clear' wx:for="{{student_list}}" wx:for-item="item" bindtap='toNext' data-index='{{item.objectId}}' wx:key="{{index}}">
   <view class='list_top font22'>
     学生编号：{{item.objectId}}
@@ -21,7 +22,7 @@
   <view class='float_left left20 width220'>
     <view class='font36'>{{item.user_name}}</view>
     <view class='font26 font_color999 top20 need' ><text wx:for="{{item.need}}" wx:for-item="every" wx:key="index">{{every}}</text></view>
-    <view class='font26 font_color999 top10'>
+    <view class='font26 font_color999 top10 overflow'>
       <text>{{item.addr}}</text>
     </view>
   </view>

@@ -22,24 +22,24 @@
       <label><checkbox value='学前教育'/>学前教育</label><label><checkbox value='自然'/>自然</label>
       <label><checkbox value='书法'/>书法</label><label><checkbox value='语文'/>语文</label>
     </view>
-    <view class='left100'>
+    <view class='left100'style='margin-left:18%'>
       <label><checkbox value='数学'/>数学</label><label><checkbox value='奥数'/>奥数</label>
       <label><checkbox value='英语'/>英语</label><label><checkbox value='历史'/>历史</label>
     </view>
-    <view class='left100'>
+    <view class='left100'style='margin-left:18%'>
      <label><checkbox value='化学'/>化学</label><label><checkbox value='物理'/>物理</label>
       <label><checkbox value='生物'/>生物</label><label><checkbox value='政治'/>政治</label></view>
-    <view class='left100'>
+    <view class='left100'style='margin-left:18%'>
       <label><checkbox value='地理'/>地理</label><label><checkbox value='音乐'/>音乐</label>
       <label><checkbox value='钢琴'/>钢琴</label><label><checkbox value='美术'/>美术</label>
     </view>
 
-    <view class='left100'>
+    <view class='left100'style='margin-left:18%'>
       <label><checkbox value='舞蹈'/>舞蹈</label><label><checkbox value='日语'/>日语</label>
       <label><checkbox value='西班牙语'/>西班牙语</label><label><checkbox value='法语'/>法语</label>
     </view>
 
-    <view class='left100'>
+    <view class='left100'style='margin-left:18%'>
       <label><checkbox value='俄语'/>俄语</label><label><checkbox value='意大利语'/>意大利语</label>
       <label><checkbox value='托福'/>托福</label><label><checkbox value='雅思'/>雅思</label>
     </view>
@@ -60,30 +60,45 @@
       <label><checkbox value='学前教育'/>学前教育</label><label><checkbox value='自然'/>自然</label>
       <label><checkbox value='书法'/>书法</label><label><checkbox value='语文'/>语文</label>
     </view>
-    <view class='left100'>
+    <view class='left100'style='margin-left:18%'>
       <label><checkbox value='数学'/>数学</label><label><checkbox value='奥数'/>奥数</label>
       <label><checkbox value='英语'/>英语</label><label><checkbox value='历史'/>历史</label>
     </view>
-    <view class='left100'>
+    <view class='left100'style='margin-left:18%'>
      <label><checkbox value='化学'/>化学</label><label><checkbox value='物理'/>物理</label>
       <label><checkbox value='生物'/>生物</label><label><checkbox value='政治'/>政治</label></view>
-    <view class='left100'>
+    <view class='left100'style='margin-left:18%'>
       <label><checkbox value='地理'/>地理</label><label><checkbox value='音乐'/>音乐</label>
       <label><checkbox value='钢琴'/>钢琴</label><label><checkbox value='美术'/>美术</label>
     </view>
 
-    <view class='left100'>
+    <view class='left100'style='margin-left:18%'>
       <label><checkbox value='舞蹈'/>舞蹈</label><label><checkbox value='日语'/>日语</label>
       <label><checkbox value='西班牙语'/>西班牙语</label><label><checkbox value='法语'/>法语</label>
     </view>
 
-    <view class='left100'>
+    <view class='left100'style='margin-left:18%'>
       <label><checkbox value='俄语'/>俄语</label><label><checkbox value='意大利语'/>意大利语</label>
       <label><checkbox value='托福'/>托福</label><label><checkbox value='雅思'/>雅思</label>
     </view>
     
   </view>
   </checkbox-group>
+
+  <checkbox-group bindchange="change_check_time">
+  <view class='special_row'> 
+    <text class='inline'>可授课时间： </text>
+    <view class='left100'style='margin-left:18%'>
+      <label><checkbox value='星期一'/>星期一</label><label><checkbox value='星期二'/>星期二</label>
+      <label><checkbox value='星期三'/>星期三</label><label><checkbox value='星期四'/>星期四</label>
+    </view>
+    <view class='left100'style='margin-left:18%'>
+      <label><checkbox value='星期五'/>星期五</label><label><checkbox value='星期六'/>星期六</label>
+      <label><checkbox value='星期日'/>星期日</label>
+    </view>
+    </view>
+  </checkbox-group>
+
   <view><text>课时费用：</text><input type='number' value='{{unit_price}}' bindinput='bind_unit' ></input></view>
   <view>授课地点：<input class='right20' value='{{addrs}}' bindtap='bind_addr' disabled='true'></input> <!-- <text class='iconfont icon-genggaishouhuodizhi font_color_main font28'></text> -->
   </view>

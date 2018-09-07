@@ -27,7 +27,7 @@
   width: 260rpx;
   display: flex;
   justify-content: space-around;
-  margin:30rpx auto
+  margin:30rpx 0;
 }
 .authen_student,.authen_teacher{
   border-radius: 6rpx;

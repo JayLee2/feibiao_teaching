@@ -8,7 +8,7 @@ page{
   box-sizing: border-box;
   width: 700rpx;
   margin: auto;
-  font-size: 20rpx;
+  font-size: 24rpx;
   border-bottom: 1rpx solid #ccc;
 }
 .every .every_title{
@@ -64,7 +64,7 @@ page{
   box-sizing: border-box;
   width: 700rpx;
   margin: auto;
-  font-size: 20rpx;
+  font-size: 24rpx;
   border-bottom: 1rpx solid #ccc;
 }
 .every .every_title{

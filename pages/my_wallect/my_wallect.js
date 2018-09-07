@@ -14,6 +14,8 @@ Page({
     withdraw:"none",
     inputValue:"",
     bindcard:"",
+    bankcard:"",
+    banknumber:"",
     packages: [
       { text: "0.01", count: 0.01, isSelect: '' },
       { text: "200", count: 200, isSelect: '' },
@@ -32,12 +34,22 @@ Page({
     let current=Bmob.User.current();
     const query=Bmob.Query('_User');
     query.get(current.objectId).then(res=>{
+      console.log(res);
       if(res.money_can ==null && res.money_nocan ==null){}
-      else{
+      else if (res.bank_card_id==null){ 
+        var bindcard="";
         that.setData({
           money_can: res.money_can,
           money_nocan: res.money_nocan,
-          bindcard:res.bindcard
+          bindcard: bindcard,
+        })
+        }
+      else{
+        bindcard = res.bank_card_id.objectId 
+        that.setData({
+          money_can: res.money_can,
+          money_nocan: res.money_nocan,
+          bindcard: bindcard,
         })
       }
     })
@@ -179,6 +191,9 @@ Page({
   ret:function()
   {
     var that = this;
+    let current = Bmob.User.current();
+    let userid = current.objectId;
+    console.log(that.data.bindcard);
 
     if (that.data.money_can == 0)
     {
@@ -187,15 +202,48 @@ Page({
         icon:"none",
       })
     }else{
-      if(that.bindcard ==true)
+      if (that.data.bindcard == "" || that.data.bindcard==null)
       {
-        that.setData({
-          withdraw: "block",
-        })
+        wx.showModal({
+          title: '提示',
+          showCancel:false,
+          content: '你当前未绑定银行卡，请去绑卡',
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: 'addcard/addcard',
+                })
+            } else if (res.cancel) {
+            }
+          }})
       }else{
-        wx.navigateTo({
-          url: 'bindcard/bindcard',
+        wx.showModal({
+          title: '提示',
+          content: '周一9:00-24:00可进行提现',
+          success: function (res) {
+            if (res.confirm) {
+              const query = Bmob.Query('_User');
+              query.include('bank_card_id', 'bank_card');
+              query.get(userid).then(res => {
+                var bank_number = res.bank_card_id.card_no;
+                var laternum = bank_number.substring(bank_number.length - 4);
+                console.log(laternum);
+                that.setData({
+                  withdraw: "block",
+                  bankcard:res.bank_card_id,
+                  banknumber: laternum,
+                })
+              }).catch(err => {
+                console.log(err)
+              })
+              that.setData({
+                withdraw: "block",
+              })
+            } else if (res.cancel) {
+            }
+          }
         })
+        
       }
     }
   },
@@ -254,8 +302,11 @@ Page({
         const query = Bmob.Query('withdraw');
         const pointer = Bmob.Pointer('_User')
         const poiID = pointer.set(id);
+        const pointer1 = Bmob.Pointer('bank_card')
+        const poiID1 = pointer1.set(that.data.bindcard);
         query.set("money", money);
         query.set("parent", poiID);
+        query.set("band_card_id", poiID1);
         query.save();
       })
     }

@@ -14,6 +14,7 @@ Page({
     self_introduction:'',
     grades:'',
     can_teached:'',//可教课程
+    have_time:"",
     unit_price:'',
     teach_addr:'',
     other:'',
@@ -143,6 +144,13 @@ Page({
       can_teached: arr_check
     })
   },
+  change_check_time: function (e) {
+    var arr_check = e.detail.value
+    console.log(arr_check);
+    that.setData({
+      have_time: arr_check
+    })
+  },
   //发布方法
   send:function(){
     if (this.data.diploma == '') {
@@ -200,13 +208,21 @@ Page({
         icon: 'none',
         duration: 2000
       })
-    }else{
+    } else
+      if (this.data.have_time == '') {
+        wx.showToast({
+          title: '请选择授课时间',
+          icon: 'none',
+          duration: 2000
+        })
+      }else{
       if(that.data.id!=''){
         const query = Bmob.Query('user_teacher');
         query.set('id', that.data.id) //需要修改的objectId
         query.set("diploma", that.data.diploma)
         query.set("school", that.data.school);
         query.set("can_teached", that.data.can_teached);
+        query.set("have_time", that.data.have_time);
         query.set("be_good_like", that.data.be_good_like);
         query.set("other_info", [that.data.self_introduction, that.data.other]);
         query.set("grades", that.data.grades);
@@ -230,6 +246,7 @@ Page({
         queryAdd.set("be_good_like", that.data.be_good_like);
         queryAdd.set("unit_price", parseInt(that.data.unit_price));
         queryAdd.set("teach_addr", that.data.addrs);
+        queryAdd.set("have_time", that.data.have_time);
         queryAdd.set("sex", getApp().globalData.User.sex);
         queryAdd.set("other_info", [that.data.self_introduction, that.data.other]);
         queryAdd.set("diploma", that.data.diploma)

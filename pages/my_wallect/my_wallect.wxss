@@ -29,10 +29,8 @@
   border: 1rpx solid #ccc;
   text-align: center;
   font-size: 30rpx;
-  margin-top: 20rpx;  
-  margin-left: 35rpx;
-  
-  width: 180rpx;
+  margin: 10px 10px;
+  width: calc(33.3vw - 32px);
   height:40rpx;
   border-radius: 10rpx;
   color: #333;
@@ -46,11 +44,11 @@
 }
 .flex-wrp {display: flex;}
 .input {
-  width: 88.5%;
+  width: calc(100% - 20px);
   height: 82rpx;
-  margin-left: 20rpx;
+  margin: 10px;
   margin-top: 5%;
-  margin-right: 20rpx;
+  margin-right: 10px;
   font-size: 40rpx;
   line-height: 28rpx;
   border-width: 1rpx;
@@ -58,7 +56,8 @@
   padding: 0 20rpx;
   border-color:#9fd4d2;
   box-sizing: border-box;
-  color: #333;  
+  color: #333; 
+  border-radius: 4px; 
 }
 .count{
   text-indent: 100%;
@@ -66,8 +65,6 @@
 .viewinput {
   width: 100%;
   height: 82rpx;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
 }
 .fristcontent
 {
@@ -133,9 +130,9 @@
 }
 .input_withdraw
 {
-  padding: 10px 0 ;
+  padding: 5px 0 ;
   line-height: 30px;
   border: 1px solid#2ca879;
   border-radius: 4px;
-  margin: 20px 0 ;
+  margin: 10px 0 ;
 }
